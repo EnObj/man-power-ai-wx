@@ -33,7 +33,8 @@ Page({
     db.collection('mpa_user_history').add({
       data: {
         content: this.data.mpaContents[this.data.currentMpaContentIndex],
-        answer: event.detail.value
+        answer: event.detail.value,
+        createTime: new Date()
       }
     }).then(res=>{
       this.nextMpaContent()
@@ -60,7 +61,8 @@ Page({
     const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
     db.collection('mpa_user_collect').add({
       data:{
-        content: mpaContent
+        content: mpaContent,
+        createTime: new Date()
       }
     }).then(res=>{
       mpaContent.isCollect = true
