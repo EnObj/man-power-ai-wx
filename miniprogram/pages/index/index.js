@@ -77,7 +77,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    mpaUtils.loadBatch(db).then(mpaContents=>{
+    mpaUtils.loadBatch(db, options.contentId).then(mpaContents=>{
       wx.hideLoading({
         success: (res) => {
           wx.showToast({
@@ -138,6 +138,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    return {
+      title: mpaContent.content,
+      path: '/pages/index/index?contentId=' + mpaContent._id
+    }
   }
 })

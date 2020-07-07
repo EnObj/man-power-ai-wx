@@ -1,5 +1,5 @@
 module.exports = {
-  loadBatch: async (db)=>{
+  loadBatch: async (db, mustHaveContentId)=>{
     // 求资源库条目总数目
     const {
       total: mpaContentCount
@@ -15,6 +15,12 @@ module.exports = {
       })){
         result.push(mpaContent)
       }
+    }
+    
+    // 加载特殊分子
+    if(mustHaveContentId){
+      const {data:mustHaveContent} = await db.collection('mpa_content').doc(mustHaveContentId).get()
+      result.unshift(mustHaveContent)
     }
 
     return Promise.resolve(result)
