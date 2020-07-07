@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import "./style/my-style.wxss";
+
 page {
   background: #f6f6f6;
 }

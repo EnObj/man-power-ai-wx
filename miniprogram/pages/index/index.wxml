@@ -1,2 +1,40 @@
-<!--miniprogram/pages/index/index.wxml-->
-<text>miniprogram/pages/index/index.wxml</text>
+<view class="main">
+	<view class="padding-box-no-bg mpa-content">
+		<view class="mpa-content-content abs-center">
+			<view class="abs-center-content">
+				<view>
+					<text>{{mpaContents[currentMpaContentIndex].content}}</text>
+				</view>
+			</view>
+		</view>
+		<view class="not-importent mpa-content-prompt">
+			{{mpaContents[currentMpaContentIndex].prompt}}
+		</view>
+		<view class="mpa-content-answer">
+			<view>
+				<radio-group bindchange="radioChange">
+					<label wx:for="{{mpaContents[currentMpaContentIndex].radioOptions}}" wx:key="*this" class="flex-start radio-option">
+						<view>
+							<radio value="{{item}}" checked="{{currentMpaContentIndex==-1}}"/>
+						</view>
+						<view>{{item}}</view>
+					</label>
+				</radio-group>
+			</view>
+		</view>
+		<view class="submit">
+			<button type="primary" bindtap="nextMpaContent">NEXT-{{currentMpaContentIndex + 1}}</button>
+		</view>
+	</view>
+	<!-- <view class="menu">
+    <view class="menu-like">
+      <button size="mini" type="default" bindtap="collect">{{mpaContents[currentMpaContentIndex].isCollect?'已':''}}喜欢</button>
+    </view>
+    <view class="menu-share">
+      <button size="mini" type="default">分享</button>
+    </view>
+    <view class="menu-more">
+      <button size="mini" type="default" bindtap="showMoreMenu">更多</button>
+    </view>
+  </view> -->
+</view>

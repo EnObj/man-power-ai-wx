@@ -1,1 +1,16 @@
 /* miniprogram/pages/index/index.wxss */
+.mpa-content-content{
+  min-height: 50vh;
+  font-size: 35px;
+  font-weight: 700;
+}
+.mpa-content-prompt{
+  padding: 15px 0;
+}
+.radio-option{
+  margin-bottom: 15px;
+}
+
+.submit{
+  padding: 30px;
+}
