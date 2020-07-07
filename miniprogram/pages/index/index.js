@@ -74,7 +74,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     mpaUtils.loadBatch(db).then(mpaContents=>{
+      wx.hideLoading({
+        success: (res) => {
+          wx.showToast({
+            title: `成功加载${mpaContents.length}条`,
+            icon: 'none'
+          })
+        },
+      })
       this.setData({
         mpaContents: mpaContents
       })

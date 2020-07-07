@@ -22,7 +22,7 @@
 				</radio-group>
 			</view>
 		</view>
-		<view class="submit">
+		<view class="submit" wx:if="{{mpaContents.length}}">
 			<button type="primary" bindtap="nextMpaContent">NEXT-{{currentMpaContentIndex + 1}}</button>
 		</view>
 	</view>
