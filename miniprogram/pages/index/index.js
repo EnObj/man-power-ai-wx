@@ -34,7 +34,7 @@ Page({
       translateY: 0, ease: 'ease-out'
     },{
       translateY: outLocation, ease: 'ease-out'
-    }], 400, function () {
+    }], 300, function () {
       // 切换索引
       this.updateIndex(this.data.currentMpaContentIndex - outLocation / windowHeight)
       // 入场动画
@@ -43,7 +43,7 @@ Page({
       },{
         translateY: 0, ease: 'ease-out'
       }], 400, function(){
-        this.clearAnimation('.mpa-content')
+        // this.clearAnimation('.mpa-content')
       }.bind(this))
     }.bind(this))
   },
