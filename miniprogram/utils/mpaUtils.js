@@ -7,7 +7,7 @@ module.exports = {
 
     // 随机抓取
     const result = []
-    for(var i = 0; i < 5; i++){
+    for(var i = 0; i < 10; i++){
       const mpaContent = await getOneMpaContentRandom(mpaContentCount, db)
       // 去重
       if(result.every(item=>{
@@ -16,7 +16,7 @@ module.exports = {
         result.push(mpaContent)
       }
     }
-    
+
     // 加载特殊分子
     if(mustHaveContentId){
       const {data:mustHaveContent} = await db.collection('mpa_content').doc(mustHaveContentId).get()
