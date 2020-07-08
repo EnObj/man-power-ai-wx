@@ -17,9 +17,9 @@ Page({
   nextMpaContent() {
     // 出场动画
     this.animate('.mpa-content', [{
-      translateY: 0
+      translateY: 0, ease: 'ease-in'
     },{
-      translateY: -700
+      translateY: -700, ease: 'ease-in'
     }], 500, function () {
       // 切换索引
       const index = ++this.data.currentMpaContentIndex
@@ -36,9 +36,9 @@ Page({
       }
       // 入场动画
       this.animate('.mpa-content', [{
-        translateY: 700
+        translateY: 700, ease: 'ease-out'
       },{
-        translateY: 0
+        translateY: 0, ease: 'ease-out'
       }], 500)
     }.bind(this))
   },
