@@ -20,7 +20,7 @@ Page({
       translateY: 0, ease: 'ease-out'
     },{
       translateY: -700, ease: 'ease-out'
-    }], 500, function () {
+    }], 400, function () {
       // 切换索引
       const index = ++this.data.currentMpaContentIndex
       this.setData({
