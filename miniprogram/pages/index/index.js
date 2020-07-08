@@ -9,62 +9,74 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mpaContents:[],
+    mpaContents: [],
     currentMpaContentIndex: 0
   },
 
   // 切换下一个mpaContent
-  nextMpaContent(){
-    const index = ++this.data.currentMpaContentIndex
-    this.setData({
-      currentMpaContentIndex: index
-    })
-    // 存量剩余不足3个了，就加载新的一批
-    if(index >= this.data.mpaContents.length - 3){
-      mpaUtils.loadBatch(db).then(mpaContents=>{
-        this.setData({
-          mpaContents: this.data.mpaContents.concat(mpaContents)
-        })
+  nextMpaContent() {
+    // 出场动画
+    this.animate('.mpa-content', [{
+      translateY: 0
+    },{
+      translateY: -700
+    }], 500, function () {
+      // 切换索引
+      const index = ++this.data.currentMpaContentIndex
+      this.setData({
+        currentMpaContentIndex: index
       })
-    }
+      // 存量剩余不足3个了，就加载新的一批
+      if (index >= this.data.mpaContents.length - 3) {
+        mpaUtils.loadBatch(db).then(mpaContents => {
+          this.setData({
+            mpaContents: this.data.mpaContents.concat(mpaContents)
+          })
+        })
+      }
+      // 入场动画
+      this.animate('.mpa-content', [{
+        translateY: 700
+      },{
+        translateY: 0
+      }], 500)
+    }.bind(this))
   },
 
-  radioChange(event){
+  radioChange(event) {
     db.collection('mpa_user_history').add({
       data: {
         content: this.data.mpaContents[this.data.currentMpaContentIndex],
         answer: event.detail.value,
         createTime: new Date()
       }
-    }).then(res=>{
+    }).then(res => {
       this.nextMpaContent()
     })
   },
 
   // 展示更多菜单：设置范围，我的收藏等
-  showMoreMenu(){
-    wxApiUtils.showActions([
-      {
-        name: '我的页签',
-        callback(){
-          wx.navigateTo({
-            url: '/pages/mine/mine',
-          })
-        },
-        condition:true
-      }
-    ])
+  showMoreMenu() {
+    wxApiUtils.showActions([{
+      name: '我的页签',
+      callback() {
+        wx.navigateTo({
+          url: '/pages/mine/mine',
+        })
+      },
+      condition: true
+    }])
   },
 
   // 收藏到我的页签
-  collect(){
+  collect() {
     const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
     db.collection('mpa_user_collect').add({
-      data:{
+      data: {
         content: mpaContent,
         createTime: new Date()
       }
-    }).then(res=>{
+    }).then(res => {
       mpaContent.isCollect = true
       const updator = {}
       updator['mpaContents[' + this.data.currentMpaContentIndex + ']'] = mpaContent
@@ -79,7 +91,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    mpaUtils.loadBatch(db, options.contentId).then(mpaContents=>{
+    mpaUtils.loadBatch(db, options.contentId).then(mpaContents => {
       wx.hideLoading({
         success: (res) => {
           wx.showToast({
