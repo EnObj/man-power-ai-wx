@@ -1,5 +1,5 @@
 <view class="main" bindtouchstart="startTouch" bindtouchend="endTouch">
-	<view class="padding-box-no-bg mpa-content">
+	<view class="mpa-content">
 		<view class="abs-center mpa-content-content-area">
 			<view class="abs-center-content">
 				<view class="mpa-content-content">
@@ -20,7 +20,7 @@
 				<radio-group bindchange="radioChange">
 					<label wx:for="{{mpaContents[currentMpaContentIndex].radioOptions}}" wx:key="*this" class="flex-start radio-option">
 						<view>
-							<radio value="{{item}}" checked="{{currentMpaContentIndex==-1}}"/>
+							<radio value="{{item}}" checked="{{answerMap[mpaContents[currentMpaContentIndex]._id]==item}}"/>
 						</view>
 						<view>{{item}}</view>
 					</label>
@@ -28,7 +28,7 @@
 			</view>
 		</view>
 		<view class="submit" wx:if="{{mpaContents.length}}">
-			<button type="primary" bindtap="nextMpaContent">NEXT-{{currentMpaContentIndex + 1}}</button>
+			<button type="primary" bindtap="nextMpaContentBtnTap">NEXT-{{currentMpaContentIndex + 1}}</button>
 		</view>
 	</view>
 	<!-- <view class="menu">

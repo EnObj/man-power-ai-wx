@@ -10,37 +10,56 @@ Page({
    */
   data: {
     mpaContents: [],
+    answerMap: {},
     currentMpaContentIndex: 0
   },
 
+  nextMpaContentBtnTap(){
+    this.nextMpaContent()
+  },
+
   // 切换下一个mpaContent
-  nextMpaContent() {
+  nextMpaContent(reverse) {
+    const windowHeight = Math.ceil(wx.getSystemInfoSync().windowHeight)
+    if(reverse && !this.data.currentMpaContentIndex){
+      wx.showToast({
+        title: `到顶了`,
+        icon: 'none'
+      })
+      return
+    }
+    const outLocation = reverse ? windowHeight : -windowHeight
     // 出场动画
     this.animate('.mpa-content', [{
       translateY: 0, ease: 'ease-out'
     },{
-      translateY: -700, ease: 'ease-out'
+      translateY: outLocation, ease: 'ease-out'
     }], 400, function () {
       // 切换索引
-      const index = ++this.data.currentMpaContentIndex
-      this.setData({
-        currentMpaContentIndex: index
-      })
-      // 存量剩余不足3个了，就加载新的一批
-      if (index >= this.data.mpaContents.length - 3) {
-        mpaUtils.loadBatch(db).then(mpaContents => {
-          this.setData({
-            mpaContents: this.data.mpaContents.concat(mpaContents)
-          })
-        })
-      }
+      this.updateIndex(this.data.currentMpaContentIndex - outLocation / windowHeight)
       // 入场动画
       this.animate('.mpa-content', [{
-        translateY: 700, ease: 'ease-out'
+        translateY: -outLocation, ease: 'ease-out'
       },{
         translateY: 0, ease: 'ease-out'
-      }], 300)
+      }], 400, function(){
+        this.clearAnimation('.mpa-content')
+      }.bind(this))
     }.bind(this))
+  },
+
+  updateIndex(index){
+    this.setData({
+      currentMpaContentIndex: index
+    })
+    // 存量剩余不足3个了，就加载新的一批
+    if (index >= this.data.mpaContents.length - 3) {
+      mpaUtils.loadBatch(db).then(mpaContents => {
+        this.setData({
+          mpaContents: this.data.mpaContents.concat(mpaContents)
+        })
+      })
+    }
   },
 
   radioChange(event) {
@@ -51,6 +70,10 @@ Page({
         createTime: new Date()
       }
     }).then(res => {
+      this.data.answerMap[this.data.mpaContents[this.data.currentMpaContentIndex]._id] = event.detail.value 
+      this.setData({
+        answerMap: this.data.answerMap
+      })
       this.nextMpaContent()
     })
   },
@@ -88,10 +111,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loadMpaContents(options.contentId)
+  },
+
+  loadMpaContents(contentId){
     wx.showLoading({
       title: '加载中',
     })
-    mpaUtils.loadBatch(db, options.contentId).then(mpaContents => {
+    mpaUtils.loadBatch(db, contentId).then(mpaContents => {
       wx.hideLoading({
         success: (res) => {
           wx.showToast({
@@ -101,7 +128,8 @@ Page({
         },
       })
       this.setData({
-        mpaContents: mpaContents
+        mpaContents: mpaContents,
+        answerMap: {}
       })
     })
   },
@@ -114,8 +142,9 @@ Page({
     const startTouchEvent = this.startTouchEvent
     // console.log(event, startTouchEvent)
     if(event.timeStamp - startTouchEvent.timeStamp < 1000){
-      if(startTouchEvent.changedTouches[0].clientY - event.changedTouches[0].clientY > 50){
-        this.nextMpaContent()
+      const changed = startTouchEvent.changedTouches[0].clientY - event.changedTouches[0].clientY
+      if(Math.abs(changed) > 50){
+        this.nextMpaContent(changed < 0)
       }
     }
   },

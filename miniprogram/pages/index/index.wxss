@@ -1,4 +1,10 @@
 /* miniprogram/pages/index/index.wxss */
+.main{
+  height: 100vh;
+}
+.mpa-content{
+  padding: 20px;
+}
 .mpa-content-content-area{
   min-height: 50vh;
 }
