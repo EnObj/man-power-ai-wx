@@ -16,7 +16,7 @@ exports.main = async (event, context) => {
 
   // 随机抓取
   const result = []
-  for(var i = 0; i < 20; i++){
+  for(var i = 0; i < 10; i++){
     const mpaContent = await getOneMpaContentRandom(mpaContentCount)
     // 去重
     if(result.every(item=>{
@@ -26,15 +26,12 @@ exports.main = async (event, context) => {
     }
   }
 
-  // 去重
-
+  return result
 }
 
 const getOneMpaContentRandom = async(range)=>{
 
-  const {
-    data: mpaContent
-  } = await db.collection('mpa_content').where({}).skip(Math.ceil(Math.random() * range)).limit(1).get()
+  const res = await db.collection('mpa_content').where({}).skip(Math.floor(Math.random() * range)).limit(1).get()
 
-  return mpaContent
+  return res.data[0]
 }

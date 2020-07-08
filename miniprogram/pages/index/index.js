@@ -112,7 +112,7 @@ Page({
 
   endTouch(event){
     const startTouchEvent = this.startTouchEvent
-    console.log(event, startTouchEvent)
+    // console.log(event, startTouchEvent)
     if(event.timeStamp - startTouchEvent.timeStamp < 1000){
       if(startTouchEvent.changedTouches[0].clientY - event.changedTouches[0].clientY > 50){
         this.nextMpaContent()
