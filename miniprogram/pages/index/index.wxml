@@ -1,10 +1,15 @@
 <view class="main" bindtouchstart="startTouch" bindtouchend="endTouch">
 	<view class="padding-box-no-bg mpa-content">
-		<view class="mpa-content-content abs-center">
+		<view class="abs-center mpa-content-content-area">
 			<view class="abs-center-content">
-				<view>
+				<view class="mpa-content-content">
 					<text>{{mpaContents[currentMpaContentIndex].content}}</text>
 				</view>
+        <view class="content-remarks not-importent" wx:if="{{mpaContents[currentMpaContentIndex].remarks.length}}">
+          <view wx:for="{{mpaContents[currentMpaContentIndex].remarks}}" wx:key="*this">
+            <text>{{item}}</text>
+          </view>
+        </view>
 			</view>
 		</view>
 		<view class="not-importent mpa-content-prompt">

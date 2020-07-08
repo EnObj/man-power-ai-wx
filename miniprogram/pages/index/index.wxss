@@ -1,8 +1,11 @@
 /* miniprogram/pages/index/index.wxss */
-.mpa-content-content{
+.mpa-content-content-area{
   min-height: 50vh;
+}
+.mpa-content-content{
   font-size: 35px;
   font-weight: 700;
+  /* text-align: center; */
 }
 .mpa-content-prompt{
   padding: 15px 0;
