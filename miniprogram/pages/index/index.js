@@ -17,9 +17,9 @@ Page({
   nextMpaContent() {
     // 出场动画
     this.animate('.mpa-content', [{
-      translateY: 0, ease: 'ease-in'
+      translateY: 0, ease: 'ease-out'
     },{
-      translateY: -700, ease: 'ease-in'
+      translateY: -700, ease: 'ease-out'
     }], 500, function () {
       // 切换索引
       const index = ++this.data.currentMpaContentIndex
@@ -39,7 +39,7 @@ Page({
         translateY: 700, ease: 'ease-out'
       },{
         translateY: 0, ease: 'ease-out'
-      }], 500)
+      }], 300)
     }.bind(this))
   },
 
@@ -104,6 +104,20 @@ Page({
         mpaContents: mpaContents
       })
     })
+  },
+
+  startTouch(event){
+    this.startTouchEvent = event
+  },
+
+  endTouch(event){
+    const startTouchEvent = this.startTouchEvent
+    console.log(event, startTouchEvent)
+    if(event.timeStamp - startTouchEvent.timeStamp < 1000){
+      if(startTouchEvent.changedTouches[0].clientY - event.changedTouches[0].clientY > 50){
+        this.nextMpaContent()
+      }
+    }
   },
 
   /**
