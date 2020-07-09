@@ -16,3 +16,6 @@
 .answer-time{
   margin-left: 15px;
 }
+.empty-tip{
+  height: 200px;
+}

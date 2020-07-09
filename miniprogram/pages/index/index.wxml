@@ -42,7 +42,7 @@
 				</button>
 			</view>
 			<view class="menu-item menu-history">
-				<navigator url="/pages/mine/history">
+				<navigator url="/pages/mine/history" style="display:inline-block">
 					<button size="mini" type="default">
 						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
 					</button>
