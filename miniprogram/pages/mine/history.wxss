@@ -19,3 +19,9 @@
 .empty-tip{
   height: 200px;
 }
+.answer{
+  border: 1px gray solid;
+  border-radius: 5px;
+  padding: 0px 5px;
+  color: gray;
+}
