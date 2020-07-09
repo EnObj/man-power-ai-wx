@@ -41,13 +41,13 @@
 					<mp-icon icon="star" size="{{buttonSize}}" color="gray" wx:else></mp-icon>
 				</button>
 			</view>
-			<view class="menu-item menu-history">
+			<!-- <view class="menu-item menu-history">
 				<navigator url="/pages/mine/history" style="display:inline-block">
 					<button size="mini" type="default">
 						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
 					</button>
 				</navigator>
-			</view>
+			</view> -->
 			<view class="menu-item menu-share">
 				<button size="mini" type="default" open-type="share">
 					<mp-icon icon="share" color="gray" size="{{buttonSize}}"></mp-icon>

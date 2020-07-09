@@ -89,6 +89,14 @@ Page({
         })
       },
       condition: true
+    },{
+      name: '历史记录',
+      callback() {
+        wx.navigateTo({
+          url: '/pages/mine/history',
+        })
+      },
+      condition: true
     }])
   },
 
