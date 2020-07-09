@@ -105,6 +105,9 @@ Page({
       const updator = {}
       updator['mpaContents[' + this.data.currentMpaContentIndex + ']'] = mpaContent
       this.setData(updator)
+      wx.showToast({
+        title: `已收藏`
+      })
     })
   },
 
