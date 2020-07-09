@@ -12,34 +12,55 @@
         </view>
 			</view>
 		</view>
-		<view class="not-importent mpa-content-prompt">
-			{{mpaContents[currentMpaContentIndex].prompt}}
-		</view>
-		<view class="mpa-content-answer">
-			<view>
-				<radio-group bindchange="radioChange">
-					<label wx:for="{{mpaContents[currentMpaContentIndex].radioOptions}}" wx:key="*this" class="flex-start radio-option">
-						<view>
-							<radio value="{{item}}" checked="{{answerMap[mpaContents[currentMpaContentIndex]._id]==item}}"/>
-						</view>
-						<view>{{item}}</view>
-					</label>
-				</radio-group>
+		<view class="mpa-answer-area">
+			<view class="not-importent mpa-content-prompt">
+				{{mpaContents[currentMpaContentIndex].prompt}}
+			</view>
+			<view class="mpa-content-answer">
+				<view>
+					<radio-group bindchange="radioChange">
+						<label wx:for="{{mpaContents[currentMpaContentIndex].radioOptions}}" wx:key="*this" class="flex-start radio-option">
+							<view>
+								<radio value="{{item}}" checked="{{answerMap[mpaContents[currentMpaContentIndex]._id]==item}}"/>
+							</view>
+							<view>{{item}}</view>
+						</label>
+					</radio-group>
+				</view>
 			</view>
 		</view>
-		<view class="submit" wx:if="{{mpaContents.length}}">
+		<!-- <view class="submit" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
 			<button type="primary" bindtap="nextMpaContentBtnTap">NEXT-{{currentMpaContentIndex + 1}}</button>
+		</view> -->
+		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
+			<view class="menu-item menu-like">
+				<button size="mini" type="default" bindtap="collect">
+					<mp-icon icon="star" type="field" color="gray" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
+					<mp-icon icon="star" size="{{buttonSize}}" color="gray" wx:else></mp-icon>
+				</button>
+			</view>
+			<view class="menu-item menu-history">
+				<navigator url="/pages/mine/history">
+					<button size="mini" type="default">
+						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
+					</button>
+				</navigator>
+			</view>
+			<view class="menu-item menu-share">
+				<button size="mini" type="default" open-type="share">
+					<mp-icon icon="share" color="#07c160" type="field" size="{{buttonSize}}"></mp-icon>
+				</button>
+			</view>
+			<!-- <view class="menu-item menu-more">
+				<button size="mini" type="default" bindtap="showMoreMenu">
+					<mp-icon icon="more2" color="gray" size="{{buttonSize}}"></mp-icon>
+				</button>
+			</view> -->
+			<view class="menu-item menu-next">
+				<button size="mini" type="primary" bindtap="nextMpaContentBtnTap">
+					NEXT-{{currentMpaContentIndex + 1}}
+				</button>
+			</view>
 		</view>
 	</view>
-	<!-- <view class="menu">
-    <view class="menu-like">
-      <button size="mini" type="default" bindtap="collect">{{mpaContents[currentMpaContentIndex].isCollect?'已':''}}喜欢</button>
-    </view>
-    <view class="menu-share">
-      <button size="mini" type="default">分享</button>
-    </view>
-    <view class="menu-more">
-      <button size="mini" type="default" bindtap="showMoreMenu">更多</button>
-    </view>
-  </view> -->
 </view>

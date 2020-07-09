@@ -11,7 +11,8 @@ Page({
   data: {
     mpaContents: [],
     answerMap: {},
-    currentMpaContentIndex: 0
+    currentMpaContentIndex: -1,
+    buttonSize: 30
   },
 
   nextMpaContentBtnTap(){
@@ -111,14 +112,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadMpaContents(options.contentId)
+    this.loadMpaContents(options.contentId).then(res=>{
+      this.nextMpaContent()
+    })
   },
 
   loadMpaContents(contentId){
     wx.showLoading({
       title: '加载中',
     })
-    mpaUtils.loadBatch(db, contentId).then(mpaContents => {
+    return mpaUtils.loadBatch(db, contentId).then(mpaContents => {
       wx.hideLoading({
         success: (res) => {
           wx.showToast({

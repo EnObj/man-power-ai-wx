@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-icon": "../../components/icon/icon"
+  },
   "navigationStyle": "default",
   "navigationBarTitleText": "首页"
 }
