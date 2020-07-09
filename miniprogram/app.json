@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/mine/history"
+    "pages/mine/history",
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

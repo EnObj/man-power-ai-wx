@@ -1,0 +1,16 @@
+/* miniprogram/pages/mine/mine.wxss */
+.mpa-content-content{
+  font-size: 26px;
+  font-weight: 700;
+}
+.collect-target{
+  flex: auto;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.collect-mgr{
+  flex: none;
+}
+.empty-tip{
+  height: 200px;
+}

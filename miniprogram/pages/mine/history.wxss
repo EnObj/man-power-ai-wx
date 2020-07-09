@@ -9,9 +9,6 @@
 .clean-all{
   margin: 30px 0;
 }
-.ad{
-  margin: 10px;
-}
 .mpa-content-content{
   font-size: 26px;
   font-weight: 700;

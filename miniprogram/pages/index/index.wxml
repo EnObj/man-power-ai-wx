@@ -53,11 +53,11 @@
 					<mp-icon icon="share" color="gray" size="{{buttonSize}}"></mp-icon>
 				</button>
 			</view>
-			<!-- <view class="menu-item menu-more">
+			<view class="menu-item menu-more">
 				<button size="mini" type="default" bindtap="showMoreMenu">
 					<mp-icon icon="more2" color="gray" size="{{buttonSize}}"></mp-icon>
 				</button>
-			</view> -->
+			</view>
 			<view class="menu-item menu-next">
 				<button size="mini" type="primary" bindtap="nextMpaContentBtnTap">
 					NEXT-{{currentMpaContentIndex + 1}}

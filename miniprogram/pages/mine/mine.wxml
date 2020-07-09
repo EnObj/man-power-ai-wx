@@ -1,0 +1,22 @@
+<!-- <view class="clean-all" wx:if="{{historys.length}}">
+	<button type="warn" bindtap="cleanAllHistory">清空所有</button>
+</view> -->
+<wxs src="./../../wxs/time.wxs" module="timeUtils"/>
+<view class="collects">
+	<view wx:for="{{collects}}" wx:key="_id">
+		<view  class="collect padding-box flex-between">
+			<navigator url="/pages/index/index?contentId={{item.content._id}}" class="collect-target">
+				<view class="no-wrap mpa-content-content">{{item.content.content}}</view>
+        <view class="flex-start">
+          <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
+        </view>
+			</navigator>
+			<view class="collect-mgr">
+				<button type="warn" size="mini" bindtap="deleteCollect" data-collect-id="{{item._id}}" data-collect-index="{{index}}">删除</button>
+			</view>
+		</view>
+	</view>
+  <view wx:if="{{!collects.length}}" class="empty-tip abs-center">
+    <view class="abs-center-content not-importent">空空如也</view>
+  </view>
+</view>

@@ -82,7 +82,7 @@ Page({
   // 展示更多菜单：设置范围，我的收藏等
   showMoreMenu() {
     wxApiUtils.showActions([{
-      name: '我的页签',
+      name: '我的收藏',
       callback() {
         wx.navigateTo({
           url: '/pages/mine/mine',
