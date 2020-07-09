@@ -7,9 +7,14 @@
 		<view  class="collect padding-box flex-between">
 			<navigator url="/pages/index/index?contentId={{item.content._id}}" class="collect-target">
 				<view class="no-wrap mpa-content-content">{{item.content.content}}</view>
-        <view class="flex-start">
-          <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
+        <view class="content-remarks not-importent" wx:if="{{item.content.remarks.length}}">
+          <view wx:for="{{item.content.remarks}}" wx:key="*this" class="no-wrap">
+            <text>{{item}}</text>
+          </view>
         </view>
+        <!-- <view class="flex-start">
+          <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
+        </view> -->
 			</navigator>
 			<view class="collect-mgr">
 				<button type="warn" size="mini" bindtap="deleteCollect" data-collect-id="{{item._id}}" data-collect-index="{{index}}">删除</button>
