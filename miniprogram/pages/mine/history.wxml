@@ -6,7 +6,7 @@
 	<view wx:for="{{historys}}" wx:key="_id">
 		<view  class="history padding-box flex-between">
 			<navigator url="/pages/index/index?contentId={{item.content._id}}" class="history-target">
-				<view class="mpa-content-content">{{item.content.content}}</view>
+				<view class="no-wrap mpa-content-content">{{item.content.content}}</view>
         <view class="flex-start">
           <view class="no-wrap">{{item.answer}}</view>
           <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
