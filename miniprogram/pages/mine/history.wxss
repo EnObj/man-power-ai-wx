@@ -1,0 +1,21 @@
+.history-target{
+  flex: auto;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.history-mgr{
+  flex: none;
+}
+.clean-all{
+  margin: 30px 0;
+}
+.ad{
+  margin: 10px;
+}
+.mpa-content-content{
+  font-size: 26px;
+  font-weight: 700;
+}
+.answer-time{
+  margin-left: 15px;
+}

@@ -1,0 +1,20 @@
+<!-- <view class="clean-all" wx:if="{{historys.length}}">
+	<button type="warn" bindtap="cleanAllHistory">清空所有</button>
+</view> -->
+<wxs src="./../../wxs/time.wxs" module="timeUtils"/>
+<view class="historys">
+	<view wx:for="{{historys}}" wx:key="_id">
+		<view  class="history padding-box flex-between">
+			<navigator url="/pages/index/index?contentId={{item.content._id}}" class="history-target">
+				<view class="mpa-content-content">{{item.content.content}}</view>
+        <view class="flex-start">
+          <view class="no-wrap">{{item.answer}}</view>
+          <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
+        </view>
+			</navigator>
+			<view class="history-mgr">
+				<button type="warn" size="mini" bindtap="deleteHistory" data-history-id="{{item._id}}" data-history-index="{{index}}">删除</button>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,49 @@
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+module.exports = {
+  formatPass: function(pass) {
+
+    var now = getDate().getTime();
+    if (now - pass < 60000) {
+      return "刚刚"
+    }
+    var passDate = getDate(pass);
+    var year = passDate.getFullYear();
+    var month = passDate.getMonth() + 1;
+    var day = passDate.getDate();
+    var hour = passDate.getHours()
+    var minute = passDate.getMinutes()
+
+    var nowDate = getDate(now);
+    var nowYear = nowDate.getFullYear();
+    var nowMonth = nowDate.getMonth() + 1;
+    var nowDay = nowDate.getDate();
+
+    if (year == nowYear) {
+      if (month == nowMonth && day == nowDay) {
+        return '今天 ' + [hour, minute].map(formatNumber).join(':')
+      } else {
+        return [month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':')
+      }
+    }
+
+    return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':')
+  },
+  showSeconds: function(seconds){
+    if(seconds <= 0){
+      return '00:00'
+    }
+    var min = Math.floor(seconds/60)
+    if(min < 10){
+      min = '0'+min
+    }
+    var sec = seconds%60
+    if(sec < 10){
+      sec = '0'+sec
+    }
+    return '' + min + ':' + sec
+  }
+}
