@@ -10,7 +10,6 @@ Page({
    */
   data: {
     mpaContents: [],
-    answerMap: {},
     currentMpaContentIndex: -1,
     buttonSize: 30
   },
@@ -184,6 +183,9 @@ Page({
   onShow: function () {
     const groupsChanged = wx.getStorageSync('groupsChanged')
     if(groupsChanged){
+      this.setData({
+        currentMpaContentIndex: -1,
+      })
       // 重新加载
       this.loadMpaContents().then(res=>{
         wx.removeStorageSync('groupsChanged')
