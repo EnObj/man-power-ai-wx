@@ -17,7 +17,7 @@
 			</view>
 		</view>
 	</view>
-	<view wx:if="{{!collects.length}}" class="empty-tip abs-center">
+	<view wx:if="{{!historys.length}}" class="empty-tip abs-center">
     <view class="abs-center-content not-importent">空空如也</view>
   </view>
 </view>
