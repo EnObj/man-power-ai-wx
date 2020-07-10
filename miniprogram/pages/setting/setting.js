@@ -23,6 +23,24 @@ Page({
     if(event.detail.value){
       newGroups.push(targetGroup)
     }
+
+    if(!newGroups.length){
+      wx.showToast({
+        title: '至少选中一个单词本',
+        icon:'none'
+      })
+      newGroups.push(targetGroup)
+      this.setData({
+        groups: this.data.groups.map(group=>{
+          group.checked = false
+          if(group._id == targetGroup._id){
+            group.checked = true
+          }
+          return group
+        })
+      })
+    }
+
     wx.setStorageSync('groups', newGroups)
     wx.setStorageSync('groupsChanged', true)
   },
