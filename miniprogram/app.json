@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/setting/setting",
     "pages/mine/history",
     "pages/mine/mine"
   ],

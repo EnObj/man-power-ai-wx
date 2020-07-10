@@ -1,0 +1,14 @@
+<view class="main">
+  <view class="title">
+    <view class="title-head">单词本管理</view>
+    <view class="not-importent">你可以在此处设置首页的推荐词条范围，若选择关闭部分单词本，此单词本下的词条将不会出现在首页上，但所有历史记录及收藏记录均不会被清空。</view>
+  </view>
+  <view class="groups">
+    <view wx:for="{{groups}}" wx:key="_id" class="flex-between group">
+      <view class="group-name">{{item.name}}</view>
+      <view>
+        <switch bindchange="groupSelect" checked="{{item.checked}}" data-group="{{item}}"/>
+      </view>
+    </view>
+  </view>
+</view>

@@ -98,6 +98,14 @@ Page({
         })
       },
       condition: true
+    },{
+      name: '设置',
+      callback() {
+        wx.navigateTo({
+          url: '/pages/setting/setting',
+        })
+      },
+      condition: true
     }])
   },
 
@@ -143,8 +151,7 @@ Page({
         },
       })
       this.setData({
-        mpaContents: mpaContents,
-        answerMap: {}
+        mpaContents: mpaContents
       })
     })
   },
@@ -175,7 +182,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const groupsChanged = wx.getStorageSync('groupsChanged')
+    if(groupsChanged){
+      // 重新加载
+      this.loadMpaContents().then(res=>{
+        wx.removeStorageSync('groupsChanged')
+        this.nextMpaContent()
+      })
+    }
   },
 
   /**

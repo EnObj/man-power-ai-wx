@@ -9,29 +9,38 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  // 组范围
+  const {groups} = event
+  const where = {}
+  if(groups && groups.length > 0){
+    where.group = db.command.in(groups)
+  }
   // 求资源库条目总数目
   const {
     total: mpaContentCount
-  } = await db.collection('mpa_content').count()
+  } = await db.collection('mpa_content').where(where).count()
 
   // 随机抓取
   const result = []
-  for(var i = 0; i < 10; i++){
-    const mpaContent = await getOneMpaContentRandom(mpaContentCount)
-    // 去重
-    if(result.every(item=>{
-      return item._id != mpaContent._id
-    })){
-      result.push(mpaContent)
+  if(mpaContentCount){
+    for(var i = 0; i < 10; i++){
+      const mpaContent = await getOneMpaContentRandom(mpaContentCount, where)
+      // 去重（关闭）
+      if(result.every(item=>{
+        // return item._id != mpaContent._id
+        return true
+      })){
+        result.push(mpaContent)
+      }
     }
   }
 
   return result
 }
 
-const getOneMpaContentRandom = async(range)=>{
+const getOneMpaContentRandom = async(range, where)=>{
 
-  const res = await db.collection('mpa_content').where({}).skip(Math.floor(Math.random() * range)).limit(1).get()
+  const res = await db.collection('mpa_content').where(where).skip(Math.floor(Math.random() * range)).limit(1).get()
 
   return res.data[0]
 }

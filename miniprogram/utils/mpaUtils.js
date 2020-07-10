@@ -1,9 +1,14 @@
 module.exports = {
   loadBatch: async (db, mustHaveContentId)=>{
-    // 求资源库条目总数目
+    // 词条组范围
+    const selectedGroups = wx.getStorageSync('groups') || []
     return wx.cloud.callFunction({
       name: 'loadMpaContents',
-      data: {}
+      data: {
+        groups: selectedGroups.map(group=>{
+          return group._id
+        })
+      }
     }).then(res=>{
       const result = res.result
       // 加载特殊分子
