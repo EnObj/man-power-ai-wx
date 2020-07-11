@@ -64,18 +64,23 @@ Page({
 
   radioChange(event) {
     const currentMapContent = this.data.mpaContents[this.data.currentMpaContentIndex]
-    db.collection('mpa_user_history').add({
-      data: {
-        content: currentMapContent,
-        answer: event.detail.value,
-        createTime: new Date()
-      }
-    }).then(res => {
-      currentMapContent.answer = event.detail.value
-      const updator  ={}
-      updator[`mpaContents[${this.data.currentMpaContentIndex}]`] = currentMapContent
-      this.setData(updator)
-      this.nextMpaContent()
+    const answer = {
+      content: currentMapContent,
+      answer: event.detail.value,
+      createTime: new Date()
+    }
+    db.collection('mpa_answer').add({
+      data: answer
+    }).then(res=>{
+      db.collection('mpa_user_history').add({
+        data: answer
+      }).then(res => {
+        currentMapContent.answer = event.detail.value
+        const updator  ={}
+        updator[`mpaContents[${this.data.currentMpaContentIndex}]`] = currentMapContent
+        this.setData(updator)
+        this.nextMpaContent()
+      })
     })
   },
 
