@@ -15,8 +15,11 @@
 			</view>
 		</scroll-view>
 		<view class="mpa-answer-area">
-			<view class="not-importent mpa-content-prompt">
-				{{mpaContents[currentMpaContentIndex].prompt}}
+			<view class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}">
+				@{{groupMap[mpaContents[currentMpaContentIndex].group].name}}
+			</view>
+			<view class="not-importent mpa-content-prompt" wx:if="{{mpaContents[currentMpaContentIndex].prompt}}">
+				<text>“{{mpaContents[currentMpaContentIndex].prompt}}”</text>
 			</view>
 			<view class="mpa-content-answer">
 				<view>

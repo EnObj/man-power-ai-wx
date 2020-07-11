@@ -39,3 +39,7 @@
   padding-top: 30px;
   text-align: right;
 }
+
+.mpa-content-prompt{
+  margin-top:5px;
+}

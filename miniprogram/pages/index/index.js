@@ -11,7 +11,8 @@ Page({
   data: {
     mpaContents: [],
     currentMpaContentIndex: -1,
-    buttonSize: 30
+    buttonSize: 30,
+    groupMap: {}
   },
 
   nextMpaContentBtnTap(){
@@ -149,6 +150,14 @@ Page({
   onLoad: function (options) {
     this.loadMpaContents(options.contentId).then(res=>{
       this.nextMpaContent()
+    })
+    db.collection('mpa_content_group').get().then(res=>{
+      this.setData({
+        groupMap: res.data.reduce((map,group)=>{
+          map[group._id] = group
+          return map
+        },{})
+      })
     })
   },
 
