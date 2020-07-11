@@ -19,14 +19,8 @@ const deal = (group)=>{
     const contents = line.split('\t')
     list.push({
       "content": contents[0].trim(),
-      "prompt": "这个词了解吗",
       "radioOptions": ["了解", "不了解"],
-      "group": group,
-      "remarks": contents.slice(1).filter(content=>{
-        return !!content
-      }).map(content=>{
-        return content.trim()
-      })
+      "group": group
     })
   })
   
