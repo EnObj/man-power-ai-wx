@@ -59,7 +59,7 @@
 				</button>
 			</view>
 			<view class="menu-item menu-next">
-				<button size="mini" type="primary" bindtap="nextMpaContentBtnTap">
+				<button size="mini" type="primary" disabled="{{mpaContents[currentMpaContentIndex].disableSkip && !mpaContents[currentMpaContentIndex].answer}}" bindtap="nextMpaContentBtnTap">
 					NEXT-{{currentMpaContentIndex + 1}}
 				</button>
 			</view>

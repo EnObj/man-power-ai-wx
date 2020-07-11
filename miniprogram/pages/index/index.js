@@ -28,6 +28,17 @@ Page({
       })
       return
     }
+    if(!reverse){
+      const currentMpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+      // 可以配置不可跳过
+      if(currentMpaContent && currentMpaContent.disableSkip && !currentMpaContent.answer){
+        wx.showToast({
+          title: '当前条目不可跳过',
+          icon: 'none'
+        })
+        return
+      }
+    }
     const outLocation = reverse ? windowHeight : -windowHeight
     // 出场动画
     this.animate('.mpa-content', [{
