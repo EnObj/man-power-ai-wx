@@ -12,6 +12,7 @@
 .mpa-content-content{
   font-size: 26px;
   font-weight: 700;
+  margin-bottom: 10px;
 }
 .answer-time{
   margin-left: 15px;
