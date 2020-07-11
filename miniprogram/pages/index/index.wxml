@@ -23,7 +23,7 @@
 					<radio-group bindchange="radioChange">
 						<label wx:for="{{mpaContents[currentMpaContentIndex].radioOptions}}" wx:key="*this" class="flex-start radio-option">
 							<view>
-								<radio value="{{item}}" checked="{{mpaContents[currentMpaContentIndex].answer==item}}"/>
+								<radio value="{{item}}" checked="{{mpaContents[currentMpaContentIndex].answer==item}}" disabled="{{mpaContents[currentMpaContentIndex].answer}}"/>
 							</view>
 							<view>{{item}}</view>
 						</label>
