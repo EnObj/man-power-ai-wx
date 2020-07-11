@@ -4,11 +4,11 @@
 			<view class="abs-center mpa-content-content-area">
 				<view class="abs-center-content">
 					<view class="mpa-content-content">
-						<text>{{mpaContents[currentMpaContentIndex].content}}</text>
+						<text selectable>{{mpaContents[currentMpaContentIndex].content}}</text>
 					</view>
 					<view class="content-remarks not-importent" wx:if="{{mpaContents[currentMpaContentIndex].remarks.length}}">
 						<view wx:for="{{mpaContents[currentMpaContentIndex].remarks}}" wx:key="*this">
-							<text>{{item}}</text>
+							<text selectable>{{item}}</text>
 						</view>
 					</view>
 				</view>
