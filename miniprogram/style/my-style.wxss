@@ -61,9 +61,3 @@
 .success-content{
   color: #09bb07;
 }
-
-@media (prefers-color-scheme: dark) {
-  .padding-box {
-      background: #333;
-  }
-}
