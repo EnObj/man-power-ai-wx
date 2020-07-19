@@ -26,9 +26,11 @@
 		},
 		"useIsolateContext": true,
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"packNpmManually": false,
+		"packNpmRelationList": []
 	},
-	"appid": "wxbd301ac6ca19f792",
+	"appid": "wxad0d71f7b6dbfc7d",
 	"projectname": "man-power-ai-wx",
 	"libVersion": "2.9.0",
 	"simulatorType": "wechat",
