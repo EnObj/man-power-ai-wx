@@ -13,7 +13,7 @@
           </view>
         </view>
         <view class="flex-start" style="margin-top:5px">
-					<view class="not-importent content-group" wx:if="{{item.content.group}}">@{{groupMap[item.content.group].name}}</view>
+					<view class="not-importent content-group" wx:if="{{item.content.group}}">@{{groupMap[item.content.group].name||'未知'}}</view>
           <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
 				</view>
         <!-- <view class="flex-start">
