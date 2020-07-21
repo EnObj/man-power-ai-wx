@@ -11,7 +11,8 @@ Page({
   data: {
     historys: [],
     more: false,
-    groupMap: {}
+    groupMap: {},
+    loaded: false
   },
 
   /**
@@ -56,7 +57,8 @@ Page({
           history.createTime = history.createTime.getTime()
           return history
         })),
-        more: res.data.length == pageSize
+        more: res.data.length == pageSize,
+        loaded: true
       })
       wx.hideLoading()
     })
