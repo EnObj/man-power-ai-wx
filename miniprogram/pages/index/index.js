@@ -72,6 +72,16 @@ Page({
         })
       })
     }
+
+    // 当前content
+    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+
+    // 如果禁止分享了，那么禁止分享
+    if(mpaContent.disableShare){
+      wx.hideShareMenu()
+    }else{
+      wx.showShareMenu()
+    }
   },
 
   radioChange(event) {
@@ -166,6 +176,15 @@ Page({
       title: '加载中',
     })
     return mpaUtils.loadBatch(db, contentId).then(mpaContents => {
+      if(!mpaContents.length){
+        mpaContents.push({
+          content: '空空如也',
+          remarks: ['什么也没有加载到，请点击“更多-设置”重新配置单词本。'],
+          disableSkip: true,
+          disableCollect: true,
+          disableShare: true
+        })
+      }
       wx.hideLoading({
         success: (res) => {
           wx.showToast({
