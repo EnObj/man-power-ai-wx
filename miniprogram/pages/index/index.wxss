@@ -7,10 +7,10 @@
   padding: 0 20px;
 }
 .mpa-content-content-area{
-  min-height: 60vh;
+  min-height: 50vh;
 }
 .mpa-answer-area{
-  height: 30vh;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
