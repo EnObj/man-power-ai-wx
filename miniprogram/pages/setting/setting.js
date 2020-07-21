@@ -1,4 +1,5 @@
 const db = wx.cloud.database()
+const mpaUtils = require('./../../utils/mpaUtils.js')
 
 // miniprogram/pages/setting/setting.js
 Page({
@@ -52,13 +53,13 @@ Page({
     // 加载选中的组
     var selectedGroups = wx.getStorageSync('groups') || []
     // 加载所有组
-    db.collection('mpa_content_group').get().then(res=>{
+    mpaUtils.loadAllGroup(db).then(groups=>{
       if(!selectedGroups.length){
-        selectedGroups = res.data
+        selectedGroups = groups
         wx.setStorageSync('groups', selectedGroups)
       }
       this.setData({
-        groups: res.data.map(group=>{
+        groups: groups.map(group=>{
           group.checked = selectedGroups.some(selectedGroup=>{
             return group._id == selectedGroup._id
           })

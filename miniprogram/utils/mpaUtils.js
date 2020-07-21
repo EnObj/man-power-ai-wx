@@ -1,5 +1,5 @@
 module.exports = {
-  loadBatch: async (db, mustHaveContentId)=>{
+  loadBatch: (db, mustHaveContentId)=>{
     // 词条组范围
     const selectedGroups = wx.getStorageSync('groups') || []
     return wx.cloud.callFunction({
@@ -20,5 +20,17 @@ module.exports = {
         return result
       })
     })
+  },
+  loadAllGroup: (db)=>{
+    return loadGroupByPage(db)
   }
+}
+
+const loadGroupByPage = (db, groups=[])=>{
+  return db.collection('mpa_content_group').skip(groups.length).get().then(res=>{
+    if(res.data.length){
+      return loadGroupByPage(db, groups.concat(res.data))
+    }
+    return groups
+  })
 }

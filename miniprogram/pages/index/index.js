@@ -161,12 +161,16 @@ Page({
     this.loadMpaContents(options.contentId).then(res=>{
       this.nextMpaContent()
     })
-    db.collection('mpa_content_group').get().then(res=>{
+    this.loadGroups()
+  },
+
+  loadGroups(groupMap={}){
+    mpaUtils.loadAllGroup(db).then(groups=>{
       this.setData({
-        groupMap: res.data.reduce((map,group)=>{
+        groupMap: groups.reduce((map,group)=>{
           map[group._id] = group
           return map
-        },{})
+        }, groupMap)
       })
     })
   },
@@ -235,6 +239,8 @@ Page({
         wx.removeStorageSync('groupsChanged')
         this.nextMpaContent()
       })
+      // 重新加载group
+      this.loadGroups()
     }
   },
 
