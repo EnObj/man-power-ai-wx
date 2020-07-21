@@ -1,0 +1,21 @@
+module.exports = {
+  touchstart: function(event, ownerInstance){
+    // 记录起始位置
+    ownerInstance.getState().start = event.changedTouches[0].clientY
+  },
+  touchmove: function(event, ownerInstance) {
+    // 随着手指变化位置
+    var changed = event.changedTouches[0].clientY - ownerInstance.getState().start
+    var instance = ownerInstance.selectComponent('.mpa-content') // 返回组件的实例
+    instance.setStyle({
+      "transform": "translateY(" + changed + "px)" // 支持rpx
+    })
+  },
+  touchend: function(event, ownerInstance){
+    ownerInstance.callMethod('nextMpaContent', {})
+    var instance = ownerInstance.selectComponent('.mpa-content') // 返回组件的实例
+    instance.setStyle({
+      "transform": "translateY(0px)" // 支持rpx
+    })
+  }
+}
