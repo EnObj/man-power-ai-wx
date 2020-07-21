@@ -1,5 +1,7 @@
 const db = wx.cloud.database()
 const pageSize = 20
+const mpaUtils = require('./../../utils/mpaUtils.js')
+
 // miniprogram/pages/mine/mine.js
 Page({
 
@@ -8,7 +10,8 @@ Page({
    */
   data: {
     collects: [],
-    more: false
+    more: false,
+    groupMap: {}
   },
 
   /**
@@ -16,6 +19,18 @@ Page({
    */
   onLoad: function (options) {
     this.loadCollects()
+    this.loadGroups()
+  },
+
+  loadGroups(){
+    mpaUtils.loadAllGroup(db).then(groups=>{
+      this.setData({
+        groupMap: groups.reduce((map,group)=>{
+          map[group._id] = group
+          return map
+        }, {})
+      })
+    })
   },
 
   loadCollects(collects = []) {

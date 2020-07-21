@@ -14,3 +14,7 @@
 .empty-tip{
   height: 200px;
 }
+.answer-time{
+  margin-left: 15px;
+  flex: none;
+}
