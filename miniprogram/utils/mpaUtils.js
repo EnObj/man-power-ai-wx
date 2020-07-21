@@ -22,8 +22,32 @@ module.exports = {
     })
   },
   loadAllGroup: (db)=>{
-    return loadGroupByPage(db)
+    const cache = wx.getStorageSync('all_groups')
+    if(cache){
+      // 如果过期了，重新异步加载一次
+      if(Date.now() - cache.time > 15 * 60000){
+        loadGroupByPage(db).then(groups=>{
+          saveGroupsToCache(groups)
+        })
+      }
+      return Promise.resolve(cache.list)
+    }
+    // 没有缓存的情况：加载到缓存并返回
+    return loadGroupByPage(db).then(groups=>{
+      saveGroupsToCache(groups)
+      return groups
+    })
   }
+}
+
+const saveGroupsToCache = (groups)=>{
+  wx.setStorage({
+    data: {
+      list: groups,
+      time: Date.now()
+    },
+    key: 'all_groups',
+  })
 }
 
 const loadGroupByPage = (db, groups=[])=>{
