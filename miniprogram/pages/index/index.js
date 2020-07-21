@@ -164,13 +164,13 @@ Page({
     this.loadGroups()
   },
 
-  loadGroups(groupMap={}){
+  loadGroups(){
     mpaUtils.loadAllGroup(db).then(groups=>{
       this.setData({
         groupMap: groups.reduce((map,group)=>{
           map[group._id] = group
           return map
-        }, groupMap)
+        }, {})
       })
     })
   },

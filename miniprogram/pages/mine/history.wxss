@@ -12,10 +12,10 @@
 .mpa-content-content{
   font-size: 26px;
   font-weight: 700;
-  margin-bottom: 10px;
 }
 .answer-time{
   margin-left: 15px;
+  flex: none;
 }
 .empty-tip{
   height: 200px;
@@ -25,4 +25,7 @@
   border-radius: 5px;
   padding: 0px 5px;
   color: gray;
+}
+.center-line{
+  margin: 5px 0;
 }

@@ -7,10 +7,13 @@
 		<view  class="history padding-box flex-between">
 			<navigator url="/pages/index/index?contentId={{item.content._id}}" class="history-target">
 				<view class="no-wrap mpa-content-content">{{item.content.content}}</view>
-        <view class="flex-start">
-          <view class="no-wrap answer">{{item.answer}}</view>
+        <view class="flex-start center-line">
+					<view class="no-wrap answer">{{item.answer}}</view>
+				</view>
+				<view class="flex-start">
+					<view class="not-importent content-group" wx:if="{{item.content.group}}">@{{groupMap[item.content.group].name}}</view>
           <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
-        </view>
+				</view>
 			</navigator>
 			<view class="history-mgr">
 				<button type="warn" size="mini" bindtap="deleteHistory" data-history-id="{{item._id}}" data-history-index="{{index}}">删除</button>
