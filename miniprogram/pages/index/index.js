@@ -123,7 +123,7 @@ Page({
           url: '/pages/mine/history',
         })
       },
-      condition: true
+      condition: false
     },{
       name: '设置',
       callback() {
