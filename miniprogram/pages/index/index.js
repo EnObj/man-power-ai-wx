@@ -229,7 +229,9 @@ Page({
   endTouch(event){
     const startTouchEvent = this.startTouchEvent
     // console.log(event, startTouchEvent)
-    if(event.timeStamp - startTouchEvent.timeStamp < 1000){
+    // 触摸需在1秒内完成，且起始点x坐标大于20避免过于灵敏
+    if(event.timeStamp - startTouchEvent.timeStamp < 1000
+      && startTouchEvent.changedTouches[0].clientX > 20){
       const changed = startTouchEvent.changedTouches[0].clientY - event.changedTouches[0].clientY
       if(Math.abs(changed) > 50){
         this.nextMpaContent(changed < 0)
