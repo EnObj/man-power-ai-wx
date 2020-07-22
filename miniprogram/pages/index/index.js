@@ -108,7 +108,26 @@ Page({
 
   // 展示更多菜单：设置范围，我的收藏等
   showMoreMenu() {
+    // 当前content
+    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+
     wxApiUtils.showActions([{
+      name: '附图',
+      callback() {
+        wx.previewImage({
+          urls: [mpaContent.image],
+        })
+      },
+      condition: !!mpaContent.image
+    },{
+      name: '拷贝链接',
+      callback() {
+        wx.setClipboardData({
+          data: mpaContent.link,
+        })
+      },
+      condition: !!mpaContent.link
+    },{
       name: '我的收藏',
       callback() {
         wx.navigateTo({
