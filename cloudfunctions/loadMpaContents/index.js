@@ -1,5 +1,6 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
+const specialGroupCenter = require('./specialGroupCenter.js')
 
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
@@ -22,11 +23,20 @@ exports.main = async (event, context) => {
   const {
     total: mpaContentCount
   } = await db.collection('mpa_content').where(where).count()
+  // 求特别组条目总数目
+  const specialTotal = await specialGroupCenter.count(groups)
+  const allCount = mpaContentCount + specialTotal
 
   // 随机抓取
   const result = []
-  if(mpaContentCount){
+  if(!!allCount){
     for(var i = 0; i < 10; i++){
+      // 有一定的几率命中special
+      if(Math.ceil(Math.random() * (allCount)) > mpaContentCount){
+        const mpaContent = await specialGroupCenter.getOneMpaContentRandom()
+        result.push(mpaContent)
+        continue
+      }
       const mpaContent = await getOneMpaContentRandom(mpaContentCount, where)
       // 去重（关闭）
       if(result.every(item=>{
