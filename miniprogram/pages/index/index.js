@@ -157,7 +157,7 @@ Page({
           autoPlayId: setInterval(page.nextMpaContent.bind(page), 3000)
         })
         wx.showToast({
-          title: '已启动自动播放',
+          title: '已启动播放',
           icon:'none'
         })
       },
