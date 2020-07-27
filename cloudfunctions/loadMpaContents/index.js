@@ -14,9 +14,11 @@ exports.main = async (event, context) => {
   console.log(event)
 
   // 组范围
-  const {groups} = event
+  const {
+    groups
+  } = event
   const where = {}
-  if(groups && groups.length > 0){
+  if (groups && groups.length > 0) {
     where.group = db.command.in(groups)
   }
   // 求资源库条目总数目
@@ -29,20 +31,21 @@ exports.main = async (event, context) => {
 
   // 随机抓取
   const result = []
-  if(!!allCount){
-    for(var i = 0; i < 10; i++){
+  if (!!allCount) {
+    for (var i = 0; i < 10; i++) {
       // 有一定的几率命中special
-      if(Math.ceil(Math.random() * (allCount)) > mpaContentCount){
-        const mpaContent = await specialGroupCenter.getOneMpaContentRandom()
+      const targetNum = Math.ceil(Math.random() * (allCount))
+      if (targetNum > mpaContentCount) {
+        const mpaContent = await specialGroupCenter.getOneMpaContentRandom(groups, targetNum - mpaContentCount)
         result.push(mpaContent)
         continue
       }
-      const mpaContent = await getOneMpaContentRandom(mpaContentCount, where)
+      const mpaContent = await getOneMpaContent(targetNum - 1, where)
       // 去重（关闭）
-      if(result.every(item=>{
-        // return item._id != mpaContent._id
-        return true
-      })){
+      if (result.every(item => {
+          // return item._id != mpaContent._id
+          return true
+        })) {
         result.push(mpaContent)
       }
     }
@@ -51,9 +54,9 @@ exports.main = async (event, context) => {
   return result
 }
 
-const getOneMpaContentRandom = async(range, where)=>{
+const getOneMpaContent = async (skip, where) => {
 
-  const res = await db.collection('mpa_content').where(where).skip(Math.floor(Math.random() * range)).limit(1).get()
+  const res = await db.collection('mpa_content').where(where).skip(skip).limit(1).get()
 
   return res.data[0]
 }
