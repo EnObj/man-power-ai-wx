@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    groups: []
+    groups: [],
+    categorys: []
   },
 
   // 用户打开/关闭某个词条组
@@ -63,8 +64,16 @@ Page({
           group.checked = selectedGroups.some(selectedGroup=>{
             return group._id == selectedGroup._id
           })
+          group.category = group.category || '其他'
           return group
-        })
+        }),
+        categorys: groups.reduce((categorys, group)=>{
+          const category = group.category
+          if(!categorys.includes(category)){
+            categorys.unshift(category)
+          }
+          return categorys
+        },[])
       })
     })
 
