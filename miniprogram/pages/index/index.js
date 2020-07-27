@@ -106,7 +106,10 @@ Page({
         const updator  ={}
         updator[`mpaContents[${this.data.currentMpaContentIndex}]`] = currentMapContent
         this.setData(updator)
-        this.nextMpaContent()
+        // 如果存在自动播放，等待自动翻页即可
+        if(!this.data.autoPlayId){
+          this.nextMpaContent()
+        }
       })
     })
   },
@@ -120,7 +123,17 @@ Page({
     // 当前content
     const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
 
+    const page = this
+
     wxApiUtils.showActions([{
+      name: '我的收藏',
+      callback() {
+        wx.navigateTo({
+          url: '/pages/mine/mine',
+        })
+      },
+      condition: true
+    },{
       name: '附图',
       callback() {
         wx.previewImage({
@@ -136,23 +149,21 @@ Page({
         })
       },
       condition: !!mpaContent.link
-    },{
-      name: '我的收藏',
+    },
+    {
+      name: '播放',
       callback() {
-        wx.navigateTo({
-          url: '/pages/mine/mine',
+        page.setData({
+          autoPlayId: setInterval(page.nextMpaContent.bind(page), 3000)
+        })
+        wx.showToast({
+          title: '已启动自动播放',
+          icon:'none'
         })
       },
       condition: true
-    },{
-      name: '历史记录',
-      callback() {
-        wx.navigateTo({
-          url: '/pages/mine/history',
-        })
-      },
-      condition: false
-    },{
+    },
+    {
       name: '设置',
       callback() {
         wx.navigateTo({
@@ -161,6 +172,13 @@ Page({
       },
       condition: true
     }])
+  },
+
+  stopAutoPlay(){
+    clearInterval(this.data.autoPlayId)
+    this.setData({
+      autoPlayId: null
+    })
   },
 
   // 收藏到我的页签
@@ -244,6 +262,10 @@ Page({
   },
 
   endTouch(event){
+    // 自动播放时不能滑动切换
+    if(this.data.autoPlayId){
+      return
+    }
     const startTouchEvent = this.startTouchEvent
     // console.log(event, startTouchEvent)
     // 触摸需在1秒内完成，且起始点x坐标大于20避免过于灵敏
@@ -286,14 +308,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.stopAutoPlay()
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.stopAutoPlay()
   },
 
   /**
