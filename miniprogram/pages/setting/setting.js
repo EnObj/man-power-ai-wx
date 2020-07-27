@@ -70,7 +70,11 @@ Page({
         categorys: groups.reduce((categorys, group)=>{
           const category = group.category
           if(!categorys.includes(category)){
-            categorys.unshift(category)
+            if(category == '其他'){
+              categorys.push(category)
+            }else{
+              categorys.unshift(category)
+            }
           }
           return categorys
         },[])
