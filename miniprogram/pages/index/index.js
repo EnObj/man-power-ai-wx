@@ -157,16 +157,18 @@ Page({
   // 收藏到我的页签
   collect() {
     const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    // 先显示
+    mpaContent.isCollect = true
+    const updator = {}
+    updator['mpaContents[' + this.data.currentMpaContentIndex + ']'] = mpaContent
+    this.setData(updator)
+    // 后提交
     db.collection('mpa_user_collect').add({
       data: {
         content: mpaContent,
         createTime: new Date()
       }
-    }).then(res => {
-      mpaContent.isCollect = true
-      const updator = {}
-      updator['mpaContents[' + this.data.currentMpaContentIndex + ']'] = mpaContent
-      this.setData(updator)
+    }).then(res=>{
       wx.showToast({
         title: `已收藏`
       })
