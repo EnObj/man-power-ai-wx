@@ -62,6 +62,20 @@ Page({
     })
   },
 
+  tapCollect(event){
+    const collect = event.currentTarget.dataset.collect
+    if(collect.content._id){
+      wx.navigateTo({
+        url: '/pages/index/index?contentId=' + collect.content._id,
+      })
+    }else{
+      wx.showToast({
+        title: `“${collect.content.content}”未存档`,
+        icon: 'none'
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

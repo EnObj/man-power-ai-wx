@@ -79,6 +79,20 @@ Page({
     })
   },
 
+  tapHistory(event){
+    const history = event.currentTarget.dataset.history
+    if(history.content._id){
+      wx.navigateTo({
+        url: '/pages/index/index?contentId=' + history.content._id,
+      })
+    }else{
+      wx.showToast({
+        title: `“${history.content.content}”未存档`,
+        icon: 'none'
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
