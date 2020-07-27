@@ -71,7 +71,7 @@
 			</view>
 			<view class="menu-item menu-next" wx:if="{{autoPlayId}}">
 				<button size="mini" type="warn" bindtap="stopAutoPlay">
-					STOP
+					STOP-{{currentMpaContentIndex + 1}}
 				</button>
 			</view>
 		</view>
