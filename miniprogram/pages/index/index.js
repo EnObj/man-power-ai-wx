@@ -12,7 +12,8 @@ Page({
     mpaContents: [],
     currentMpaContentIndex: -1,
     buttonSize: 30,
-    groupMap: {}
+    groupMap: {},
+    keyboardHeight: 0
   },
 
   nextMpaContentBtnTap(){
@@ -85,25 +86,33 @@ Page({
   },
 
   radioChange(event) {
+    this.answer(event.detail.value)
+  },
+
+  answer(answerValue){
     const currentMapContent = this.data.mpaContents[this.data.currentMpaContentIndex]
     const answer = {
       content: currentMapContent,
-      answer: event.detail.value,
+      answer: answerValue,
       createTime: new Date()
     }
-    db.collection('mpa_answer').add({
+    return db.collection('mpa_answer').add({
       data: answer
     }).then(res=>{
-      db.collection('mpa_user_history').add({
+      return db.collection('mpa_user_history').add({
         data: answer
       }).then(res => {
-        currentMapContent.answer = event.detail.value
+        currentMapContent.answer = answerValue
         const updator  ={}
         updator[`mpaContents[${this.data.currentMpaContentIndex}]`] = currentMapContent
         this.setData(updator)
         this.nextMpaContent()
       })
     })
+  },
+
+  inputChange(event){
+    this.answer(event.detail.value)
   },
 
   // 展示更多菜单：设置范围，我的收藏等
@@ -183,6 +192,12 @@ Page({
       this.nextMpaContent()
     })
     this.loadGroups()
+    // 监听键盘高度变化
+    wx.onKeyboardHeightChange(res => {
+      this.setData({
+        keyboardHeight: res.height
+      })
+    })
   },
 
   loadGroups(){

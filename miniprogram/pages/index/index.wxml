@@ -14,7 +14,7 @@
 				</view>
 			</view>
 		</scroll-view>
-		<view class="mpa-answer-area">
+		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;">
 			<view class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}">
 				@{{groupMap[mpaContents[currentMpaContentIndex].group].name}}
 			</view>
@@ -22,7 +22,10 @@
 				<text>“{{mpaContents[currentMpaContentIndex].prompt}}”</text>
 			</view>
 			<view class="mpa-content-answer">
-				<view>
+				<view wx:if="{{mpaContents[currentMpaContentIndex].formType=='input'}}" class="input-form">
+					<input placeholder="在此输入..." bindconfirm="inputChange" value="{{mpaContents[currentMpaContentIndex].answer}}" disabled="{{mpaContents[currentMpaContentIndex].answer}}" adjust-position="{{false}}"/>
+				</view>
+				<view wx:else>
 					<radio-group bindchange="radioChange">
 						<label wx:for="{{mpaContents[currentMpaContentIndex].radioOptions}}" wx:key="*this" class="flex-start radio-option">
 							<view>
@@ -37,7 +40,7 @@
 		<!-- <view class="submit" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
 			<button type="primary" bindtap="nextMpaContentBtnTap">NEXT-{{currentMpaContentIndex + 1}}</button>
 		</view> -->
-		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
+		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}" style="bottom:{{(keyboardHeight||10)+10}}px;">
 			<view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect}}">
 				<button size="mini" type="default" bindtap="collect">
 					<mp-icon icon="star" type="field" color="gray" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>

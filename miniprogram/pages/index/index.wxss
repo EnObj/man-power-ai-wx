@@ -5,12 +5,15 @@
 }
 .mpa-content{
   padding: 0 20px;
+  height: 100vh;
 }
 .mpa-content-content-area{
   min-height: 50vh;
 }
 .mpa-answer-area{
-  height: 45vh;
+  /* height: 45vh; */
+  position: absolute;
+  bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -32,7 +35,7 @@
 
 .menu{
   position: absolute;
-  bottom: 0px;
+  bottom: 20px;
   right: 15px;
 }
 
@@ -43,4 +46,8 @@
 
 .mpa-content-prompt{
   margin-top:5px;
+}
+
+.input-form{
+  padding: 5px 0 0;
 }
