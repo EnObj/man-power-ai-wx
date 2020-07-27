@@ -40,7 +40,7 @@
 		<!-- <view class="submit" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
 			<button type="primary" bindtap="nextMpaContentBtnTap">NEXT-{{currentMpaContentIndex + 1}}</button>
 		</view> -->
-		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}" style="bottom:{{(keyboardHeight||10)+10}}px;">
+		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
 			<view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect}}">
 				<button size="mini" type="default" bindtap="collect">
 					<mp-icon icon="star" type="field" color="gray" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
