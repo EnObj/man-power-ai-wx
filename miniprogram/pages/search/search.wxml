@@ -1,0 +1,19 @@
+<wxs src="./../../wxs/number.wxs" module="numberUtils"></wxs>
+<view class="not-importent result-count" wx:if="{{count>10}}">找到相关结果{{numberUtils.toThousands(count)}}个</view>
+<view class="mpa-contents">
+	<view wx:for="{{mpaContents}}" wx:key="_id">
+		<view  class="mpa-content padding-box flex-between">
+			<view class="mpa-content-target" bindtap="tapMpaContent" data-mpa-content="{{item}}">
+				<view class="mpa-content-content">{{item.content}}</view>
+        <view class="content-remarks not-importent" wx:if="{{item.remarks.length}}">
+          <view wx:for="{{item.remarks}}" wx:key="*this" class="no-wrap">
+            <text>{{item}}</text>
+          </view>
+        </view>
+			</view>
+		</view>
+	</view>
+  <view wx:if="{{loaded && !mpaContents.length}}" class="empty-tip abs-center">
+    <view class="abs-center-content not-importent">空空如也</view>
+  </view>
+</view>

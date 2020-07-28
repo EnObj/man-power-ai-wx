@@ -1,0 +1,48 @@
+/* miniprogram/pages/setting/group.wxss */
+.search{
+  margin: 0 30px;
+  border: 2px #bbb solid;
+  background: none;
+}
+
+.search-icon {
+  flex: none;
+}
+
+.search-inp {
+  flex: auto;
+  margin: 0 5px;
+}
+
+.clean-icon {
+  flex: none;
+}
+
+.head{
+  padding: 50px 30px;
+}
+
+.group-name{
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.keywords-area{
+  margin: 10px 30px;
+}
+.keywords-title{
+  margin: 10px 0; 
+  color: #333;
+}
+.keywords{
+  display: flex;
+  flex-wrap: wrap;
+}
+.keyword{
+  border-radius: 5px;
+  color: gray;
+  background: #ddd;
+  padding: 3px 8px;
+  margin: 0 10px 10px 0;
+  font-size: 14px;
+}

@@ -1,0 +1,29 @@
+<wxs src="./../../wxs/number.wxs" module="numberUtils"></wxs>
+<view class="main" wx:if="{{group}}">
+  <view class="head">
+    <view class="group-name">{{group.name}}</view>
+    <view class="group-count not-importent">词条数：{{numberUtils.toThousands(group.count)}}</view>
+  </view>
+  <view class="search flex-between padding-box" bindtap="startFocusInp">
+		<view class="search-icon">
+			<mp-icon icon="search" size="25" color="gray" />
+		</view>
+		<view class="search-inp">
+			<input placeholder="在此单词本中检索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  hold-keyboard focus="{{focus}}"/>
+		</view>
+		<view class="clean-icon" bindtap="cleanKeyword" hidden="{{!keyword}}">
+			<mp-icon icon="close2" size="20" type="field" color="#ccc" />
+		</view>
+  </view>
+  <view class="keywords-area" hidden="{{!keywords.length || keyword}}">
+    <view class="keywords-title flex-between">
+      <view class="not-importent">搜索历史</view>
+      <view bindtap="cleanKeywords">
+        <mp-icon icon="delete" color="gray" size="18"></mp-icon>
+      </view>
+    </view>
+    <view class="keywords">
+      <view wx:for="{{keywords}}" wx:key="*this" bindtap="searchKeyword" data-keyword="{{item}}" class="keyword">{{item}}</view>
+    </view>
+  </view>
+</view>

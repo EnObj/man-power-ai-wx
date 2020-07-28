@@ -19,10 +19,10 @@
       </view>
       <view class="groups">
         <view wx:for="{{groups}}" wx:key="_id" class="flex-between group" wx:if="{{item.category == category}}">
-          <view>
+          <navigator url="/pages/setting/group?groupId={{item._id}}">
             <view class="group-name">{{item.name}}</view>
             <view class="not-importent mpa-count">{{numberUtils.toThousands(item.count)||'不确定'}}</view>
-          </view>
+          </navigator>
           <view>
             <switch bindchange="groupSelect" checked="{{item.checked}}" data-group="{{item}}"/>
           </view>

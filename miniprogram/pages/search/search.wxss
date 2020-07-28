@@ -1,0 +1,19 @@
+/* miniprogram/pages/search/search.wxss */
+.mpa-content-content{
+  font-size: 26px;
+  font-weight: 700;
+}
+.mpa-content-target{
+  flex: auto;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.empty-tip{
+  height: 200px;
+}
+.result-count{
+  padding: 10px;
+}
+.mpa-contents{
+  padding-bottom: 20px;
+}
