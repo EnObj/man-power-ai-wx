@@ -206,6 +206,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.group){
+      wx.setStorageSync('groups', [{_id:options.group}])
+    }
     this.loadMpaContents(options.contentId).then(res=>{
       this.nextMpaContent()
     })
@@ -339,7 +342,7 @@ Page({
     const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
     return {
       title: mpaContent.content,
-      path: '/pages/index/index?contentId=' + mpaContent._id
+      path: '/pages/index/index?contentId=' + mpaContent._id + '&group=' + mpaContent.group
     }
   }
 })
