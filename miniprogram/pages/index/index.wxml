@@ -3,7 +3,7 @@
 		<scroll-view scroll-x>
 			<view class="abs-center mpa-content-content-area">
 				<view class="abs-center-content">
-					<view class="mpa-content-content">
+					<view class="mpa-content-content" style="font-size:{{groupMap[mpaContents[currentMpaContentIndex].group].contentStyle.fontSize||35}}px;">
 						<text selectable>{{mpaContents[currentMpaContentIndex].content}}</text>
 					</view>
 					<view class="content-remarks not-importent" wx:if="{{mpaContents[currentMpaContentIndex].remarks.length}}">
