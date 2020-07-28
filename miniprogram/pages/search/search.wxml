@@ -4,7 +4,11 @@
 	<view wx:for="{{mpaContents}}" wx:key="_id">
 		<navigator class="mpa-content padding-box flex-between" url="/pages/index/index?contentId={{item._id}}&group={{item.group}}">
 			<view class="mpa-content-target" bindtap="tapMpaContent" data-mpa-content="{{item}}">
-				<view class="mpa-content-content">{{item.content}}</view>
+				<view class="mpa-content-content">
+          <text>{{item.contents[0]}}</text>
+          <text class="keyword">{{keyword}}</text>
+          <text>{{item.contents[1]}}</text>
+        </view>
         <view class="content-remarks not-importent" wx:if="{{item.remarks.length}}">
           <view wx:for="{{item.remarks}}" wx:key="*this" class="no-wrap">
             <text>{{item}}</text>

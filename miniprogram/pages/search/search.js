@@ -47,7 +47,10 @@ Page({
     // 查询前20条
     this.query.orderBy('sort', 'asc').skip(mpaContents.length).limit(pageSize).get().then(res => {
       this.setData({
-        mpaContents: mpaContents.concat(res.data),
+        mpaContents: mpaContents.concat(res.data.map(mpaContent=>{
+          mpaContent.contents = mpaContent.content.split(this.data.keyword)
+          return mpaContent
+        })),
         loaded: true,
         more: res.data.length == pageSize,
       })

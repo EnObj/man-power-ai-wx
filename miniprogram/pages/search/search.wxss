@@ -1,7 +1,7 @@
 /* miniprogram/pages/search/search.wxss */
 .mpa-content-content{
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 500;
 }
 .mpa-content-target{
   flex: auto;
@@ -16,4 +16,8 @@
 }
 .mpa-contents{
   padding-bottom: 20px;
+}
+.keyword{
+  color: #06ad56;
+  font-weight: 700;
 }
