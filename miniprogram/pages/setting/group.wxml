@@ -1,4 +1,14 @@
 <wxs src="./../../wxs/number.wxs" module="numberUtils"></wxs>
+<wxs module="focusUtils">
+  module.exports = {
+    focus:function(event, ownerInstance){
+      var instance = ownerInstance.selectComponent('.keywords-area')
+      instance.setStyle({
+        "display": "block"
+      })
+    }
+  }
+</wxs>
 <view class="main" wx:if="{{group}}">
   <view class="head">
     <view class="group-name">{{group.name}}</view>
@@ -9,7 +19,7 @@
 			<mp-icon icon="search" size="25" color="gray" />
 		</view>
 		<view class="search-inp">
-			<input placeholder="在此单词本中检索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  hold-keyboard focus="{{focus}}"/>
+			<input placeholder="在此单词本中检索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  hold-keyboard focus="{{focus}}" bindfocus="{{focusUtils.focus}}"/>
 		</view>
 		<view class="clean-icon" bindtap="cleanKeyword" hidden="{{!keyword}}">
 			<mp-icon icon="close2" size="20" type="field" color="#ccc" />

@@ -29,6 +29,7 @@
 
 .keywords-area{
   margin: 10px 30px;
+  display: none;
 }
 .keywords-title{
   margin: 10px 0; 
