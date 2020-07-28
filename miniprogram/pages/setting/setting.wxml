@@ -1,3 +1,4 @@
+<wxs src="./../../wxs/number.wxs" module="numberUtils"></wxs>
 <view class="main">
   <view class="title">
     <view class="title-head">单词本管理</view>
@@ -20,7 +21,7 @@
         <view wx:for="{{groups}}" wx:key="_id" class="flex-between group" wx:if="{{item.category == category}}">
           <view>
             <view class="group-name">{{item.name}}</view>
-            <view class="not-importent mpa-count">{{item.count||'未知'}}</view>
+            <view class="not-importent mpa-count">{{numberUtils.toThousands(item.count)||'不确定'}}</view>
           </view>
           <view>
             <switch bindchange="groupSelect" checked="{{item.checked}}" data-group="{{item}}"/>
