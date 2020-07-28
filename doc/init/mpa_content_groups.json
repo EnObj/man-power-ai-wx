@@ -12,7 +12,7 @@
 {"_id":"THUOCL_poem","name":"中文词库-诗词","category":"中文词库","count":13703}
 {"_id":"movie-250-v5","name":"电影TOP250","count":250}
 {"_id":"usa-ceo","name":"历任美国总统","count":45}
-{"_id":"emoji","name":"Emoji表情","count":1264}
+{"_id":"emoji","name":"Emoji表情","count":1264,"contentStyle":{"fontSize":100}}
 {"_id":"cet-4","name":"大学英语四级词汇","category":"英语学习","count":4505}
 {"_id":"cet-6","name":"大学英语六级词汇","category":"英语学习","count":15327}
 {"_id":"guobiao","name":"国家标准","count":38321}
