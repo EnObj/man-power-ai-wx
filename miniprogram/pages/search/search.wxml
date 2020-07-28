@@ -1,5 +1,5 @@
 <wxs src="./../../wxs/number.wxs" module="numberUtils"></wxs>
-<view class="not-importent result-count" wx:if="{{count>10}}">找到相关结果{{numberUtils.toThousands(count)}}个</view>
+<view class="not-importent result-count" wx:if="{{count>3}}">找到相关结果{{numberUtils.toThousands(count)}}个</view>
 <view class="mpa-contents">
 	<view wx:for="{{mpaContents}}" wx:key="_id">
 		<navigator class="mpa-content padding-box flex-between" url="/pages/index/index?contentId={{item._id}}&group={{item.group}}">
