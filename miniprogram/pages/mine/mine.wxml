@@ -5,15 +5,15 @@
 <view class="collects">
 	<view wx:for="{{collects}}" wx:key="_id">
 		<view  class="collect padding-box flex-between">
-			<view class="collect-target" bindtap="tapCollect" data-collect="{{item}}">
-				<view class="no-wrap mpa-content-content">{{item.content.content}}</view>
+			<view class="collect-target">
+				<view class="no-wrap mpa-content-content" bindtap="tapCollect" data-collect="{{item}}">{{item.content.content}}</view>
         <view class="content-remarks not-importent" wx:if="{{item.content.remarks.length}}">
           <view wx:for="{{item.content.remarks}}" wx:key="*this" class="no-wrap">
             <text>{{item}}</text>
           </view>
         </view>
         <view class="flex-start" style="margin-top:5px">
-					<view class="not-importent content-group" wx:if="{{item.content.group}}">@{{groupMap[item.content.group].name||'未知'}}</view>
+					<navigator class="not-importent content-group" wx:if="{{item.content.group}}" url="/pages/setting/group?groupId={{item.content.group}}">@{{groupMap[item.content.group].name||'未知'}}</navigator>
           <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
 				</view>
         <!-- <view class="flex-start">

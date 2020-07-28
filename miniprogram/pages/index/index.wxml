@@ -15,9 +15,9 @@
 			</view>
 		</scroll-view>
 		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;">
-			<view class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}">
+			<navigator class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}" url="/pages/setting/group?groupId={{mpaContents[currentMpaContentIndex].group}}">
 				@{{groupMap[mpaContents[currentMpaContentIndex].group].name}}
-			</view>
+			</navigator>
 			<view class="not-importent mpa-content-prompt" wx:if="{{mpaContents[currentMpaContentIndex].prompt}}">
 				<text>“{{mpaContents[currentMpaContentIndex].prompt}}”</text>
 			</view>
