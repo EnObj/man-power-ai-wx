@@ -26,3 +26,7 @@
 .category-name{
   padding: 30px 15px 5px;
 }
+
+.mpa-count{
+  font-size: 12px;
+}

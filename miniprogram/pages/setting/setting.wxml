@@ -18,7 +18,10 @@
       </view>
       <view class="groups">
         <view wx:for="{{groups}}" wx:key="_id" class="flex-between group" wx:if="{{item.category == category}}">
-          <view class="group-name">{{item.name}}</view>
+          <view>
+            <view class="group-name">{{item.name}}</view>
+            <view class="not-importent mpa-count">{{item.count||'未知'}}</view>
+          </view>
           <view>
             <switch bindchange="groupSelect" checked="{{item.checked}}" data-group="{{item}}"/>
           </view>
