@@ -25,15 +25,17 @@
 			<mp-icon icon="close2" size="20" type="field" color="#ccc" />
 		</view>
   </view>
-  <view class="keywords-area" hidden="{{!keywords.length || keyword}}">
-    <view class="keywords-title flex-between">
-      <view class="not-importent">搜索历史</view>
-      <view bindtap="cleanKeywords">
-        <mp-icon icon="delete" color="gray" size="18"></mp-icon>
+  <view class="keywords-area">
+    <view hidden="{{!keywords.length || keyword}}">
+      <view class="keywords-title flex-between">
+        <view class="not-importent">搜索历史</view>
+        <view bindtap="cleanKeywords">
+          <mp-icon icon="delete" color="gray" size="18"></mp-icon>
+        </view>
       </view>
-    </view>
-    <view class="keywords">
-      <view wx:for="{{keywords}}" wx:key="*this" bindtap="searchKeyword" data-keyword="{{item}}" class="keyword">{{item}}</view>
+      <view class="keywords">
+        <view wx:for="{{keywords}}" wx:key="*this" bindtap="searchKeyword" data-keyword="{{item}}" class="keyword">{{item}}</view>
+      </view>
     </view>
   </view>
 </view>
