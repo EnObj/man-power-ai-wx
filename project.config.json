@@ -33,7 +33,7 @@
 	},
 	"appid": "wxad0d71f7b6dbfc7d",
 	"projectname": "man-power-ai-wx",
-	"libVersion": "2.9.0",
+	"libVersion": "2.12.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

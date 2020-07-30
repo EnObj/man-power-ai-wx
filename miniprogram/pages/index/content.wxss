@@ -14,3 +14,6 @@
 .link{
   padding: 20px 0;
 }
+image{
+  width: 100%;
+}
