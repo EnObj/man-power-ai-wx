@@ -19,7 +19,7 @@
 			<mp-icon icon="search" size="25" color="gray" />
 		</view>
 		<view class="search-inp">
-			<input placeholder="在此单词本中检索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  hold-keyboard focus="{{focus}}" bindfocus="{{focusUtils.focus}}"/>
+			<input placeholder="在此单词本中搜索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  hold-keyboard focus="{{focus}}" bindfocus="{{focusUtils.focus}}"/>
 		</view>
 		<view class="clean-icon" bindtap="cleanKeyword" hidden="{{!keyword}}">
 			<mp-icon icon="close2" size="20" type="field" color="#ccc" />
