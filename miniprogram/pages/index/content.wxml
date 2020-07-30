@@ -1,0 +1,12 @@
+<view class="abs-center mpa-content-content-area">
+  <view class="abs-center-content">
+    <view class="mpa-content-content">
+      <text selectable>{{mpaContent.content}}</text>
+    </view>
+    <view class="content-remarks not-importent" wx:if="{{mpaContent.remarks.length}}">
+      <view wx:for="{{mpaContent.remarks}}" wx:key="*this">
+        <text selectable>{{item}}</text>
+      </view>
+    </view>
+  </view>
+</view>

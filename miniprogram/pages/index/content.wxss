@@ -1,0 +1,10 @@
+/* miniprogram/pages/index/content.wxss */
+.mpa-content-content-area{
+  min-height: 50vh;
+  padding: 0 20px;
+}
+.mpa-content-content{
+  font-size: 35px;
+  font-weight: 700;
+  /* text-align: center; */
+}

@@ -281,6 +281,27 @@ Page({
     }
   },
 
+  tapContent(event){
+    // 检测双击事件
+    if(this.lastTapContentTime){
+      if(event.timeStamp-this.lastTapContentTime < 300){
+        const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+        // 存档的跳转到详情页
+        if(mpaContent._id){
+          wx.navigateTo({
+            url: '/pages/index/content?contentId=' + mpaContent._id,
+          })
+        }else{
+          wx.showToast({
+            title: `“${mpaContent.content}”未存档`,
+            icon: 'none'
+          })
+        }
+      }
+    }
+    this.lastTapContentTime = event.timeStamp
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

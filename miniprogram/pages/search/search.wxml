@@ -2,7 +2,7 @@
 <view class="not-importent result-count" wx:if="{{count>3}}">找到相关结果{{numberUtils.toThousands(count)}}个</view>
 <view class="mpa-contents">
 	<view wx:for="{{mpaContents}}" wx:key="_id">
-		<navigator class="mpa-content padding-box flex-between" url="/pages/index/index?contentId={{item._id}}&group={{item.group}}">
+		<navigator class="mpa-content padding-box flex-between" url="/pages/index/content?contentId={{item._id}}">
 			<view class="mpa-content-target" bindtap="tapMpaContent" data-mpa-content="{{item}}">
 				<view class="mpa-content-content">
           <text>{{item.contents[0]}}</text>

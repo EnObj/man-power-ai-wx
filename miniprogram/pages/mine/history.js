@@ -83,7 +83,7 @@ Page({
     const history = event.currentTarget.dataset.history
     if(history.content._id){
       wx.navigateTo({
-        url: '/pages/index/index?contentId=' + history.content._id,
+        url: '/pages/index/content?contentId=' + history.content._id,
       })
     }else{
       wx.showToast({

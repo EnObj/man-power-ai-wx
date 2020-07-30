@@ -66,7 +66,7 @@ Page({
     const collect = event.currentTarget.dataset.collect
     if(collect.content._id){
       wx.navigateTo({
-        url: '/pages/index/index?contentId=' + collect.content._id,
+        url: '/pages/index/content?contentId=' + collect.content._id,
       })
     }else{
       wx.showToast({
