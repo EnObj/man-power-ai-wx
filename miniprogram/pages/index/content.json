@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-icon": "../../components/icon/icon"
+  },
   "navigationBarTitleText": "词条详情"
 }

@@ -21,6 +21,18 @@ Page({
     })
   },
 
+  tapLink(){
+    wx.setClipboardData({
+      data: this.data.mpaContent.link,
+    })
+  },
+
+  tapImage(){
+    wx.previewImage({
+      urls: [this.data.mpaContent.image],
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

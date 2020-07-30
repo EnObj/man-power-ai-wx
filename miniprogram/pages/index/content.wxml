@@ -8,5 +8,16 @@
         <text selectable>{{item}}</text>
       </view>
     </view>
+    <view wx:if="{{mpaContent.image}}" class="image" bindtap="tapImage">
+      <image src="{{mpaContent.image}}" mode="widthFix"></image>
+    </view>
+    <view class="not-importent ref-content link flex-start" wx:if="{{mpaContent.link}}" bindtap="tapLink">
+      <view>
+        <mp-icon icon="link" color="#576b95" size="{{18}}"></mp-icon>
+      </view>
+      <view style="margin-left:5px;">
+        <text>{{mpaContent.link}}</text>
+      </view>
+    </view>
   </view>
 </view>

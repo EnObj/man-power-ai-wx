@@ -8,3 +8,9 @@
   font-weight: 700;
   /* text-align: center; */
 }
+.image{
+  margin-top: 20px;
+}
+.link{
+  padding: 20px 0;
+}
