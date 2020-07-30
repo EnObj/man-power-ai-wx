@@ -11,7 +11,7 @@ Page({
   data: {
     mpaContents: [],
     currentMpaContentIndex: -1,
-    buttonSize: 30,
+    buttonSize: 35,
     groupMap: {},
     keyboardHeight: 0
   },

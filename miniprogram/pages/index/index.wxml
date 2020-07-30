@@ -42,25 +42,25 @@
 		</view> -->
 		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
 			<view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect || autoPlayId}}">
-				<button size="mini" type="default" bindtap="collect">
+				<button size="mini" type="default" bindtap="collect" style="background:none">
 					<mp-icon icon="star" type="field" color="gray" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
 					<mp-icon icon="star" size="{{buttonSize}}" color="gray" wx:else></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-share" hidden="{{mpaContents[currentMpaContentIndex].disableShare || autoPlayId}}">
-				<button size="mini" type="default" open-type="share">
+				<button size="mini" type="default" open-type="share" style="background:none">
 					<mp-icon icon="share" color="gray" size="{{buttonSize}}"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-history" hidden="{{autoPlayId}}">
 				<navigator url="/pages/mine/history" style="display:inline-block">
-					<button size="mini" type="default">
+					<button size="mini" type="default" style="background:none">
 						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
 					</button>
 				</navigator>
 			</view>
 			<view class="menu-item menu-more" hidden="{{autoPlayId}}">
-				<button size="mini" type="default" bindtap="showMoreMenu">
+				<button size="mini" type="default" bindtap="showMoreMenu" style="background:none">
 					<mp-icon icon="more2" color="gray" size="{{buttonSize}}"></mp-icon>
 				</button>
 			</view>
