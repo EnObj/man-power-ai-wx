@@ -8,7 +8,7 @@
   height: 100vh;
 }
 .mpa-content-content-area{
-  min-height: 50vh;
+  min-height: 80vw;
 }
 .mpa-answer-area{
   /* height: 45vh; */

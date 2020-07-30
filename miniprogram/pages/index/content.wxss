@@ -1,6 +1,6 @@
 /* miniprogram/pages/index/content.wxss */
 .mpa-content-content-area{
-  min-height: 50vh;
+  min-height: 80vw;
   padding: 0 20px;
 }
 .mpa-content-content{

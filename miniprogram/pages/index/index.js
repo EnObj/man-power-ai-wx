@@ -361,8 +361,12 @@ Page({
    */
   onShareAppMessage: function () {
     const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    var title = mpaContent.content
+    if(mpaContent.group && this.data.groupMap[mpaContent.group]){
+      title = '@' + this.data.groupMap[mpaContent.group].name
+    }
     return {
-      title: mpaContent.content,
+      title: title,
       path: '/pages/index/index?contentId=' + mpaContent._id + '&group=' + mpaContent.group
     }
   }
