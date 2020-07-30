@@ -12,6 +12,7 @@ Page({
     count: 0,
     loaded: false,
     keyword: '',
+    group: '',
     more: false
   },
 
@@ -24,7 +25,8 @@ Page({
       title: '搜索“' + keyword + "”",
     })
     this.setData({
-      keyword: keyword
+      keyword: keyword,
+      group: options.group
     })
     this.query = db.collection('mpa_content').where({
       group: options.group || 'daxue',
@@ -106,6 +108,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '搜索“' + this.data.keyword + "”",
+      path: '/pages/search/search?keyword=' + encodeURIComponent(this.data.keyword) + '&group=' + this.data.group
+    }
   }
 })
