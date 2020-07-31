@@ -13,10 +13,66 @@ exports.main = async (event, context) => {
 
   console.log(event)
 
+  // 随机级别
+  event.randomLevel = event.randomLevel || 'group'
+  event.groups = event.groups || []
+
   // 组范围
   const {
-    groups
+    groups,
+    randomLevel
   } = event
+
+  // 按随机级别使用不同的策略
+  var result = []
+  if(randomLevel == 'group'){
+    result = await loadOnGroupRandomLevel(groups)
+  }else{
+    result = await loadOnContentRandomLevel(groups)
+  }
+
+  // 剔除空壳
+  return result.filter(item=>{
+    return !!item
+  })
+}
+
+const loadOnGroupRandomLevel = async(groups) => {
+  // 空组则查库
+  if(!groups || !groups.length){
+    groups = (await db.collection('mpa_content_group').get()).data.map(group=>{
+      return group._id
+    })
+  }
+
+  const result = []
+  for(var i=0;i<10;i++){
+    // 随机得到组
+    const group = groups[Math.floor(Math.random() * groups.length)]
+    // console.log(`摇号结果：${group}`)
+    // 特别组是否能处理
+    var mpaContent = await specialGroupCenter.getOneMpaContentRandomOnGroup(group)
+    // 处理不了找存档
+    if(!mpaContent){
+      mpaContent = await getOneMpaContentNew({
+        group: group
+      })
+    }
+    result.push(mpaContent)
+  }
+
+  return result
+}
+
+const getOneMpaContentNew = async (where) => {
+  const result = await db.collection('mpa_content').aggregate().match(where).sample({
+    size: 1
+  }).end()
+
+  return result.list[0]
+}
+
+const loadOnContentRandomLevel = async(groups)=>{
   const where = {}
   if (groups && groups.length > 0) {
     where.group = db.command.in(groups)

@@ -32,12 +32,23 @@ module.exports = {
         }
       }
     })
+  },
+  getOneMpaContentRandomOnGroup(group){
+    const provider = getProviders([group])[0]
+    if(provider){
+      return provider.getOneMpaContentRandom()
+    }
+    return Promise.resolve()
   }
 }
 
 // 得到有资格参与摇号的组
 function getProviders(groups) {
-  return [rememberDay, earthPeople].filter(provider => {
-    return groups.includes(provider.getGroupName())
-  })
+  const allGroups = [rememberDay, earthPeople]
+  if(groups && groups.length){
+    return allGroups.filter(provider => {
+      return groups.includes(provider.getGroupName())
+    })
+  }
+  return allGroups
 }
