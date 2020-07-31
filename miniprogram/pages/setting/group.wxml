@@ -19,7 +19,7 @@
 			<mp-icon icon="search" size="25" color="gray" />
 		</view>
 		<view class="search-inp">
-			<input placeholder="在此单词本中搜索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  hold-keyboard focus="{{focus}}" bindfocus="{{focusUtils.focus}}"/>
+			<input placeholder="在此单词本中搜索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  focus="{{focus}}" bindfocus="{{focusUtils.focus}}" bindblur="unfocus"/>
 		</view>
 		<view class="clean-icon" bindtap="cleanKeyword" hidden="{{!keyword}}">
 			<mp-icon icon="close2" size="20" type="field" color="#ccc" />
@@ -38,9 +38,9 @@
       </view>
     </view>
   </view>
-  <view class="menu-area abs-center" hidden="{{keyword}}">
+  <view class="menu-area abs-center" hidden="{{focus || keyword}}">
     <navigator url="/pages/index/index?group={{group._id}}" class="abs-center-content" open-type="reLaunch">
-      <button type="primary">随便刷一刷</button>
+      <view class="not-importent ref-content">随便刷一刷</view>
     </navigator>
   </view>
 </view>

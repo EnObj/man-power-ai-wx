@@ -19,6 +19,12 @@ Page({
     })
   },
 
+  unfocus(){
+    this.setData({
+      focus: false
+    })
+  },
+
   cleanKeyword() {
     this.setData({
       keyword: ''
