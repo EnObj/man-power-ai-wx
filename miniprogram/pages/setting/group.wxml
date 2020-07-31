@@ -38,4 +38,9 @@
       </view>
     </view>
   </view>
+  <view class="menu-area abs-center" hidden="{{keyword}}">
+    <navigator url="/pages/index/index?group={{group._id}}" class="abs-center-content" open-type="reLaunch">
+      <button type="primary">随便刷一刷</button>
+    </navigator>
+  </view>
 </view>
