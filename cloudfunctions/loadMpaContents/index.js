@@ -36,18 +36,14 @@ exports.main = async (event, context) => {
       // 有一定的几率命中special
       const targetNum = Math.ceil(Math.random() * (allCount))
       if (targetNum > mpaContentCount) {
+        // 得到特别词条
         const mpaContent = await specialGroupCenter.getOneMpaContentRandom(groups, targetNum - mpaContentCount)
         result.push(mpaContent)
         continue
       }
+      // 得到存档词条
       const mpaContent = await getOneMpaContent(targetNum - 1, where)
-      // 去重（关闭）
-      if (result.every(item => {
-          // return item._id != mpaContent._id
-          return true
-        })) {
-        result.push(mpaContent)
-      }
+      result.push(mpaContent)
     }
   }
 
