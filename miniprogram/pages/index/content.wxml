@@ -1,5 +1,5 @@
 <view class="abs-center mpa-content-content-area">
-  <view class="abs-center-content">
+  <view class="abs-center-content" style="padding:10px 0px;">
     <view class="mpa-content-content">
       <text selectable>{{mpaContent.content}}</text>
     </view>

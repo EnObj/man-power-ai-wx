@@ -2,7 +2,7 @@
 	<view class="mpa-content">
 		<scroll-view scroll-y scoll-x style="height:75vh;">
 			<view class="abs-center mpa-content-content-area" bindtap="tapContent">
-				<view class="abs-center-content">
+				<view class="abs-center-content" style="padding:10px 0px;">
 					<view class="mpa-content-content" style="font-size:{{groupMap[mpaContents[currentMpaContentIndex].group].contentStyle.fontSize||35}}px;">
 						<text selectable>{{mpaContents[currentMpaContentIndex].content}}</text>
 					</view>
