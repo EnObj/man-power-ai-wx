@@ -13,6 +13,7 @@
 }
 .link{
   padding: 20px 0;
+  word-break: break-all;
 }
 image{
   width: 100%;
