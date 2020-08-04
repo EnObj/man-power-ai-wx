@@ -11,6 +11,15 @@
 							<text selectable>{{item}}</text>
 						</view>
 					</view>
+					<view class="tags flex-start">
+						<view wx:if="{{mpaContents[currentMpaContentIndex].image}}" class="tag image" bindtap="tapImage">
+							<mp-icon icon="album" color="white" size="{{22}}"></mp-icon>
+							<image src="{{mpaContents[currentMpaContentIndex].image}}" hidden="{{true}}"></image>
+						</view>
+						<view class="tag link" wx:if="{{mpaContents[currentMpaContentIndex].link}}" bindtap="tapLink">
+							<mp-icon icon="link" color="white" size="{{22}}"></mp-icon>
+						</view>
+					</view>
 				</view>
 			</view>
 		</scroll-view>

@@ -133,22 +133,6 @@ Page({
         })
       },
       condition: true
-    },{
-      name: '附图',
-      callback() {
-        wx.previewImage({
-          urls: [mpaContent.image],
-        })
-      },
-      condition: !!mpaContent.image
-    },{
-      name: '拷贝链接',
-      callback() {
-        wx.setClipboardData({
-          data: mpaContent.link,
-        })
-      },
-      condition: !!mpaContent.link
     },
     {
       name: '播放',
@@ -172,6 +156,20 @@ Page({
       },
       condition: true
     }])
+  },
+
+  tapImage(){
+    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    wx.previewImage({
+      urls: [mpaContent.image],
+    })
+  },
+
+  tapLink(){
+    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    wx.setClipboardData({
+      data: mpaContent.link,
+    })
   },
 
   stopAutoPlay(){
