@@ -25,7 +25,7 @@
 			</view>
 		</scroll-view>
 		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;">
-			<navigator class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}" url="/pages/setting/group?groupId={{mpaContents[currentMpaContentIndex].group}}">
+			<navigator class="mpa-content-group nav-none-bg" wx:if="{{mpaContents[currentMpaContentIndex].group}}" url="/pages/setting/group?groupId={{mpaContents[currentMpaContentIndex].group}}">
 				@{{groupMap[mpaContents[currentMpaContentIndex].group].name}}
 			</navigator>
 			<view class="not-importent mpa-content-prompt" wx:if="{{mpaContents[currentMpaContentIndex].prompt}}">
@@ -63,7 +63,7 @@
 				</button>
 			</view>
 			<view class="menu-item menu-history" hidden="{{autoPlayId}}">
-				<navigator url="/pages/mine/history" style="display:inline-block">
+				<navigator url="/pages/mine/history" style="display:inline-block" class="nav-none-bg">
 					<button size="mini" type="default" style="background:none">
 						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
 					</button>

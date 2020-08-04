@@ -61,3 +61,7 @@
 .success-content{
   color: #09bb07;
 }
+
+.nav-none-bg:hover{
+  background: none;
+}
