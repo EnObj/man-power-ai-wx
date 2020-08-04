@@ -12,7 +12,7 @@ module.exports = {
           newRemarks.push(remark);
           count += remark.length;
         } else {
-          newRemarks.push(remark.substring(0, 200 - count) + '...【双击查看全文】');
+          newRemarks.push(remark.substring(0, 200 - count) + '...【双击查看完整词条】');
           break;
         }
       }
