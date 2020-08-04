@@ -4,7 +4,7 @@ module.exports = {
     var newRemarks = [];
     if (remarks) {
       // 内容头长也要计入数量
-      var count = (Math.ceil(content.length / 10) - 1) * 40;
+      var count = (Math.ceil(content.length / 10) - 1) * 35;
       // console.log(count)
       for (var i = 0; i < remarks.length; i++) {
         var remark = remarks[i];
