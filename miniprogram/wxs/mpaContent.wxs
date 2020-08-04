@@ -1,9 +1,11 @@
 module.exports = {
+  // 为过长的remarks添加“双击查看”
   cutRemarks: function (remarks, content) {
     var newRemarks = [];
     if (remarks) {
+      // 内容头长也要计入数量
       var count = (Math.ceil(content.length / 10) - 1) * 40;
-      console.log(count)
+      // console.log(count)
       for (var i = 0; i < remarks.length; i++) {
         var remark = remarks[i];
         if (count + remark.length < 200) {
