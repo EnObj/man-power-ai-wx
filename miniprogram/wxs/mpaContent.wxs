@@ -1,0 +1,20 @@
+module.exports = {
+  cutRemarks: function (remarks, content) {
+    var newRemarks = [];
+    if (remarks) {
+      var count = (Math.ceil(content.length / 10) - 1) * 40;
+      console.log(count)
+      for (var i = 0; i < remarks.length; i++) {
+        var remark = remarks[i];
+        if (count + remark.length < 200) {
+          newRemarks.push(remark);
+          count += remark.length;
+        } else {
+          newRemarks.push(remark.substring(0, 200 - count) + '...【双击查看全文】');
+          break;
+        }
+      }
+    }
+    return newRemarks;
+  }
+}

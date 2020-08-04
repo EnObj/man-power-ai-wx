@@ -1,3 +1,4 @@
+<wxs module="mpaContentUtils" src="./../../wxs/mpaContent.wxs"></wxs>
 <view class="main" bindtouchstart="startTouch" bindtouchend="endTouch">
 	<view class="mpa-content">
 		<scroll-view scroll-y scoll-x style="height:75vh;">
@@ -7,7 +8,7 @@
 						<text selectable>{{mpaContents[currentMpaContentIndex].content}}</text>
 					</view>
 					<view class="content-remarks not-importent" wx:if="{{mpaContents[currentMpaContentIndex].remarks.length}}">
-						<view wx:for="{{mpaContents[currentMpaContentIndex].remarks}}" wx:key="*this">
+						<view wx:for="{{mpaContentUtils.cutRemarks(mpaContents[currentMpaContentIndex].remarks, mpaContents[currentMpaContentIndex].content)}}" wx:key="*this">
 							<text selectable>{{item}}</text>
 						</view>
 					</view>
