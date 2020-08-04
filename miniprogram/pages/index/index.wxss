@@ -57,7 +57,7 @@
 }
 
 .tag{
-  background: #bbb;
+  background: #ccc;
   padding: 0 15px;
   border-radius: 15px;
   margin-right: 10px;
