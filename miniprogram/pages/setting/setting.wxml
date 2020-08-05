@@ -19,7 +19,7 @@
       </view>
       <view class="groups">
         <view wx:for="{{groups}}" wx:key="_id" class="flex-between group" wx:if="{{item.category == category}}">
-          <navigator url="/pages/setting/group?groupId={{item._id}}" class="nav-none-bg">
+          <navigator url="/pages/setting/group?groupId={{item._id}}">
             <view class="group-name">{{item.name}}</view>
             <view class="not-importent mpa-count">{{numberUtils.toThousands(item.count)||'不确定'}}</view>
           </navigator>
