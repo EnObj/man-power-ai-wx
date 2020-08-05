@@ -11,7 +11,7 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
 
-  const groups = event.groups || ['tangshi-300']
+  const groups = event.groups || ['tangshi-300','gupiao']
 
   const res = await db.collection('mpa_content_group').where({
     _id: db.command.in(groups)
