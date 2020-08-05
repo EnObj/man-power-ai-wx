@@ -65,3 +65,7 @@
 .nav-none-bg:hover{
   background: none;
 }
+
+.active-hover:hover{
+  background: #eee;
+}

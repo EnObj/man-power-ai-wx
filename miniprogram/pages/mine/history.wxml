@@ -6,7 +6,7 @@
 	<view wx:for="{{historys}}" wx:key="_id">
 		<view  class="history padding-box flex-between">
 			<view class="history-target">
-				<view class="no-wrap mpa-content-content" bindtap="tapHistory" data-history="{{item}}">{{item.content.content}}</view>
+				<view class="no-wrap mpa-content-content active-hover" bindtap="tapHistory" data-history="{{item}}">{{item.content.content}}</view>
         <view class="flex-start center-line">
 					<view class="no-wrap answer">{{item.answer}}</view>
 				</view>

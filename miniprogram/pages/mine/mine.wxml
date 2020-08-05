@@ -6,7 +6,7 @@
 	<view wx:for="{{collects}}" wx:key="_id">
 		<view  class="collect padding-box flex-between">
 			<view class="collect-target">
-				<view class="no-wrap mpa-content-content" bindtap="tapCollect" data-collect="{{item}}">{{item.content.content}}</view>
+				<view class="no-wrap mpa-content-content active-hover" bindtap="tapCollect" data-collect="{{item}}">{{item.content.content}}</view>
         <view class="content-remarks not-importent" wx:if="{{item.content.remarks.length}}">
           <view wx:for="{{item.content.remarks}}" wx:key="*this" class="no-wrap">
             <text>{{item}}</text>
