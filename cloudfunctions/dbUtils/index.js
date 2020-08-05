@@ -11,13 +11,13 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
 
-  const groups = event.groups || ['turing']
+  const groups = event.groups || ['tangshi-300']
 
   const res = await db.collection('mpa_content_group').where({
     _id: db.command.in(groups)
   }).get()
 
-  writeToJsonFile(res.data, 'patch/20200804/groups')
+  writeToJsonFile(res.data, 'patch/20200805/groups')
 }
 
 function writeToJsonFile(list, fileName) {
