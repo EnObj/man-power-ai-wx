@@ -30,3 +30,11 @@
 .mpa-count{
   font-size: 12px;
 }
+
+.advice{
+  padding: 20px 15px 0;
+}
+
+.advice-text{
+  margin-right: 10px;
+}

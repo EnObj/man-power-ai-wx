@@ -30,6 +30,12 @@
       </view>
     </view>
   </view>
+  <view class="flex-between advice">
+    <view class="not-importent advice-text">没有找到喜欢的单词本？</view>
+    <view>
+      <button type="primary" open-type="feedback" size="mini">点我建议</button>
+    </view>
+  </view>
 </view>
 <view class="bg">
 	<image src="./../../image/groups.png" class="bg-img" mode="aspectFill"></image>
