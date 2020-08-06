@@ -16,17 +16,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    db.collection('mpa_content').doc(options.contentId).get().then(res=>{
+    this.getMpaContent(options.contentId).then(mpaContent=>{
       this.setData({
-        mpaContent: res.data
+        mpaContent: mpaContent
       })
       // 加载组信息
-      mpaUtils.getOneGroupById(db, res.data.group).then(group=>{
+      mpaUtils.getOneGroupById(db, mpaContent.group).then(group=>{
         this.setData({
           group: group
         })
       })
     })
+  },
+
+  getMpaContent(id){
+    // 先检查上下文
+    const mpaContent = getApp().globalData.tappedMpaContent
+    if(mpaContent && mpaContent._id == id){
+      return Promise.resolve(mpaContent)
+    }
+    return db.collection('mpa_content').doc(id).get()
   },
 
   // 收藏到我的页签

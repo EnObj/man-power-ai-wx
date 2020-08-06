@@ -306,6 +306,8 @@ Page({
         const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
         // 存档的跳转到详情页
         if(mpaContent._id){
+          // 缓存这个词条
+          getApp().globalData.tappedMpaContent = mpaContent
           wx.navigateTo({
             url: '/pages/index/content?contentId=' + mpaContent._id,
           })
