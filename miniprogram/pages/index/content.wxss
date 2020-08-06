@@ -24,4 +24,5 @@ image{
   color:#fff;
   flex: none;
   padding: 3px 5px;
+  margin-right: 10px;
 }

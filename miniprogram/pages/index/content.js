@@ -1,4 +1,5 @@
 const db = wx.cloud.database()
+const mpaUtils = require('./../../utils/mpaUtils.js')
 
 // miniprogram/pages/index/content.js
 Page({
@@ -7,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mpaContent: null
+    mpaContent: null,
+    group: null
   },
 
   /**
@@ -17,6 +19,12 @@ Page({
     db.collection('mpa_content').doc(options.contentId).get().then(res=>{
       this.setData({
         mpaContent: res.data
+      })
+      // 加载组信息
+      mpaUtils.getOneGroupById(db, res.data.group).then(group=>{
+        this.setData({
+          group: group
+        })
       })
     })
   },

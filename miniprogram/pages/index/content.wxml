@@ -11,13 +11,13 @@
     <view wx:if="{{mpaContent.image}}" class="image" bindtap="tapImage">
       <image src="{{mpaContent.image}}" mode="widthFix"></image>
     </view>
-    <view class="not-importent ref-content link flex-start" wx:if="{{mpaContent.link}}" bindtap="tapLink">
-      <view class="link-tap">
+    <view class="not-importent ref-content link flex-start" wx:if="{{mpaContent}}">
+      <navigator class="not-importent" url="/pages/setting/group?groupId={{mpaContent.group}}" wx:if="{{group}}" style="margin-right:10px;">
+        @{{group.name}}
+      </navigator>
+      <view class="link-tap" wx:if="{{mpaContent.link}}" bindtap="tapLink">
         原文
       </view>
-      <!-- <view style="margin-left:5px;flex: auto;" class="no-wrap">
-        <text>{{mpaContent.link}}</text>
-      </view> -->
     </view>
   </view>
 </view>

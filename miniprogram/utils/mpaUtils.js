@@ -40,6 +40,21 @@ module.exports = {
       saveGroupsToCache(groups)
       return groups
     })
+  },
+  getOneGroupById: (db, groupId)=>{
+    // 先从缓存捞
+    const cache = wx.getStorageSync('all_groups')
+    if(cache){
+      var group = cache.list.find(group=>{
+        return group._id == groupId
+      })
+    }
+    if(group){
+      return Promise.resolve(group)
+    }
+    return db.collection('mpa_content_group').doc(groupId).get().then(res=>{
+      return res.data
+    })
   }
 }
 
