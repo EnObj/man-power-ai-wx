@@ -58,7 +58,8 @@
 
 .tag{
   background: #ccc;
-  padding: 0 15px;
+  padding: 5px 15px;
   border-radius: 15px;
   margin-right: 10px;
+  color: #fff;
 }
