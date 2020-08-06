@@ -19,6 +19,9 @@ module.exports = {
         result.unshift(res.data)
         return result
       })
+    }, err=>{
+      console.log('出错了')
+      return []
     })
   },
   loadAllGroup: (db)=>{
