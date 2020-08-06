@@ -159,6 +159,14 @@ Page({
         })
       },
       condition: true
+    },{
+      name: '关于',
+      callback() {
+        wx.navigateTo({
+          url: '/pages/about/about',
+        })
+      },
+      condition: true
     }])
   },
 
