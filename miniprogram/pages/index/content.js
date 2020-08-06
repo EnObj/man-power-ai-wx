@@ -35,7 +35,9 @@ Page({
     if(mpaContent && mpaContent._id == id){
       return Promise.resolve(mpaContent)
     }
-    return db.collection('mpa_content').doc(id).get()
+    return db.collection('mpa_content').doc(id).get().then(res=>{
+      return res.data
+    })
   },
 
   // 收藏到我的页签
