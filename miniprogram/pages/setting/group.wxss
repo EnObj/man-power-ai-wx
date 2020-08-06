@@ -1,7 +1,7 @@
 /* miniprogram/pages/setting/group.wxss */
 .search{
   margin: 0 30px;
-  border: 2px #bbb solid;
+  border: 2px #aaa solid;
   background: none;
 }
 
