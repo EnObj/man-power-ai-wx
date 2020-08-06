@@ -180,7 +180,7 @@ Page({
   tapLink(){
     const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
     wx.showModal({
-      content: '小程序不支持访问此网页，请使用浏览器打开（点击“确认”将自动拷贝原文网址到粘贴板）。',
+      content: '小程序不支持访问网页，请使用浏览器打开此网址（点击“确认”将自动拷贝原文网址到粘贴板）。',
       confirmColor: '#07c160',
       success(res){
         if(res.confirm){
