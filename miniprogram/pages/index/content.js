@@ -22,9 +22,19 @@ Page({
   },
 
   tapLink(){
-    wx.setClipboardData({
-      data: this.data.mpaContent.link,
+    const page = this
+    wx.showModal({
+      content: '小程序不支持访问网页，请使用浏览器打开此网址（点击“确认”将自动拷贝原文网址到粘贴板）。',
+      confirmColor: '#07c160',
+      success(res){
+        if(res.confirm){
+          wx.setClipboardData({
+            data: page.data.mpaContent.link,
+          })
+        }
+      }
     })
+    
   },
 
   tapImage(){

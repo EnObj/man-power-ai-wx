@@ -18,3 +18,10 @@
 image{
   width: 100%;
 }
+.link-tap{
+  background: #576b95;
+  border-radius: 5px;
+  color:#fff;
+  flex: none;
+  padding: 3px 5px;
+}

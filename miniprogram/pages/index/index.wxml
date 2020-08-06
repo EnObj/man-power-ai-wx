@@ -18,10 +18,10 @@
 							<image src="{{mpaContents[currentMpaContentIndex].image}}" hidden="{{true}}"></image>
 							<text space="nbsp"> 附图</text>
 						</view>
-						<view class="tag link flex-start" wx:if="{{mpaContents[currentMpaContentIndex].link}}" bindtap="tapLink">
+						<!-- <view class="tag link flex-start" wx:if="{{mpaContents[currentMpaContentIndex].link}}" bindtap="tapLink">
 							<mp-icon icon="link" color="white" size="{{22}}"></mp-icon>
 							<text space="nbsp"> 原文</text>
-						</view>
+						</view> -->
 					</view>
 				</view>
 			</view>

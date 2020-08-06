@@ -12,12 +12,12 @@
       <image src="{{mpaContent.image}}" mode="widthFix"></image>
     </view>
     <view class="not-importent ref-content link flex-start" wx:if="{{mpaContent.link}}" bindtap="tapLink">
-      <view>
-        <mp-icon icon="link" color="#576b95" size="{{18}}"></mp-icon>
+      <view class="link-tap">
+        原文
       </view>
-      <view style="margin-left:5px;">
+      <!-- <view style="margin-left:5px;flex: auto;" class="no-wrap">
         <text>{{mpaContent.link}}</text>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>
