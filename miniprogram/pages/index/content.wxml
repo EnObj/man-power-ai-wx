@@ -12,12 +12,24 @@
       <image src="{{mpaContent.image}}" mode="widthFix"></image>
     </view>
     <view class="not-importent ref-content link flex-start" wx:if="{{mpaContent}}">
-      <navigator class="not-importent" url="/pages/setting/group?groupId={{mpaContent.group}}" wx:if="{{group}}" style="margin-right:10px;">
-        @{{group.name}}
-      </navigator>
       <view class="link-tap" wx:if="{{mpaContent.link}}" bindtap="tapLink">
         原文
       </view>
     </view>
+  </view>
+</view>
+
+<view class="menu-area">
+  <view>
+    <button type="primary" bindtap="collect">
+      <!-- <mp-icon icon="star" type="field" color="white" size="{{30}}" wx:if="{{mpaContent.isCollect}}"></mp-icon>
+      <mp-icon icon="star" size="{{30}}" color="white" wx:else></mp-icon> -->
+      {{mpaContent.isCollect?'已收藏':'收藏'}}
+    </button>
+  </view>
+  <view class="group abs-center" wx:if="{{group}}">
+    <navigator class="not-importent abs-center-content ref-content" url="/pages/setting/group?groupId={{mpaContent.group}}">
+      @{{group.name}}
+    </navigator>
   </view>
 </view>
