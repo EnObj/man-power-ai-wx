@@ -1,5 +1,6 @@
 const rememberDay = require('./remeber-day.js')
 const earthPeople = require('./earth-people.js')
+const crawlerWenwu = require('./crawler_wenwu.js')
 
 module.exports = {
   count(groups) {
@@ -44,7 +45,7 @@ module.exports = {
 
 // 得到有资格参与摇号的组
 function getProviders(groups) {
-  const allGroups = [rememberDay, earthPeople]
+  const allGroups = [rememberDay, earthPeople, crawlerWenwu]
   if(groups && groups.length){
     return allGroups.filter(provider => {
       return groups.includes(provider.getGroupName())

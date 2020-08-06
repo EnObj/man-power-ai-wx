@@ -19,7 +19,6 @@
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
 		"compileHotReLoad": false,
-		"useMultiFrameRuntime": true,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
@@ -29,7 +28,8 @@
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": true,
 		"packNpmManually": false,
-		"packNpmRelationList": []
+		"packNpmRelationList": [],
+		"useMultiFrameRuntime": true
 	},
 	"appid": "wxad0d71f7b6dbfc7d",
 	"projectname": "man-power-ai-wx",
