@@ -62,6 +62,10 @@ Page({
   },
 
   updateIndex(index){
+    // 超出了范围，自动形成环
+    if(index >= this.data.mpaContents.length){
+      index = 0
+    }
     this.setData({
       currentMpaContentIndex: index
     })
