@@ -62,11 +62,11 @@
   color: #09bb07;
 }
 
-.nav-none-bg:hover{
+.nav-none-bg:active{
   background: none;
 }
 
-.active-hover:hover{
+.active-hover:active{
   background: #eee;
 }
 
