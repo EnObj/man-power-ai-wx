@@ -82,5 +82,5 @@
 .bg-img{
   width: 100vw;
   height: 100vh;
-  opacity: 0.3;
+  opacity: 0.2;
 }
