@@ -87,5 +87,5 @@
 	</view>
 </view>
 <view class="bg">
-	<image src="./../../image/index.png" class="bg-img" mode="aspectFill" style="transform:rotateY(180deg);"></image>
+	<image src="./../../image/index.png" class="bg-img" mode="aspectFill"></image>
 </view>
