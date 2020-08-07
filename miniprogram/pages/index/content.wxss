@@ -9,10 +9,10 @@
   /* text-align: center; */
 }
 .image{
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .link{
-  padding: 20px 0;
+  padding: 15px 0;
   word-break: break-all;
 }
 image{
