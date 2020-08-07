@@ -21,9 +21,7 @@
 
 <view class="menu-area">
   <view>
-    <button type="primary" bindtap="collect">
-      <!-- <mp-icon icon="star" type="field" color="white" size="{{30}}" wx:if="{{mpaContent.isCollect}}"></mp-icon>
-      <mp-icon icon="star" size="{{30}}" color="white" wx:else></mp-icon> -->
+    <button type="primary" bindtap="collect" plain="{{!mpaContent.isCollect}}">
       {{mpaContent.isCollect?'已收藏':'收藏'}}
     </button>
   </view>
