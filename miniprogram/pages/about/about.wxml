@@ -8,7 +8,7 @@
     </view>
   </view>
   <view class="thanks">
-    特别感谢：<text class="thanks-content ref-content">https://ls.graphics/</text><text space="nbsp" class="not-importent"> 提供设计素材。</text>
+    特别感谢：<text class="thanks-content ref-content">https://ls.graphics/</text><text space="nbsp" class="not-importent"> 提供背景素材。</text>
   </view>
   <view class="feedback">
     <button open-type="feedback" type="primary">问题反馈/建议</button>
