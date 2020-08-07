@@ -33,7 +33,7 @@
   <view class="flex-between advice">
     <view class="not-importent advice-text">没有找到喜欢的单词本？</view>
     <view>
-      <button type="primary" open-type="feedback" size="mini">点我建议</button>
+      <button type="primary" open-type="feedback" size="mini" plain>点我提建议</button>
     </view>
   </view>
 </view>
