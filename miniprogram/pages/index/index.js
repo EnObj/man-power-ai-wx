@@ -124,12 +124,17 @@ Page({
 
   // 展示更多菜单：设置范围，我的收藏等
   showMoreMenu() {
-    // 当前content
-    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
-
+    
     const page = this
 
     wxApiUtils.showActions([{
+      name: '打开词条',
+      callback() {
+        page.openContent()
+      },
+      condition: true
+    },
+    {
       name: '我的收藏',
       callback() {
         wx.navigateTo({
@@ -303,23 +308,27 @@ Page({
     // 检测双击事件
     if(this.lastTapContentTime){
       if(event.timeStamp-this.lastTapContentTime < 300){
-        const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
-        // 存档的跳转到详情页
-        if(mpaContent._id){
-          // 缓存这个词条
-          getApp().globalData.tappedMpaContent = mpaContent
-          wx.navigateTo({
-            url: '/pages/index/content?contentId=' + mpaContent._id,
-          })
-        }else{
-          wx.showToast({
-            title: `“${mpaContent.content}”未存档`,
-            icon: 'none'
-          })
-        }
+        this.openContent()
       }
     }
     this.lastTapContentTime = event.timeStamp
+  },
+
+  openContent(){
+    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    // 存档的跳转到详情页
+    if(mpaContent._id){
+      // 缓存这个词条
+      getApp().globalData.tappedMpaContent = mpaContent
+      wx.navigateTo({
+        url: '/pages/index/content?contentId=' + mpaContent._id,
+      })
+    }else{
+      wx.showToast({
+        title: `“${mpaContent.content}”未存档`,
+        icon: 'none'
+      })
+    }
   },
 
   /**
