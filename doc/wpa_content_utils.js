@@ -1,6 +1,7 @@
 const fs = require("fs")
 const http = require('http')
 const https = require('https')
+const iconv = require('iconv-lite')
 
 module.exports = {
   writeToJsonFile(list, fileName) {
@@ -45,5 +46,10 @@ module.exports = {
         })
       })
     })
+  },
+  iconvDecode(type) {
+    return function (gzipData) {
+      return Promise.resolve(iconv.decode(Buffer.from(gzipData, 'binary'), type))
+    }
   }
 }
