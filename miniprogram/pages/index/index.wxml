@@ -28,15 +28,16 @@
 			</view>
 		</view>
 		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
-			<view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect || autoPlayId}}">
+			<!-- <view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect || autoPlayId}}">
 				<button size="mini" type="default" bindtap="collect" style="background:none">
 					<mp-icon icon="star" type="field" color="gold" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}" type="field"></mp-icon>
 					<mp-icon icon="star" size="{{buttonSize}}" color="white" wx:else type="field"></mp-icon>
 				</button>
-			</view>
-			<view class="menu-item menu-share" hidden="{{mpaContents[currentMpaContentIndex].disableShare || autoPlayId}}">
-				<button size="mini" type="default" open-type="share" style="background:none">
-					<mp-icon icon="share" color="white" size="{{buttonSize}}" type="field"></mp-icon>
+			</view> -->
+			<view class="menu-item menu-like" hidden="{{autoPlayId}}">
+				<button size="mini" type="default" bindtap="saveImage" style="background:none">
+					<mp-icon icon="download" type="field" color="gold" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isSaved}}" type="field"></mp-icon>
+					<mp-icon icon="download" size="{{buttonSize}}" color="white" wx:else type="field"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-history" hidden="{{autoPlayId}}">
@@ -45,6 +46,11 @@
 						<mp-icon icon="time" color="white" size="{{buttonSize}}" type="field"></mp-icon>
 					</button>
 				</navigator>
+			</view>
+			<view class="menu-item menu-share" hidden="{{mpaContents[currentMpaContentIndex].disableShare || autoPlayId}}">
+				<button size="mini" type="default" open-type="share" style="background:none">
+					<mp-icon icon="share" color="white" size="{{buttonSize}}" type="field"></mp-icon>
+				</button>
 			</view>
 			<view class="menu-item menu-more" hidden="{{autoPlayId}}">
 				<button size="mini" type="default" bindtap="showMoreMenu" style="background:none">

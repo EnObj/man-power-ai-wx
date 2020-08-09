@@ -141,7 +141,7 @@ Page({
           url: '/pages/mine/mine',
         })
       },
-      condition: true
+      condition: false
     },
     {
       name: '播放',
@@ -221,6 +221,74 @@ Page({
     }).then(res=>{
       wx.showToast({
         title: `已收藏`
+      })
+    })
+  },
+
+  saveImage(){
+    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    const page = this
+    // 验证授权
+    wx.authorize({
+      scope: 'scope.writePhotosAlbum',
+      success(res){
+        wx.showLoading({
+          title: '正在处理',
+        })
+        wx.cloud.callFunction({
+          name: 'downloadHttpResource',
+          data:{
+            urls: [mpaContent.image]
+          }
+        }).then(res=>{
+          page.saveCloudImageToPhotosAlbum(res.result, []).then(res=>{
+            wx.showToast({
+              title: '已保存到相册',
+            })
+          })
+        }).catch(res=>{
+          console.log(res)
+          wx.hideLoading({
+            complete: (res) => {
+              wx.showModal({
+                content: '抱歉，图片保存失败，请稍后重试或提交反馈'
+              })
+            },
+          })
+        })
+      },
+      fail(){
+        wx.hideLoading({
+          complete: (res) => {
+            wx.showModal({
+              title: '保存失败',
+              content: '请点击右上角进入设置，打开相册访问权限后重试'
+            })
+          },
+        })
+        return Promise.reject()
+      }
+    })
+  },
+
+  saveCloudImageToPhotosAlbum(imgFileIds, finishedImgs){
+    if(!imgFileIds.length){
+      return Promise.resolve()
+    }
+    wx.showLoading({
+      title: `正在保存：${finishedImgs.length+1}/${imgFileIds.length + finishedImgs.length}`,
+    })
+    const fileId = imgFileIds.pop()
+    return wx.cloud.downloadFile({
+      fileID: fileId
+    }).then(res=>{
+      // 返回临时文件路径
+      console.log(res)
+      return wx.saveImageToPhotosAlbum({
+        filePath: res.tempFilePath
+      }).then(res=>{
+        finishedImgs.push(fileId)
+        return this.saveCloudImageToPhotosAlbum(imgFileIds, finishedImgs)
       })
     })
   },
