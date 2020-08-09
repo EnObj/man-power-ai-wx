@@ -1,31 +1,9 @@
 <wxs module="mpaContentUtils" src="./../../wxs/mpaContent.wxs"></wxs>
 <view class="main" bindtouchstart="startTouch" bindtouchend="endTouch">
 	<view class="mpa-content">
-		<scroll-view scroll-y scoll-x style="height:75vh;">
-			<view class="abs-center mpa-content-content-area" bindtap="tapContent">
-				<view class="abs-center-content" style="padding:10px 0px;">
-					<view class="mpa-content-content" style="font-size:{{groupMap[mpaContents[currentMpaContentIndex].group].contentStyle.fontSize||35}}px;">
-						<text selectable>{{mpaContents[currentMpaContentIndex].content}}</text>
-					</view>
-					<view class="content-remarks not-importent" wx:if="{{mpaContents[currentMpaContentIndex].remarks.length}}">
-						<view wx:for="{{mpaContentUtils.cutRemarks(mpaContents[currentMpaContentIndex].remarks, mpaContents[currentMpaContentIndex].content)}}" wx:key="*this">
-							<text selectable>{{item}}</text>
-						</view>
-					</view>
-					<view class="tags flex-start">
-						<view wx:if="{{mpaContents[currentMpaContentIndex].image}}" class="tag image" bindtap="tapImage">
-							<mp-icon icon="album" color="white" size="{{22}}"></mp-icon>
-							<image src="{{mpaContents[currentMpaContentIndex].image}}" hidden="{{true}}"></image>
-							<text space="nbsp"> 附图</text>
-						</view>
-						<!-- <view class="tag link flex-start" wx:if="{{mpaContents[currentMpaContentIndex].link}}" bindtap="tapLink">
-							<mp-icon icon="link" color="white" size="{{22}}"></mp-icon>
-							<text space="nbsp"> 原文</text>
-						</view> -->
-					</view>
-				</view>
-			</view>
-		</scroll-view>
+		<view class="image-target" bindtap="tapImage">
+			<image src="{{mpaContents[currentMpaContentIndex].image}}" mode="aspectFill"></image>
+		</view>
 		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;">
 			<navigator class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}" url="/pages/setting/group?groupId={{mpaContents[currentMpaContentIndex].group}}">
 				@{{groupMap[mpaContents[currentMpaContentIndex].group].name}}
@@ -52,25 +30,25 @@
 		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
 			<view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect || autoPlayId}}">
 				<button size="mini" type="default" bindtap="collect" style="background:none">
-					<mp-icon icon="star" type="field" color="gray" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
-					<mp-icon icon="star" size="{{buttonSize}}" color="gray" wx:else></mp-icon>
+					<mp-icon icon="star" type="field" color="gold" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}" type="field"></mp-icon>
+					<mp-icon icon="star" size="{{buttonSize}}" color="white" wx:else type="field"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-share" hidden="{{mpaContents[currentMpaContentIndex].disableShare || autoPlayId}}">
 				<button size="mini" type="default" open-type="share" style="background:none">
-					<mp-icon icon="share" color="gray" size="{{buttonSize}}"></mp-icon>
+					<mp-icon icon="share" color="white" size="{{buttonSize}}" type="field"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-history" hidden="{{autoPlayId}}">
 				<navigator url="/pages/mine/history" style="display:inline-block" class="nav-none-bg">
 					<button size="mini" type="default" style="background:none">
-						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
+						<mp-icon icon="time" color="white" size="{{buttonSize}}" type="field"></mp-icon>
 					</button>
 				</navigator>
 			</view>
 			<view class="menu-item menu-more" hidden="{{autoPlayId}}">
 				<button size="mini" type="default" bindtap="showMoreMenu" style="background:none">
-					<mp-icon icon="more2" color="gray" size="{{buttonSize}}"></mp-icon>
+					<mp-icon icon="more2" color="white" size="{{buttonSize}}" type="field"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-next" hidden="{{autoPlayId}}">
@@ -85,7 +63,4 @@
 			</view>
 		</view>
 	</view>
-</view>
-<view class="bg">
-	<image src="./../../image/index.png" class="bg-img" mode="aspectFill"></image>
 </view>
