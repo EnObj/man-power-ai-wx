@@ -4,22 +4,24 @@
 <wxs src="./../../wxs/time.wxs" module="timeUtils"/>
 <view class="historys">
 	<view wx:for="{{historys}}" wx:key="_id">
-		<view  class="history padding-box flex-between">
-			<view class="history-target">
-				<view class="no-wrap mpa-content-content active-hover" bindtap="tapImage" data-history="{{item}}">{{item.content.content}}</view>
-        <view class="flex-start center-line">
-					<view class="no-wrap answer">{{item.answer}}</view>
+		<view  class="history padding-box">
+			<view class="flex-between">
+				<view class="history-target">
+					<view class="no-wrap mpa-content-content active-hover" bindtap="tapImage" data-history="{{item}}">{{item.content.content}}</view>
+					<view class="flex-start center-line">
+						<view class="no-wrap answer">{{item.answer}}</view>
+					</view>
+					<view class="flex-start">
+						<navigator class="not-importent content-group" wx:if="{{item.content.group}}" url="/pages/setting/group?groupId={{item.content.group}}">@{{groupMap[item.content.group].name||'未知'}}</navigator>
+						<view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
+					</view>
 				</view>
-				<view class="flex-start">
-					<navigator class="not-importent content-group" wx:if="{{item.content.group}}" url="/pages/setting/group?groupId={{item.content.group}}">@{{groupMap[item.content.group].name||'未知'}}</navigator>
-          <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
-				</view>
-				<view class="image-target" bindtap="tapImage" data-history="{{item}}" wx:if="{{item.content.image}}">
-					<image src="{{item.content.image}}" mode="widthFix"></image>
+				<view class="history-mgr">
+					<button type="warn" size="mini" bindtap="deleteHistory" data-history-id="{{item._id}}" data-history-index="{{index}}">删除</button>
 				</view>
 			</view>
-			<view class="history-mgr">
-				<button type="warn" size="mini" bindtap="deleteHistory" data-history-id="{{item._id}}" data-history-index="{{index}}">删除</button>
+			<view class="image-target" bindtap="tapImage" data-history="{{item}}" wx:if="{{item.content.image}}">
+				<image src="{{item.content.image}}" mode="widthFix"></image>
 			</view>
 		</view>
 	</view>
