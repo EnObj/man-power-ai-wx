@@ -18,7 +18,7 @@ function loadItems(page = 1, list = []) {
     })
     console.log(list.length)
     // 递归
-    if (page < 1) {
+    if (page < 5) {
       loadItems(++page, list)
     } else {
       // 加载套图
@@ -42,6 +42,8 @@ function loadImages(list) {
     const imgList = $('#scroll > li').map((index, ele)=>{
       return $(ele).find('a').attr('href')
     }).get()
+    // 获取高清封面
+    item.image = $('#pic-meinv > a > img').attr('src')
     return loadImage(imgList).then(images=>{
       item.images = images
       if (list.length) {
