@@ -132,7 +132,7 @@ Page({
       callback() {
         page.openContent()
       },
-      condition: true
+      condition: false
     },
     {
       name: '我的收藏',
@@ -178,7 +178,7 @@ Page({
   tapImage(){
     const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
     wx.previewImage({
-      urls: [mpaContent.image],
+      urls: [mpaContent.image, ...(mpaContent.images||[])],
     })
   },
 
