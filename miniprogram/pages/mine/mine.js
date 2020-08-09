@@ -76,6 +76,13 @@ Page({
     }
   },
 
+  tapImage(event){
+    const collect = event.currentTarget.dataset.collect
+    wx.previewImage({
+      urls: [collect.content.image, ...(collect.content.images||[])],
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

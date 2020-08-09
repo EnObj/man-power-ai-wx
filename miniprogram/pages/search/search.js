@@ -60,6 +60,13 @@ Page({
     })
   },
 
+  tapImage(event){
+    const item = event.currentTarget.dataset.item
+    wx.previewImage({
+      urls: [item.image, ...(item.images||[])],
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -2,9 +2,9 @@
 <view class="not-importent result-count" wx:if="{{count>3}}">找到相关结果{{numberUtils.toThousands(count)}}个</view>
 <view class="mpa-contents">
 	<view wx:for="{{mpaContents}}" wx:key="_id">
-		<navigator class="mpa-content padding-box flex-between" url="/pages/index/content?contentId={{item._id}}">
-			<view class="mpa-content-target" bindtap="tapMpaContent" data-mpa-content="{{item}}">
-				<view class="mpa-content-content">
+		<view class="mpa-content padding-box flex-between">
+			<view class="mpa-content-target">
+				<view class="mpa-content-content active-hover" bindtap="tapImage" data-item="{{item}}">
           <text>{{item.contents[0]}}</text>
           <text class="keyword">{{keyword}}</text>
           <text>{{item.contents[1]}}</text>
@@ -14,8 +14,11 @@
             <text>{{item}}</text>
           </view>
         </view>
+        <view class="image-target" bindtap="tapImage" data-item="{{item}}" wx:if="{{item.image}}">
+					<image src="{{item.image}}" mode="widthFix"></image>
+				</view>
 			</view>
-		</navigator>
+		</view>
 	</view>
   <view wx:if="{{loaded && !mpaContents.length}}" class="empty-tip abs-center">
     <view class="abs-center-content not-importent">空空如也</view>

@@ -6,7 +6,7 @@
 	<view wx:for="{{collects}}" wx:key="_id">
 		<view  class="collect padding-box flex-between">
 			<view class="collect-target">
-				<view class="no-wrap mpa-content-content active-hover" bindtap="tapCollect" data-collect="{{item}}">{{item.content.content}}</view>
+				<view class="no-wrap mpa-content-content active-hover" bindtap="tapImage" data-collect="{{item}}">{{item.content.content}}</view>
         <view class="content-remarks not-importent" wx:if="{{item.content.remarks.length}}">
           <view wx:for="{{item.content.remarks}}" wx:key="*this" class="no-wrap">
             <text>{{item}}</text>
@@ -16,9 +16,9 @@
 					<navigator class="not-importent content-group" wx:if="{{item.content.group}}" url="/pages/setting/group?groupId={{item.content.group}}">@{{groupMap[item.content.group].name||'未知'}}</navigator>
           <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
 				</view>
-        <!-- <view class="flex-start">
-          <view class="not-importent answer-time">{{timeUtils.formatPass(item.createTime)}}</view>
-        </view> -->
+        <view class="image-target" bindtap="tapImage" data-collect="{{item}}" wx:if="{{item.content.image}}">
+					<image src="{{item.content.image}}" mode="widthFix"></image>
+				</view>
 			</view>
 			<view class="collect-mgr">
 				<button type="warn" size="mini" bindtap="deleteCollect" data-collect-id="{{item._id}}" data-collect-index="{{index}}">删除</button>

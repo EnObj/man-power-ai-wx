@@ -18,3 +18,10 @@
   margin-left: 15px;
   flex: none;
 }
+.image-target{
+  width: 100%;
+  margin-top: 10px;
+}
+.image-target image{
+  width: 100%;
+}

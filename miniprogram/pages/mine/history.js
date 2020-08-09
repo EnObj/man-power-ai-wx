@@ -93,6 +93,13 @@ Page({
     }
   },
 
+  tapImage(event){
+    const history = event.currentTarget.dataset.history
+    wx.previewImage({
+      urls: [history.content.image, ...(history.content.images||[])],
+    })
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
