@@ -12,14 +12,14 @@
 <view class="main" wx:if="{{group}}">
   <view class="head">
     <view class="group-name">{{group.name}}</view>
-    <view class="group-count not-importent">词条数：{{numberUtils.toThousands(group.count)}}</view>
+    <view class="group-count not-importent">作品数：{{numberUtils.toThousands(group.count)}}</view>
   </view>
   <view class="search flex-between padding-box" bindtap="startFocusInp">
 		<view class="search-icon">
 			<mp-icon icon="search" size="25" color="gray" />
 		</view>
 		<view class="search-inp">
-			<input placeholder="在此单词本中搜索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  focus="{{focus}}" bindfocus="{{focusUtils.focus}}" bindblur="unfocus"/>
+			<input placeholder="在此图册中搜索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  focus="{{focus}}" bindfocus="{{focusUtils.focus}}" bindblur="unfocus"/>
 		</view>
 		<view class="clean-icon" bindtap="cleanKeyword" hidden="{{!keyword}}">
 			<mp-icon icon="close2" size="20" type="field" color="#ccc" />
@@ -40,7 +40,7 @@
   </view>
   <view class="menu-area abs-center" hidden="{{focus || keyword}}">
     <navigator url="/pages/index/index?group={{group._id}}" class="abs-center-content" open-type="reLaunch">
-      <view class="not-importent ref-content">随便刷一刷</view>
+      <view class="not-importent ref-content">随便看一看</view>
     </navigator>
   </view>
 </view>
