@@ -59,7 +59,7 @@
 			</view>
 			<view class="menu-item menu-next" hidden="{{autoPlayId}}">
 				<button size="mini" type="primary" disabled="{{mpaContents[currentMpaContentIndex].disableSkip && !mpaContents[currentMpaContentIndex].answer}}" bindtap="nextMpaContentBtnTap">
-					跳过-{{currentMpaContentIndex + 1}}
+					继续-{{currentMpaContentIndex + 1}}
 				</button>
 			</view>
 			<view class="menu-item menu-next" wx:if="{{autoPlayId}}">
