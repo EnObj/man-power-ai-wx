@@ -4,7 +4,7 @@
 	<view wx:for="{{mpaContents}}" wx:key="_id">
 		<view class="mpa-content padding-box flex-between">
 			<view class="mpa-content-target">
-				<view class="mpa-content-content active-hover" bindtap="tapImage" data-item="{{item}}">
+				<view class="mpa-content-content">
           <text>{{item.contents[0]}}</text>
           <text class="keyword">{{keyword}}</text>
           <text>{{item.contents[1]}}</text>

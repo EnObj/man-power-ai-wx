@@ -7,7 +7,7 @@
 		<view  class="history padding-box">
 			<view class="flex-between">
 				<view class="history-target">
-					<view class="no-wrap mpa-content-content active-hover" bindtap="tapImage" data-history="{{item}}">{{item.content.content}}</view>
+					<view class="no-wrap mpa-content-content">{{item.content.content}}</view>
 					<view class="flex-start center-line">
 						<view class="no-wrap answer">{{item.answer}}</view>
 					</view>
