@@ -71,6 +71,6 @@
 	</view>
 </view>
 
-<view class="bg" style="background:#000;">
-	<!-- <image src="./../../image/index.png" class="bg-img" mode="aspectFill"></image> -->
+<view class="bg">
+	<image src="./../../image/index.jpg" class="bg-img" mode="aspectFill" style="opacity: 0.8;"></image>
 </view>
