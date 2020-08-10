@@ -232,42 +232,56 @@ Page({
     wx.authorize({
       scope: 'scope.writePhotosAlbum',
       success(res){
-        wx.showLoading({
-          title: '正在处理',
-        })
-        wx.cloud.callFunction({
-          name: 'downloadHttpResource',
-          data:{
-            urls: [mpaContent.image]
-          }
-        }).then(res=>{
-          page.saveCloudImageToPhotosAlbum(res.result, []).then(res=>{
-            wx.showToast({
-              title: '已保存到相册',
-            })
-          })
-        }).catch(res=>{
-          console.log(res)
-          wx.hideLoading({
-            complete: (res) => {
-              wx.showModal({
-                content: '抱歉，图片保存失败，请稍后重试或提交反馈'
-              })
-            },
-          })
-        })
+        // 直接进入下载逻辑
+        page.downloadImages(mpaContent)
       },
       fail(){
-        wx.hideLoading({
-          complete: (res) => {
-            wx.showModal({
-              title: '保存失败',
-              content: '请点击右上角进入设置，打开相册访问权限后重试'
-            })
-          },
+        wx.showModal({
+          content: '此操作需要您打开相册访问权限',
+          success(res){
+            // 重新申请权限
+            if(res.confirm){
+              wx.openSetting({
+                success (res) {
+                  // 申请成功，下载
+                  console.log(res.authSetting)
+                  if(res.authSetting['scope.writePhotosAlbum']){
+                    page.downloadImages(mpaContent)
+                  }
+                }
+              })
+            }
+          }
         })
-        return Promise.reject()
       }
+    })
+  },
+
+  downloadImages(mpaContent){
+    const page = this
+    wx.showLoading({
+      title: '正在处理',
+    })
+    wx.cloud.callFunction({
+      name: 'downloadHttpResource',
+      data:{
+        urls: [mpaContent.image]
+      }
+    }).then(res=>{
+      page.saveCloudImageToPhotosAlbum(res.result, []).then(res=>{
+        wx.showToast({
+          title: '已保存到相册',
+        })
+      })
+    }).catch(res=>{
+      console.log(res)
+      wx.hideLoading({
+        complete: (res) => {
+          wx.showModal({
+            content: '抱歉，图片保存失败，请稍后重试或提交反馈'
+          })
+        },
+      })
     })
   },
 

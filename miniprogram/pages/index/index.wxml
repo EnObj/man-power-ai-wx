@@ -34,7 +34,7 @@
 					<mp-icon icon="star" size="{{buttonSize}}" color="white" wx:else type="field"></mp-icon>
 				</button>
 			</view> -->
-			<view class="menu-item menu-like" hidden="{{autoPlayId}}">
+			<view class="menu-item menu-download" hidden="{{!mpaContents[currentMpaContentIndex].image || autoPlayId}}">
 				<button size="mini" type="default" bindtap="saveImage" style="background:none">
 					<mp-icon icon="download" type="field" color="gold" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isSaved}}" type="field"></mp-icon>
 					<mp-icon icon="download" size="{{buttonSize}}" color="white" wx:else type="field"></mp-icon>
