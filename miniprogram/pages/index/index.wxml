@@ -4,7 +4,7 @@
 		<view class="image-target" bindtap="tapImage">
 			<image src="{{mpaContents[currentMpaContentIndex].image}}" mode="aspectFill"></image>
 		</view>
-		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;">
+		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;" wx:if="{{mpaContents[currentMpaContentIndex]}}">
 			<navigator class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}" url="/pages/setting/group?groupId={{mpaContents[currentMpaContentIndex].group}}">
 				@{{groupMap[mpaContents[currentMpaContentIndex].group].name}}
 			</navigator>
