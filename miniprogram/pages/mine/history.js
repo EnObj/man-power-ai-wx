@@ -19,11 +19,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadGroups()
+    this.loadGroups().then(res=>{
+      this.loadHistory()
+    })
   },
 
   loadGroups(){
-    mpaUtils.loadAllGroup(db).then(groups=>{
+    return mpaUtils.loadAllGroup(db).then(groups=>{
       this.setData({
         groupMap: groups.reduce((map,group)=>{
           map[group._id] = group
@@ -44,7 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.loadHistory()
+    
   },
 
   loadHistory(historys = []) {
