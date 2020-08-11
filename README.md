@@ -9,17 +9,17 @@
 
 ## 项目截图
 
-![首页](https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E9%A6%96%E9%A1%B5.PNG)
+<img src="https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E9%A6%96%E9%A1%B5.PNG" width="30%" alt="首页">
 
-![单词本](https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E5%8D%95%E8%AF%8D%E6%9C%AC.PNG)
+<img src="https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E5%8D%95%E8%AF%8D%E6%9C%AC.PNG" width="30%" alt="单词本">
 
-![历史记录](https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95.PNG)
+<img src="https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95.PNG" width="30%" alt="历史记录">
 
-![收藏](https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E6%94%B6%E8%97%8F.PNG)
+<img src="https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E6%94%B6%E8%97%8F.PNG" width="30%" alt="收藏">
 
-![设置页](https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E7%AE%A1%E7%90%86%E9%A1%B5.PNG)
+<img src="https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E7%AE%A1%E7%90%86%E9%A1%B5.PNG" width="30%" alt="设置页">
 
-![搜索结果](https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C.PNG)
+<img src="https://7072-prod-qu44i-1302681016.tcb.qcloud.la/product_info/%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C.PNG" width="30%" alt="搜索结果">
 
 ## 线上体验
 
