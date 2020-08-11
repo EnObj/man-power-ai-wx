@@ -74,3 +74,9 @@
 <view class="bg">
 	<image src="./../../image/index.jpg" class="bg-img" mode="aspectFill" style="opacity: 0.8;"></image>
 </view>
+
+<view class="pre-load-images">
+	<view wx:for="{{mpaContents}}" wx:key="_id" wx:if="{{item.image}}">
+		<image src="{{item.image}}"></image>
+	</view>
+</view>

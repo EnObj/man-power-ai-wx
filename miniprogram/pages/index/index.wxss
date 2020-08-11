@@ -76,3 +76,11 @@
   text-shadow: 10px 10px 5px #FF0000;
   background: yellow;
 }
+
+.pre-load-images{
+  position: absolute;
+  z-index: -200;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+}
