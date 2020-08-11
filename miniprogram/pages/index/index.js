@@ -236,12 +236,6 @@ Page({
       this.nextMpaContent()
     })
     this.loadGroups()
-    // 监听键盘高度变化
-    wx.onKeyboardHeightChange(res => {
-      this.setData({
-        keyboardHeight: res.height
-      })
-    })
   },
 
   loadGroups(){
@@ -355,6 +349,15 @@ Page({
       // 重新加载group
       this.loadGroups()
     }
+
+    // 监听键盘高度变化
+    wx.onKeyboardHeightChange(this.onKeyboardHeightChange)
+  },
+
+  onKeyboardHeightChange(res){
+    this.setData({
+      keyboardHeight: res.height
+    })
   },
 
   /**
@@ -362,6 +365,8 @@ Page({
    */
   onHide: function () {
     this.stopAutoPlay()
+    // 取消监听键盘高度变化
+    wx.offKeyboardHeightChange(this.onKeyboardHeightChange)
   },
 
   /**
