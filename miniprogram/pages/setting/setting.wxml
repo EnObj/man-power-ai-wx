@@ -22,7 +22,7 @@
       </view>
     </view>
   </view>
-  <view class="flex-between advice">
+  <view class="flex-between advice" wx:if="{{groups.length}}">
     <view class="not-importent advice-text">没有找到喜欢的图册？</view>
     <view>
       <button type="primary" open-type="feedback" size="mini" plain>点我提建议</button>
