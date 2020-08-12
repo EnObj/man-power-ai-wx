@@ -1,6 +1,6 @@
 <wxs module="mpaContentUtils" src="./../../wxs/mpaContent.wxs"></wxs>
 <view class="main" bindtouchstart="startTouch" bindtouchend="endTouch">
-	<view class="mpa-content">
+	<view class="mpa-content" animation="{{mpaContentAnimation}}" bindtransitionend="finishedAnimation">
 		<scroll-view scroll-y scoll-x style="height:75vh;">
 			<view class="abs-center mpa-content-content-area" bindtap="tapContent">
 				<view class="abs-center-content" style="padding:10px 0px;">

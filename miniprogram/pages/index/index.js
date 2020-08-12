@@ -43,22 +43,51 @@ Page({
     }
     const outLocation = reverse ? windowHeight : -windowHeight
     // 出场动画
-    this.animate('.mpa-content', [{
-      translateY: 0, ease: 'ease-out'
-    },{
-      translateY: outLocation, ease: 'ease-out'
-    }], 300, function () {
+    this.mpaContentAnimate.translateY(outLocation).step()
+    this.setData({
+      mpaContentAnimation: this.mpaContentAnimate.export(),
+      mpaContentAnimationDirection: 'out',
+      reverse: !!reverse
+    })
+
+    // // 出场动画
+    // this.animate('.mpa-content', [{
+    //   translateY: 0, ease: 'ease-out'
+    // },{
+    //   translateY: outLocation, ease: 'ease-out'
+    // }], 300, function () {
+    //   // 切换索引
+    //   this.updateIndex(this.data.currentMpaContentIndex - outLocation / windowHeight)
+    //   // 入场动画
+    //   this.animate('.mpa-content', [{
+    //     translateY: -outLocation, ease: 'ease-out'
+    //   },{
+    //     translateY: 0, ease: 'ease-out'
+    //   }], 400, function(){
+    //     // this.clearAnimation('.mpa-content')
+    //   }.bind(this))
+    // }.bind(this))
+  },
+
+  finishedAnimation(event){
+    const windowHeight = Math.ceil(wx.getSystemInfoSync().windowHeight)
+    const outLocation = this.data.reverse ? windowHeight : -windowHeight
+    if(this.data.mpaContentAnimationDirection == 'out'){
+      this.setData({
+        mpaContentAnimation: this.mpaContentAnimate.export(),
+        mpaContentAnimationDirection: 'in'
+      })
       // 切换索引
       this.updateIndex(this.data.currentMpaContentIndex - outLocation / windowHeight)
+      
       // 入场动画
-      this.animate('.mpa-content', [{
-        translateY: -outLocation, ease: 'ease-out'
-      },{
-        translateY: 0, ease: 'ease-out'
-      }], 400, function(){
-        // this.clearAnimation('.mpa-content')
-      }.bind(this))
-    }.bind(this))
+      this.mpaContentAnimate.translateY(-outLocation).step({
+        duration: 1
+      }).translateY(0).step()
+      this.setData({
+        mpaContentAnimation: this.mpaContentAnimate.export()
+      })
+    }
   },
 
   updateIndex(index){
@@ -246,6 +275,10 @@ Page({
           return map
         }, {})
       })
+    })
+    this.mpaContentAnimate = wx.createAnimation({
+      timingFunction: 'ease-out',
+      duration: 300
     })
   },
 
