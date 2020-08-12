@@ -37,9 +37,14 @@ function loadRemark(list) {
     var remarks = []
     pinyins.each((index, item)=>{
       remarks.push($(item).text().trim())
-      remarks = remarks.concat(shiyis.eq(index).find('li').map((index, item)=>{
+      const lis = shiyis.eq(index).find('li').map((index, item)=>{
         return `${++index}：` + $(item).text().trim()
-      }).get())
+      }).get()
+      // 有可能只有一种释义
+      if(!lis.length){
+        lis.push(shiyis.eq(index).text().trim().substring(2)) 
+      }
+      remarks = remarks.concat(lis)
     })
     item.remarks = [
       $('body > main > div.zdict > div.res_c_center > div > div.entry_title > div > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td.z_bs2 > p:nth-child(3)').text().trim().replace(' ', '：'),
