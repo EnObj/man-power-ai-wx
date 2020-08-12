@@ -2,6 +2,7 @@ const fs = require("fs")
 const http = require('http')
 const https = require('https')
 const iconv = require('iconv-lite')
+const zlib = require('zlib')
 
 module.exports = {
   writeToJsonFile(list, fileName) {
@@ -51,5 +52,12 @@ module.exports = {
     return function (gzipData) {
       return Promise.resolve(iconv.decode(Buffer.from(gzipData, 'binary'), type))
     }
+  },
+  unGzip(gzipData) {
+    return new Promise((resolve, reject) => {
+      zlib.gunzip(Buffer.from(gzipData, 'binary'), (err, result) => {
+        resolve(result.toString())
+      })
+    })
   }
 }
