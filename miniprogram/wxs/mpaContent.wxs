@@ -18,5 +18,17 @@ module.exports = {
       }
     }
     return newRemarks;
+  },
+  filterDult: function(mpaContents){
+    var list = []
+    var keys = []
+    for(var i=0; i<mpaContents.length; i++){
+      var item = mpaContents[i]
+      if(keys.indexOf(item._id) < 0){
+        keys.push(item._id)
+        list.push(item)
+      }
+    }
+    return list
   }
 }

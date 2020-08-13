@@ -2,7 +2,7 @@
 <view class="main" bindtouchstart="startTouch" bindtouchend="endTouch">
 	<view class="mpa-content">
 		<view class="image-target" bindtap="tapImage">
-			<image src="{{mpaContents[currentMpaContentIndex].image}}" mode="aspectFill"></image>
+			<image src="{{mpaContents[currentMpaContentIndex].image}}" mode="aspectFill" bindload="imageLoaded"></image>
 		</view>
 		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;" wx:if="{{mpaContents[currentMpaContentIndex]}}">
 			<navigator class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}" url="/pages/setting/group?groupId={{mpaContents[currentMpaContentIndex].group}}">
@@ -75,8 +75,8 @@
 	<image src="./../../image/index.jpg" class="bg-img" mode="aspectFill" style="opacity: 0.8;"></image>
 </view>
 
-<view class="pre-load-images">
-	<view wx:for="{{mpaContents}}" wx:key="_id" wx:if="{{item.image}}">
+<view class="pre-load-images" wx:if="{{imageLoaded}}">
+	<view wx:for="{{mpaContentUtils.filterDult(mpaContents)}}" wx:key="_id" wx:if="{{item.image && index - currentMpaContentIndex <= 2 && index - currentMpaContentIndex >= -2}}">
 		<image src="{{item.image}}"></image>
 	</view>
 </view>

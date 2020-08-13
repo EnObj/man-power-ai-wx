@@ -13,7 +13,16 @@ Page({
     currentMpaContentIndex: -1,
     buttonSize: 35,
     groupMap: {},
-    keyboardHeight: 0
+    keyboardHeight: 0,
+    imageLoaded: false
+  },
+
+  imageLoaded(){
+    if(!this.data.imageLoaded){
+      this.setData({
+        imageLoaded: true
+      })
+    }
   },
 
   nextMpaContentBtnTap(){
