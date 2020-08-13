@@ -1,6 +1,6 @@
 <wxs module="mpaContentUtils" src="./../../wxs/mpaContent.wxs"></wxs>
 <view class="main" bindtouchstart="startTouch" bindtouchend="endTouch">
-	<view class="mpa-content">
+	<view class="mpa-content" animation="{{mpaContentAnimation}}" bindtransitionend="finishedAnimation">
 		<view class="image-target" bindtap="tapImage">
 			<image src="{{mpaContents[currentMpaContentIndex].image}}" mode="aspectFill" bindload="imageLoaded"></image>
 		</view>
