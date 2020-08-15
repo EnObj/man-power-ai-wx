@@ -92,12 +92,16 @@ Page({
         }
       })
     }else{
+      wx.showLoading({
+        title: '正在处理',
+      })
       mpaUtils.answer(db, {
         content: this.data.mpaContent,
         answer: answerValue,
         createTime: new Date()
       }).then(res=>{
         this.loadHistory(this.data.mpaContent._id)
+        wx.hideLoading()
       })
     }
   },
