@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/setting/setting",
     "pages/index/index",
+    "pages/setting/setting",
     "pages/about/about",
     "pages/search/search",
     "pages/mine/history",
