@@ -78,7 +78,10 @@ Page({
       // 加载打卡记录
       mpaUtils.getHistorysByGroup(db, group._id).then(answerList=>{
         this.setData({
-          answerList
+          answerList: answerList.sort((a, b)=>{
+            const radioOptions = a.contents[0].radioOptions
+            return radioOptions.indexOf(a._id) - radioOptions.indexOf(b._id)
+          })
         })
       })
       wx.hideNavigationBarLoading()
