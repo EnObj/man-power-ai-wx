@@ -22,7 +22,7 @@
           <navigator url="/pages/setting/group?groupId={{item._id}}">
             <view class="group-name">{{item.name}}</view>
             <view class="not-importent mpa-count">
-              <text wx:if="{{item.answerCount}}">{{numberUtils.toThousands(item.answerCount)}} / </text>
+              <text wx:if="{{item.answerCount}}">打卡{{numberUtils.toThousands(item.answerCount)}} / </text>
               <text>{{numberUtils.toThousands(item.count)||'不确定'}}</text>
             </view>
           </navigator>
