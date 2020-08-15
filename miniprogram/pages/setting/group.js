@@ -69,25 +69,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.options = options
     wx.showNavigationBarLoading()
     db.collection('mpa_content_group').doc(options.groupId||'daxue').get().then(res=>{
       const group = res.data
       this.setData({
         group: group
       })
-      // 加载打卡记录
-      mpaUtils.getHistorysByGroup(db, group._id).then(answerList=>{
-        this.setData({
-          answerList: answerList.sort((a, b)=>{
-            const radioOptions = a.contents[0].radioOptions
-            return radioOptions.indexOf(a._id) - radioOptions.indexOf(b._id)
-          })
-        })
-      })
       wx.hideNavigationBarLoading()
     })
     // 最近搜索
     this.loadKeywords()
+  },
+
+  loadAnswerList(){
+    mpaUtils.getHistorysByGroup(db, this.options.groupId).then(answerList=>{
+      this.setData({
+        answerList: answerList.sort((a, b)=>{
+          const radioOptions = a.contents[0].radioOptions
+          return radioOptions.indexOf(a._id) - radioOptions.indexOf(b._id)
+        })
+      })
+    })
   },
 
   loadKeywords(){
@@ -153,7 +156,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadAnswerList()
   },
 
   /**
