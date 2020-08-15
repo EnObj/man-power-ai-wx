@@ -55,6 +55,18 @@ module.exports = {
     return db.collection('mpa_content_group').doc(groupId).get().then(res=>{
       return res.data
     })
+  },
+  countHistoryGroupByGroup(db){
+    const $ = db.command.aggregate
+    return db.collection('mpa_user_history').aggregate().group({
+      _id: '$content.group',
+      count: $.sum(1)
+    }).limit(100).end().then(res=>{
+      return res.list.reduce((map, item)=>{
+        map[item._id] = item.count
+        return map
+      },{})
+    })
   }
 }
 

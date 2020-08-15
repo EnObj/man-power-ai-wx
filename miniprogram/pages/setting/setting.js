@@ -59,25 +59,31 @@ Page({
         selectedGroups = groups
         wx.setStorageSync('groups', selectedGroups)
       }
-      this.setData({
-        groups: groups.map(group=>{
-          group.checked = selectedGroups.some(selectedGroup=>{
-            return group._id == selectedGroup._id
-          })
-          group.category = group.category || '其他'
-          return group
-        }),
-        categorys: groups.reduce((categorys, group)=>{
-          const category = group.category
-          if(!categorys.includes(category)){
-            if(category == '其他'){
-              categorys.push(category)
-            }else{
-              categorys.unshift(category)
+      // 统计打卡记录
+      mpaUtils.countHistoryGroupByGroup(db).then(groupCountMap=>{
+        groups.forEach(group=>{
+          group.answerCount = groupCountMap[group._id] || 0
+        })
+        this.setData({
+          groups: groups.map(group=>{
+            group.checked = selectedGroups.some(selectedGroup=>{
+              return group._id == selectedGroup._id
+            })
+            group.category = group.category || '其他'
+            return group
+          }),
+          categorys: groups.reduce((categorys, group)=>{
+            const category = group.category
+            if(!categorys.includes(category)){
+              if(category == '其他'){
+                categorys.push(category)
+              }else{
+                categorys.unshift(category)
+              }
             }
-          }
-          return categorys
-        },[])
+            return categorys
+          },[])
+        })
       })
     })
 
