@@ -170,7 +170,7 @@ Page({
           url: '/pages/mine/mine',
         })
       },
-      condition: true
+      condition: false
     },
     {
       name: '播放',

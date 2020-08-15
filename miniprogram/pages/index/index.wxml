@@ -50,12 +50,12 @@
 			</view>
 		</view>
 		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
-			<view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect || autoPlayId}}">
+			<!-- <view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect || autoPlayId}}">
 				<button size="mini" type="default" bindtap="collect" style="background:none">
 					<mp-icon icon="star" type="field" color="gray" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
 					<mp-icon icon="star" size="{{buttonSize}}" color="gray" wx:else></mp-icon>
 				</button>
-			</view>
+			</view> -->
 			<view class="menu-item menu-share" hidden="{{mpaContents[currentMpaContentIndex].disableShare || autoPlayId}}">
 				<button size="mini" type="default" open-type="share" style="background:none">
 					<mp-icon icon="share" color="gray" size="{{buttonSize}}"></mp-icon>
