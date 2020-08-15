@@ -26,7 +26,7 @@
 		</view>
   </view>
   <view class="keywords-area">
-    <view hidden="{{!keywords.length || keyword}}">
+    <view hidden="{{!keywords.length || keyword}}" style="margin: 10px 30px;">
       <view class="keywords-title flex-between">
         <view class="not-importent">搜索历史</view>
         <view bindtap="cleanKeywords">
@@ -38,7 +38,7 @@
       </view>
     </view>
   </view>
-  <view class="menu-area abs-center" hidden="{{focus || keyword}}">
+  <view class="menu-area abs-center" hidden="{{keyword}}">
     <navigator url="/pages/index/index?group={{group._id}}" class="abs-center-content" open-type="reLaunch">
       <view class="not-importent ref-content">随便刷一刷</view>
     </navigator>
