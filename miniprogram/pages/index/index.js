@@ -161,7 +161,7 @@ Page({
       callback() {
         page.openContent()
       },
-      condition: true
+      condition: false
     },
     {
       name: '我的收藏',

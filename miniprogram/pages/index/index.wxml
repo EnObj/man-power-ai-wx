@@ -56,18 +56,23 @@
 					<mp-icon icon="star" size="{{buttonSize}}" color="gray" wx:else></mp-icon>
 				</button>
 			</view> -->
+			<view class="menu-item menu-open" hidden="{{autoPlayId}}">
+				<button size="mini" type="default" style="background:none" bindtap="openContent">
+					<mp-icon icon="info" color="gray" size="{{buttonSize}}"></mp-icon>
+				</button>
+			</view>
 			<view class="menu-item menu-share" hidden="{{mpaContents[currentMpaContentIndex].disableShare || autoPlayId}}">
 				<button size="mini" type="default" open-type="share" style="background:none">
 					<mp-icon icon="share" color="gray" size="{{buttonSize}}"></mp-icon>
 				</button>
 			</view>
-			<view class="menu-item menu-history" hidden="{{autoPlayId}}">
+			<!-- <view class="menu-item menu-history" hidden="{{autoPlayId}}">
 				<navigator url="/pages/mine/history" style="display:inline-block" class="nav-none-bg">
 					<button size="mini" type="default" style="background:none">
 						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
 					</button>
 				</navigator>
-			</view>
+			</view> -->
 			<view class="menu-item menu-more" hidden="{{autoPlayId}}">
 				<button size="mini" type="default" bindtap="showMoreMenu" style="background:none">
 					<mp-icon icon="more2" color="gray" size="{{buttonSize}}"></mp-icon>
