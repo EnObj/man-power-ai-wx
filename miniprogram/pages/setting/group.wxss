@@ -48,5 +48,12 @@
   font-size: 14px;
 }
 .menu-area{
-  height: 300px;
+  height: 100px;
+}
+
+.answer-list{
+  padding: 20px 30px;
+}
+.answer{
+  margin-bottom: 10px;
 }

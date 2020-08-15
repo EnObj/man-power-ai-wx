@@ -67,6 +67,17 @@ module.exports = {
         return map
       },{})
     })
+  },
+  getHistorysByGroup(db, groupId){
+    const $ = db.command.aggregate
+    return db.collection('mpa_user_history').aggregate().match({
+      'content.group': groupId
+    }).group({
+      _id: '$answer',
+      contents: $.push('$content')
+    }).end().then(res=>{
+      return res.list
+    })
   }
 }
 

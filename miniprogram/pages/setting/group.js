@@ -1,3 +1,5 @@
+const mpaUtils = require("../../utils/mpaUtils")
+
 const db = wx.cloud.database()
 
 // miniprogram/pages/setting/group.js
@@ -10,7 +12,8 @@ Page({
     group: null,
     keyword: '',
     focus: false,
-    keywords: []
+    keywords: [],
+    answerList: [],
   },
 
   startFocusInp(event){
@@ -68,8 +71,15 @@ Page({
   onLoad: function (options) {
     wx.showNavigationBarLoading()
     db.collection('mpa_content_group').doc(options.groupId||'daxue').get().then(res=>{
+      const group = res.data
       this.setData({
-        group: res.data
+        group: group
+      })
+      // 加载打卡记录
+      mpaUtils.getHistorysByGroup(db, group._id).then(answerList=>{
+        this.setData({
+          answerList
+        })
       })
       wx.hideNavigationBarLoading()
     })

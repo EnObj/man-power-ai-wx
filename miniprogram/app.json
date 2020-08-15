@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/setting/group",
     "pages/setting/setting",
+    "pages/index/index",
     "pages/about/about",
     "pages/search/search",
     "pages/mine/history",
     "pages/mine/mine",
-    "pages/setting/group",
     "pages/index/content"
   ],
   "window": {

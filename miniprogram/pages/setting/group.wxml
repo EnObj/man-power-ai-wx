@@ -43,6 +43,14 @@
       <view class="not-importent ref-content">随便刷一刷</view>
     </navigator>
   </view>
+  <view class="answer-list" hidden="{{keyword}}" wx:if="{{answerList.length}}">
+    <view wx:for="{{answerList}}" wx:key="_id" class="answer">
+      <view class="answer-title not-importent">
+        <text>{{item._id}} {{item.contents.length}}</text>
+      </view>
+      <navigator wx:for="{{item.contents}}" wx:key="_id" wx:for-item="content" url="/pages/index/content?contentId={{content._id}}">{{content.content}}</navigator>
+    </view>
+  </view>
 </view>
 <view class="bg">
 	<image src="./../../image/group.png" class="bg-img" mode="aspectFill"></image>
