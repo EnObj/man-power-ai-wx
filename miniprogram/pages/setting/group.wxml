@@ -26,7 +26,7 @@
 		</view>
   </view>
   <view class="keywords-area">
-    <view hidden="{{!keywords.length || keyword}}" style="margin: 10px 30px;">
+    <view hidden="{{!focus || !keywords.length || keyword}}" style="margin: 10px 30px;">
       <view class="keywords-title flex-between">
         <view class="not-importent">搜索历史</view>
         <view bindtap="cleanKeywords">
