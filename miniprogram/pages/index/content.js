@@ -9,7 +9,8 @@ Page({
    */
   data: {
     mpaContent: null,
-    group: null
+    group: null,
+    history: null
   },
 
   /**
@@ -25,6 +26,18 @@ Page({
         this.setData({
           group: group
         })
+      })
+    })
+    // 加载history
+    this.loadHistory(options.contentId)
+  },
+
+  loadHistory(contentId){
+    db.collection('mpa_user_history').where({
+      'content._id': contentId
+    }).get().then(res=>{
+      this.setData({
+        history: res.data[0] || null
       })
     })
   },
@@ -59,6 +72,34 @@ Page({
         title: `已收藏`
       })
     })
+  },
+
+  answer(event){
+    const answerValue = event.currentTarget.dataset.option
+    // 回答过了
+    if(this.data.history){
+      const page = this
+      wx.showModal({
+        content: '是否取消此标记？',
+        success(res){
+          if(res.confirm){
+            db.collection('mpa_user_history').doc(page.data.history._id).remove().then(res=>{
+              page.setData({
+                history: null
+              })
+            })
+          }
+        }
+      })
+    }else{
+      mpaUtils.answer(db, {
+        content: this.data.mpaContent,
+        answer: answerValue,
+        createTime: new Date()
+      }).then(res=>{
+        this.loadHistory(this.data.mpaContent._id)
+      })
+    }
   },
 
   tapLink(){

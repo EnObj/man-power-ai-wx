@@ -78,6 +78,15 @@ module.exports = {
     }).end().then(res=>{
       return res.list
     })
+  },
+  answer(db, answer){
+    return db.collection('mpa_answer').add({
+      data: answer
+    }).then(res=>{
+      return db.collection('mpa_user_history').add({
+        data: answer
+      })
+    })
   }
 }
 

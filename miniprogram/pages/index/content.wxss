@@ -34,3 +34,7 @@ image{
 .group{
   margin-top: 15px;
 }
+
+.radio-option{
+  margin-top: 10px;
+}
