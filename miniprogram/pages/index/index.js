@@ -157,7 +157,7 @@ Page({
     const page = this
 
     wxApiUtils.showActions([{
-      name: '打开词条',
+      name: '打开景点',
       callback() {
         page.openContent()
       },

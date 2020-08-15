@@ -1,8 +1,8 @@
 <wxs src="./../../wxs/number.wxs" module="numberUtils"></wxs>
 <view class="main">
   <view class="title">
-    <view class="title-head">单词本管理</view>
-    <view class="not-importent title-desc">你可以在此处设置首页的推荐词条范围，若选择关闭部分单词本，此单词本下的词条将不会出现在首页上，但所有历史记录及收藏记录均不会被清空。</view>
+    <view class="title-head">景点集管理</view>
+    <view class="not-importent title-desc">你可以在此处设置首页的推荐景点范围，若选择关闭部分景点集，此集合下的景点将不会出现在首页上，但所有打卡记录均不会被清空。</view>
   </view>
   <!-- <view class="groups">
     <view wx:for="{{groups}}" wx:key="_id" class="flex-between group">
@@ -31,7 +31,7 @@
     </view>
   </view>
   <view class="flex-between advice" wx:if="{{groups.length}}">
-    <view class="not-importent advice-text">没有找到喜欢的单词本？</view>
+    <view class="not-importent advice-text">没有找到喜欢的景点集？</view>
     <view>
       <button type="primary" open-type="feedback" size="mini" plain>点我提建议</button>
     </view>
