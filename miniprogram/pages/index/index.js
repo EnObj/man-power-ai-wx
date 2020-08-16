@@ -290,7 +290,7 @@ Page({
       if(!mpaContents.length){
         mpaContents.push({
           content: '空空如也',
-          remarks: ['什么也没有加载到，请点击“更多-设置”重新配置单词本。'],
+          remarks: ['什么也没有加载到，请点击“更多-设置”重新配置。'],
           disableSkip: true,
           disableCollect: true,
           disableShare: true
