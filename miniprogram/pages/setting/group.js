@@ -86,7 +86,7 @@ Page({
     mpaUtils.getHistorysByGroup(db, this.options.groupId).then(answerList=>{
       this.setData({
         answerList: answerList.sort((a, b)=>{
-          const radioOptions = a.contents[0].radioOptions
+          const radioOptions = a.contents[0].content.radioOptions
           return radioOptions.indexOf(a._id) - radioOptions.indexOf(b._id)
         })
       })

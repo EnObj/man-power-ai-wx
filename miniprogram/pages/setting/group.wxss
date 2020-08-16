@@ -56,3 +56,19 @@
 .answer{
   margin-bottom: 10px;
 }
+.answer-item{
+  align-items: flex-start;
+  margin-top: 8px;
+}
+.answer-index{
+  background: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+.answer-content{
+  background: #fff;
+  padding: 8px;
+  border-radius: 5px;
+}

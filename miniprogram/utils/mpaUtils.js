@@ -74,7 +74,10 @@ module.exports = {
       'content.group': groupId
     }).group({
       _id: '$answer',
-      contents: $.push('$content')
+      contents: $.push({
+        content: '$content',
+        createTime: '$createTime'
+      })
     }).end().then(res=>{
       return res.list
     })

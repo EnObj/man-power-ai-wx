@@ -1,4 +1,5 @@
 <wxs src="./../../wxs/number.wxs" module="numberUtils"></wxs>
+<wxs src="./../../wxs/time.wxs" module="timeUtils"></wxs>
 <wxs module="focusUtils">
   module.exports = {
     focus:function(event, ownerInstance){
@@ -46,9 +47,17 @@
   <view class="answer-list" hidden="{{keyword}}" wx:if="{{answerList.length}}">
     <view wx:for="{{answerList}}" wx:key="_id" class="answer">
       <view class="answer-title not-importent">
-        <text>{{item._id}} {{item.contents.length}}</text>
+        <text>{{item._id}}</text>
       </view>
-      <navigator wx:for="{{item.contents}}" wx:key="_id" wx:for-item="content" url="/pages/index/content?contentId={{content._id}}">{{content.content}}</navigator>
+      <view class="flex-start answer-item" wx:for="{{item.contents}}" wx:key="_id" wx:for-item="content">
+        <view class="answer-index not-importent abs-center">
+          <view class="abs-center-content">{{index+1}}</view>
+        </view>
+        <navigator url="/pages/index/content?contentId={{content._id}}" class="answer-content">
+          <view>{{content.content.content}}</view>
+          <view class="not-importent">{{timeUtils.formatPass(content.createTime)}}</view>
+        </navigator>
+      </view>
     </view>
   </view>
 </view>
