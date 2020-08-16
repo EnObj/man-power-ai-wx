@@ -123,17 +123,18 @@ Page({
 
   loadHistory(){
     const currentMapContent = this.data.mpaContents[this.data.currentMpaContentIndex]
-    db.collection('mpa_user_history').where({
-      'content._id': currentMapContent._id
-    }).get().then(res=>{
-      const history = res.data[0]
-      if(history){
-        currentMapContent.answer = history.answer
+    // 仅在当前有内容时加载
+    if(currentMapContent){
+      db.collection('mpa_user_history').where({
+        'content._id': currentMapContent._id
+      }).get().then(res=>{
+        const history = res.data[0]
+        currentMapContent.answer = history && history.answer || null
         const updator  ={}
         updator[`mpaContents[${this.data.currentMpaContentIndex}]`] = currentMapContent
         this.setData(updator)
-      }
-    })
+      })
+    }
   },
 
   radioChange(event) {
@@ -403,6 +404,9 @@ Page({
 
     // 监听键盘高度变化
     wx.onKeyboardHeightChange(this.onKeyboardHeightChange)
+
+    // 加载历史
+    this.loadHistory()
   },
 
   onKeyboardHeightChange(res){
