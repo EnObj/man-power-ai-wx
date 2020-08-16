@@ -25,7 +25,7 @@
       {{mpaContent.isCollect?'已收藏':'收藏'}}
     </button>
   </view> -->
-  <view class="radio-options">
+  <view class="radio-options" hidden="{{!historyLoaded}}">
     <view class="radio-option" wx:for="{{mpaContent.radioOptions}}" wx:key="*this">
       <button type="{{history ? 'default' : 'primary'}}" bindtap="answer" data-option="{{item}}" wx:if="{{!history || history.answer == item}}">
         <text wx:if="{{history}}">已</text>{{item}}</button>

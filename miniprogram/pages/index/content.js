@@ -10,7 +10,8 @@ Page({
   data: {
     mpaContent: null,
     group: null,
-    history: null
+    history: null,
+    historyLoaded: false
   },
 
   /**
@@ -37,7 +38,8 @@ Page({
       'content._id': contentId
     }).get().then(res=>{
       this.setData({
-        history: res.data[0] || null
+        history: res.data[0] || null,
+        historyLoaded: true
       })
     })
   },

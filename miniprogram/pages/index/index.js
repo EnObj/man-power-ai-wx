@@ -116,6 +116,24 @@ Page({
     }else{
       wx.showShareMenu()
     }
+
+    // 加载历史
+    this.loadHistory()
+  },
+
+  loadHistory(){
+    const currentMapContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    db.collection('mpa_user_history').where({
+      'content._id': currentMapContent._id
+    }).get().then(res=>{
+      const history = res.data[0]
+      if(history){
+        currentMapContent.answer = history.answer
+        const updator  ={}
+        updator[`mpaContents[${this.data.currentMpaContentIndex}]`] = currentMapContent
+        this.setData(updator)
+      }
+    })
   },
 
   radioChange(event) {
