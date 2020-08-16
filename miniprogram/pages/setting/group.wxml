@@ -13,7 +13,7 @@
 <view class="main" wx:if="{{group}}">
   <view class="head">
     <view class="group-name">{{group.name}}</view>
-    <view class="group-count not-importent">词条数：{{numberUtils.toThousands(group.count)}}</view>
+    <view class="group-count not-importent">景点数：{{numberUtils.toThousands(group.count)}}</view>
   </view>
   <view class="search flex-between padding-box" bindtap="startFocusInp">
 		<view class="search-icon">
@@ -54,7 +54,7 @@
         <view class="answer-index not-importent abs-center">
           <view class="abs-center-content">{{index+1}}</view>
         </view>
-        <navigator url="/pages/index/content?contentId={{content._id}}" class="answer-content">
+        <navigator url="/pages/index/content?contentId={{content.content._id}}" class="answer-content">
           <view>{{content.content.content}}</view>
           <view class="not-importent">{{timeUtils.formatPass(content.createTime)}}</view>
         </navigator>
