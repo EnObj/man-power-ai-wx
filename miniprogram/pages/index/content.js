@@ -98,7 +98,7 @@ Page({
       mpaUtils.answer(db, {
         content: this.data.mpaContent,
         answer: answerValue,
-        createTime: new Date()
+        createTime: Date.now()
       }).then(res=>{
         this.loadHistory(this.data.mpaContent._id)
         wx.hideLoading()

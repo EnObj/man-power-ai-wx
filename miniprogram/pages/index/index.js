@@ -127,7 +127,7 @@ Page({
     const answer = {
       content: currentMapContent,
       answer: answerValue,
-      createTime: new Date()
+      createTime: Date.now()
     }
     return db.collection('mpa_answer').add({
       data: answer
