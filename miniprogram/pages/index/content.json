@@ -2,5 +2,5 @@
   "usingComponents": {
     "mp-icon": "../../components/icon/icon"
   },
-  "navigationBarTitleText": "景点详情"
+  "navigationBarTitleText": "详情"
 }
