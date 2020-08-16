@@ -20,7 +20,7 @@
 			<mp-icon icon="search" size="25" color="gray" />
 		</view>
 		<view class="search-inp">
-			<input placeholder="在此单词本中搜索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  focus="{{focus}}" bindfocus="{{focusUtils.focus}}" bindblur="unfocus"/>
+			<input placeholder="在此景点集内搜索" confirm-type="go" bindconfirm="confirm" value="{{keyword}}" bindinput="keywordChange"  focus="{{focus}}" bindfocus="{{focusUtils.focus}}" bindblur="unfocus"/>
 		</view>
 		<view class="clean-icon" bindtap="cleanKeyword" hidden="{{!keyword}}">
 			<mp-icon icon="close2" size="20" type="field" color="#ccc" />
@@ -48,6 +48,7 @@
     <view wx:for="{{answerList}}" wx:key="_id" class="answer">
       <view class="answer-title not-importent">
         <text>{{item._id}}</text>
+        <text wx:if="{{item.contents.length > 10}}"> {{item.contents.length}}</text>
       </view>
       <view class="flex-start answer-item" wx:for="{{item.contents}}" wx:key="_id" wx:for-item="content">
         <view class="answer-index not-importent abs-center">

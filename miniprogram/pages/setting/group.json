@@ -2,5 +2,5 @@
   "usingComponents": {
     "mp-icon": "../../components/icon/icon"
   },
-  "navigationBarTitleText": "单词本"
+  "navigationBarTitleText": "景点集"
 }
