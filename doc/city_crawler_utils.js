@@ -56,9 +56,9 @@ function pull(city, cityId, cityName, intypes = types.slice(0)) {
       name: cityName + type.name2,
       category: '城市印象',
       count: list.length
-    }], `../patch/20200817/groups`, 'a').then(res=>{
+    }], `../patch/20200818/groups`, 'a').then(res=>{
       // 之后写词条
-      return mpaUtils.writeToJsonFile(list.slice(0), `../patch/20200817/${city}-${type.name}`).then(res => {
+      return mpaUtils.writeToJsonFile(list.slice(0), `../patch/20200818/${city}-${type.name}`).then(res => {
         if (intypes.length) {
           return pull(city, cityId, cityName, intypes).then(res=>{
             return list.concat(res)
