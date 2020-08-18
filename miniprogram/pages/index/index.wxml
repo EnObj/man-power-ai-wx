@@ -80,12 +80,12 @@
 			</view>
 			<view class="menu-item menu-next" hidden="{{autoPlayId}}">
 				<button size="mini" type="primary" disabled="{{mpaContents[currentMpaContentIndex].disableSkip && !mpaContents[currentMpaContentIndex].answer}}" bindtap="nextMpaContentBtnTap">
-					跳过-{{currentMpaContentIndex + 1}}
+					下一个
 				</button>
 			</view>
 			<view class="menu-item menu-next" wx:if="{{autoPlayId}}">
 				<button size="mini" type="warn" bindtap="stopAutoPlay">
-					停止-{{currentMpaContentIndex + 1}}
+					停止
 				</button>
 			</view>
 		</view>
