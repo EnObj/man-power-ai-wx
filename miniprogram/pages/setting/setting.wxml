@@ -40,6 +40,6 @@
     </view>
   </view>
 </view>
-<view class="bg">
+<!-- <view class="bg">
 	<image src="./../../image/groups.png" class="bg-img" mode="aspectFill"></image>
-</view>
+</view> -->

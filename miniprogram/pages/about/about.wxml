@@ -7,13 +7,13 @@
       小程序内所有景点内容均来源于国家或地方旅游部门或互联网公开信息，仅供用户学习和浏览使用，如果某些内容侵犯了您的权益，请通过反馈通道及时联系我们。
     </view>
   </view>
-  <view class="thanks">
+  <!-- <view class="thanks">
     特别感谢：<text class="thanks-content ref-content">https://ls.graphics/</text><text space="nbsp" class="not-importent"> 提供背景素材。</text>
-  </view>
+  </view> -->
   <view class="feedback">
     <button open-type="feedback" type="primary">问题反馈/建议</button>
   </view>
 </view>
-<view class="bg">
+<!-- <view class="bg">
 	<image src="./../../image/about.png" class="bg-img" mode="aspectFill"></image>
-</view>
+</view> -->
