@@ -58,7 +58,7 @@
 }
 .answer-item{
   align-items: flex-start;
-  margin-top: 8px;
+  margin-top: 15px;
 }
 .answer-index{
   background: #fff;
