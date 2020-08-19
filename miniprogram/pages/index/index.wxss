@@ -70,10 +70,10 @@
   color: #eee;
 }
 .mpa-content-group{
-  color: #ddd;
+  color: #fff;
 }
 .mpa-content-prompt{
-  color: #ccc;
+  color: #ddd;
 }
 .mpa-content-answer{
   color: #eee;
