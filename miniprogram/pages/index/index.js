@@ -279,6 +279,9 @@ Page({
   onLoad: function (options) {
     if(options.group){
       wx.setStorageSync('groups', [{_id:options.group}])
+    } else if(!wx.getStorageSync('groups')){
+      // 首次登入自动设置为5A景区
+      wx.setStorageSync('groups', [{_id:'jingqu-5A'}])
     }
     this.loadMpaContents(options.contentId).then(res=>{
       this.nextMpaContent()
