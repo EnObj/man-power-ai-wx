@@ -58,12 +58,12 @@
 			</view> -->
 			<view class="menu-item menu-open" hidden="{{autoPlayId}}">
 				<button size="mini" type="default" style="background:none" bindtap="openContent">
-					<mp-icon icon="info" color="gray" size="{{buttonSize}}"></mp-icon>
+					<mp-icon icon="info" color="#ddd" size="{{buttonSize}}"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-share" hidden="{{mpaContents[currentMpaContentIndex].disableShare || autoPlayId}}">
 				<button size="mini" type="default" open-type="share" style="background:none">
-					<mp-icon icon="share" color="gray" size="{{buttonSize}}"></mp-icon>
+					<mp-icon icon="share" color="#ddd" size="{{buttonSize}}"></mp-icon>
 				</button>
 			</view>
 			<!-- <view class="menu-item menu-history" hidden="{{autoPlayId}}">
@@ -75,7 +75,7 @@
 			</view> -->
 			<view class="menu-item menu-more" hidden="{{autoPlayId}}">
 				<button size="mini" type="default" bindtap="showMoreMenu" style="background:none">
-					<mp-icon icon="more2" color="gray" size="{{buttonSize}}"></mp-icon>
+					<mp-icon icon="more2" color="#ddd" size="{{buttonSize}}"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-next" hidden="{{autoPlayId}}">

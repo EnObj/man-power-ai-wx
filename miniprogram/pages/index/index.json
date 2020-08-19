@@ -4,5 +4,7 @@
   },
   "navigationStyle": "default",
   "navigationBarTitleText": "首页",
+  "navigationBarBackgroundColor": "#CA9843",
+  "navigationBarTextStyle":"white",
   "disableScroll":true
 }
