@@ -406,7 +406,7 @@ Page({
     }
 
     // 监听键盘高度变化
-    wx.onKeyboardHeightChange(this.onKeyboardHeightChange)
+    // wx.onKeyboardHeightChange(this.onKeyboardHeightChange)
 
     // 加载历史
     this.loadHistory()
@@ -424,7 +424,7 @@ Page({
   onHide: function () {
     this.stopAutoPlay()
     // 取消监听键盘高度变化
-    wx.offKeyboardHeightChange(this.onKeyboardHeightChange)
+    // wx.offKeyboardHeightChange(this.onKeyboardHeightChange)
   },
 
   /**
