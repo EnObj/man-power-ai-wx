@@ -258,13 +258,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.group){
-      wx.setStorageSync('groups', [{_id:options.group}])
-    }
-    this.loadMpaContents(options.contentId).then(res=>{
-      this.nextMpaContent()
+    this.resolveDefaultGroups(options.group).then(groups=>{
+      wx.setStorageSync('groups', groups)
+      // 设置好了本地组才开始捞词条
+      this.loadMpaContents(options.contentId).then(res=>{
+        this.nextMpaContent()
+      })
     })
     this.loadGroups()
+  },
+
+  // 如果path参数有组，则直接用，如果没有随机从库里拿三个出来
+  resolveDefaultGroups(optionGroup){
+    // 如果路径参数传递了则用之
+    if(optionGroup){
+      return Promise.resolve([{_id:optionGroup}])
+    }
+    // 否则用本地缓存
+    if(wx.getStorageSync('groups')){
+      return Promise.resolve(wx.getStorageSync('groups'))
+    }
+    // 否则随机查库三条
+    return db.collection('mpa_content_group').aggregate().sample({
+      size: 3
+    }).end().then(res=>{
+      return res.list
+    })
   },
 
   loadGroups(){
