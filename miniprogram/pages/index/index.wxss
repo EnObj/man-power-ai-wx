@@ -57,9 +57,9 @@
 }
 
 .tag{
-  background: #bbb;
-  padding: 5px 15px;
-  border-radius: 15px;
+  background: #ccc; 
+  padding: 15px; 
+  border-radius: 10px;
   margin-right: 10px;
   color: #fff;
   opacity: 0.7;
