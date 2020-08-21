@@ -38,3 +38,12 @@
 .advice-text{
   margin-right: 10px;
 }
+
+.badge{
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: #fff;
+  margin-left: 5px;
+  font-size: 12px;
+}
