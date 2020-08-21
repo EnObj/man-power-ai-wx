@@ -62,5 +62,5 @@
   border-radius: 10px;
   margin-right: 10px;
   color: #fff;
-  opacity: 0.7;
+  opacity: 0.8;
 }
