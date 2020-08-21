@@ -67,14 +67,25 @@ Page({
    */
   onLoad: function (options) {
     wx.showNavigationBarLoading()
-    db.collection('mpa_content_group').doc(options.groupId||'daxue').get().then(res=>{
+    this.getMpaContentGroup(options.groupId||'daxue').then(group=>{
       this.setData({
-        group: res.data
+        group: group
       })
       wx.hideNavigationBarLoading()
     })
     // 最近搜索
     this.loadKeywords()
+  },
+
+  getMpaContentGroup(id){
+    // 先检查上下文
+    const mpaContentGroup = getApp().globalData.tappedMpaContentGroup
+    if(mpaContentGroup && mpaContentGroup._id == id){
+      return Promise.resolve(mpaContentGroup)
+    }
+    return db.collection('mpa_content_group').doc(id).get().then(res=>{
+      return res.data
+    })
   },
 
   loadKeywords(){

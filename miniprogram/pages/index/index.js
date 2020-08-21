@@ -358,6 +358,15 @@ Page({
     }
   },
 
+  openGroup(){
+    const mpaContent = this.data.mpaContents[this.data.currentMpaContentIndex]
+    // 缓存这个组
+    getApp().globalData.tappedMpaContentGroup = this.data.groupMap[mpaContent.group]
+    wx.navigateTo({
+      url: '/pages/setting/group?groupId=' + mpaContent.group,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
