@@ -15,7 +15,7 @@
 					<view class="tags flex-start">
 						<view wx:if="{{mpaContents[currentMpaContentIndex].image}}" class="tag image" bindtap="tapImage">
 							<!-- <mp-icon icon="album" color="white" size="{{22}}"></mp-icon> -->
-							<image src="{{mpaContents[currentMpaContentIndex].image}}" hidden="{{false}}" style="width:80px;" mode="widthFix"></image>
+							<image src="{{mpaContents[currentMpaContentIndex].image}}" hidden="{{false}}" style="width:80px;height:80px;" mode="widthFix"></image>
 							<!-- <text space="nbsp"> 附图</text> -->
 						</view>
 						<!-- <view class="tag link flex-start" wx:if="{{mpaContents[currentMpaContentIndex].link}}" bindtap="tapLink">
