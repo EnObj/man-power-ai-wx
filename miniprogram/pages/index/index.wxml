@@ -52,35 +52,35 @@
 		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
 			<view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect || autoPlayId}}">
 				<button size="mini" type="default" bindtap="collect" style="background:none">
-					<mp-icon icon="star" type="field" color="gray" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
-					<mp-icon icon="star" size="{{buttonSize}}" color="gray" wx:else></mp-icon>
+					<mp-icon icon="star" type="field" color="gold" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
+					<mp-icon icon="star" size="{{buttonSize}}" color="gray" type="field" wx:else></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-share" hidden="{{mpaContents[currentMpaContentIndex].disableShare || autoPlayId}}">
 				<button size="mini" type="default" open-type="share" style="background:none">
-					<mp-icon icon="share" color="gray" size="{{buttonSize}}"></mp-icon>
+					<mp-icon icon="share" color="gray" size="{{buttonSize}}" type="field"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-history" hidden="{{autoPlayId}}">
 				<navigator url="/pages/mine/history" style="display:inline-block" class="nav-none-bg">
 					<button size="mini" type="default" style="background:none">
-						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
+						<mp-icon icon="time" color="gray" size="{{buttonSize}}" type="field"></mp-icon>
 					</button>
 				</navigator>
 			</view>
 			<view class="menu-item menu-more" hidden="{{autoPlayId}}">
 				<button size="mini" type="default" bindtap="showMoreMenu" style="background:none">
-					<mp-icon icon="more2" color="gray" size="{{buttonSize}}"></mp-icon>
+					<mp-icon icon="more2" color="gray" size="{{buttonSize}}" type="field"></mp-icon>
 				</button>
 			</view>
 			<view class="menu-item menu-next" hidden="{{autoPlayId}}">
 				<button size="mini" type="primary" disabled="{{mpaContents[currentMpaContentIndex].disableSkip && !mpaContents[currentMpaContentIndex].answer}}" bindtap="nextMpaContentBtnTap">
-					跳过-{{currentMpaContentIndex + 1}}
+					继续
 				</button>
 			</view>
 			<view class="menu-item menu-next" wx:if="{{autoPlayId}}">
 				<button size="mini" type="warn" bindtap="stopAutoPlay">
-					停止-{{currentMpaContentIndex + 1}}
+					停止
 				</button>
 			</view>
 		</view>
