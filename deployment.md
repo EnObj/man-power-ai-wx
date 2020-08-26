@@ -13,7 +13,7 @@ git clone https://github.com/EnObj/man-power-ai-wx.git
 1. 设置项目名称
 2. 选择源代码包本地路径
 3. 填写您的小程序appid（需要您提前到[微信公众平台](https://mp.weixin.qq.com)申请）
-4，点击确认
+4. 点击确认
 
 ## 开启云服务
 
