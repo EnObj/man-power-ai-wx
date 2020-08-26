@@ -15,7 +15,7 @@
 					<view class="tags flex-start">
 						<view wx:if="{{mpaContents[currentMpaContentIndex].image}}" class="tag image" bindtap="tapImage">
 							<!-- <mp-icon icon="album" color="white" size="{{22}}"></mp-icon> -->
-							<image src="{{mpaContents[currentMpaContentIndex].image}}" hidden="{{false}}" style="width:100px;" mode="widthFix"></image>
+							<image src="{{mpaContents[currentMpaContentIndex].image}}" hidden="{{false}}" style="width:80px;height:80px;" mode="widthFix"></image>
 							<!-- <text space="nbsp"> 附图</text> -->
 						</view>
 						<!-- <view class="tag link flex-start" wx:if="{{mpaContents[currentMpaContentIndex].link}}" bindtap="tapLink">
@@ -27,9 +27,9 @@
 			</view>
 		</scroll-view>
 		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;" wx:if="{{mpaContents[currentMpaContentIndex]}}">
-			<navigator class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}" url="/pages/setting/group?groupId={{mpaContents[currentMpaContentIndex].group}}">
+			<view class="mpa-content-group active-hover" wx:if="{{mpaContents[currentMpaContentIndex].group}}" bindtap="openGroup">
 				@{{groupMap[mpaContents[currentMpaContentIndex].group].name}}
-			</navigator>
+			</view>
 			<view class="not-importent mpa-content-prompt" wx:if="{{mpaContents[currentMpaContentIndex].prompt}}">
 				<text>“{{mpaContents[currentMpaContentIndex].prompt}}”</text>
 			</view>
@@ -52,8 +52,8 @@
 		<view class="menu" wx:if="{{mpaContents.length && currentMpaContentIndex >= 0}}">
 			<!-- <view class="menu-item menu-like" hidden="{{mpaContents[currentMpaContentIndex].disableCollect || autoPlayId}}">
 				<button size="mini" type="default" bindtap="collect" style="background:none">
-					<mp-icon icon="star" type="field" color="gray" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
-					<mp-icon icon="star" size="{{buttonSize}}" color="gray" wx:else></mp-icon>
+					<mp-icon icon="star" type="field" color="gold" size="{{buttonSize}}" wx:if="{{mpaContents[currentMpaContentIndex].isCollect}}"></mp-icon>
+					<mp-icon icon="star" size="{{buttonSize}}" color="#999" type="field" wx:else></mp-icon>
 				</button>
 			</view> -->
 			<view class="menu-item menu-open" hidden="{{autoPlayId}}">
@@ -69,7 +69,7 @@
 			<!-- <view class="menu-item menu-history" hidden="{{autoPlayId}}">
 				<navigator url="/pages/mine/history" style="display:inline-block" class="nav-none-bg">
 					<button size="mini" type="default" style="background:none">
-						<mp-icon icon="time" color="gray" size="{{buttonSize}}"></mp-icon>
+						<mp-icon icon="time" color="#999" size="{{buttonSize}}" type="field"></mp-icon>
 					</button>
 				</navigator>
 			</view> -->
@@ -80,7 +80,7 @@
 			</view>
 			<view class="menu-item menu-next" hidden="{{autoPlayId}}">
 				<button size="mini" type="primary" disabled="{{mpaContents[currentMpaContentIndex].disableSkip && !mpaContents[currentMpaContentIndex].answer}}" bindtap="nextMpaContentBtnTap">
-					下一个
+					继续
 				</button>
 			</view>
 			<view class="menu-item menu-next" wx:if="{{autoPlayId}}">

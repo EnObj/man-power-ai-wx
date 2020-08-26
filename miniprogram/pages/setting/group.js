@@ -71,8 +71,7 @@ Page({
   onLoad: function (options) {
     this.options = options
     wx.showNavigationBarLoading()
-    db.collection('mpa_content_group').doc(options.groupId||'daxue').get().then(res=>{
-      const group = res.data
+    this.getMpaContentGroup(options.groupId||'daxue').then(group=>{
       this.setData({
         group: group
       })
@@ -90,6 +89,17 @@ Page({
           return radioOptions.indexOf(a._id) - radioOptions.indexOf(b._id)
         })
       })
+    })
+  },
+  
+  getMpaContentGroup(id){
+    // 先检查上下文
+    const mpaContentGroup = getApp().globalData.tappedMpaContentGroup
+    if(mpaContentGroup && mpaContentGroup._id == id){
+      return Promise.resolve(mpaContentGroup)
+    }
+    return db.collection('mpa_content_group').doc(id).get().then(res=>{
+      return res.data
     })
   },
 
