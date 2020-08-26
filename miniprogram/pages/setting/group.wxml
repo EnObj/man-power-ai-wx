@@ -41,7 +41,7 @@
   </view>
   <view class="menu-area abs-center" hidden="{{keyword}}">
     <navigator url="/pages/index/index?group={{group._id}}" class="abs-center-content link-index" open-type="reLaunch">
-      <view class="not-importent ref-content">随便刷一刷</view>
+      <view class="not-importent ref-content">随便看一看</view>
     </navigator>
   </view>
   <view class="answer-list" hidden="{{keyword}}" wx:if="{{answerList.length}}">
