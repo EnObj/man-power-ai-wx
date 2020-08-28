@@ -8,11 +8,11 @@ module.exports = {
       // console.log(count)
       for (var i = 0; i < remarks.length; i++) {
         var remark = remarks[i];
-        if (count + remark.length < 200) {
+        if (count + remark.length < 150) {
           newRemarks.push(remark);
           count += remark.length;
         } else {
-          newRemarks.push(remark.substring(0, 200 - count) + '...【双击查看完整词条】');
+          newRemarks.push(remark.substring(0, 150 - count) + '...【双击查看完整词条】');
           break;
         }
       }

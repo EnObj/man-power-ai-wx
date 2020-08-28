@@ -31,3 +31,7 @@
     </navigator>
   </view>
 </view>
+
+<view class="bg" wx:if="{{mpaContent && !mpaContent.image}}">
+	<image src="./../../image/index.png" class="bg-img" mode="aspectFill"></image>
+</view>

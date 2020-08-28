@@ -5,9 +5,9 @@
 			<image src="{{mpaContents[currentMpaContentIndex].image}}" mode="aspectFill" bindload="imageLoaded"></image>
 		</view>
 		<view class="mpa-answer-area" style="bottom:{{(keyboardHeight||10)+10}}px;" wx:if="{{mpaContents[currentMpaContentIndex]}}">
-			<navigator class="mpa-content-group" wx:if="{{mpaContents[currentMpaContentIndex].group}}" url="/pages/setting/group?groupId={{mpaContents[currentMpaContentIndex].group}}">
+			<view class="mpa-content-group active-hover" wx:if="{{mpaContents[currentMpaContentIndex].group}}" bindtap="openGroup">
 				@{{groupMap[mpaContents[currentMpaContentIndex].group].name}}
-			</navigator>
+			</view>
 			<view class="not-importent mpa-content-prompt" wx:if="{{mpaContents[currentMpaContentIndex].prompt}}">
 				<text>“{{mpaContents[currentMpaContentIndex].prompt}}”</text>
 			</view>
@@ -59,12 +59,12 @@
 			</view>
 			<view class="menu-item menu-next" hidden="{{autoPlayId}}">
 				<button size="mini" type="primary" disabled="{{mpaContents[currentMpaContentIndex].disableSkip && !mpaContents[currentMpaContentIndex].answer}}" bindtap="nextMpaContentBtnTap">
-					继续-{{currentMpaContentIndex + 1}}
+					继续
 				</button>
 			</view>
 			<view class="menu-item menu-next" wx:if="{{autoPlayId}}">
 				<button size="mini" type="warn" bindtap="stopAutoPlay">
-					停止-{{currentMpaContentIndex + 1}}
+					停止
 				</button>
 			</view>
 		</view>
