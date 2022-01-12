@@ -1,5 +1,9 @@
 # 部署说明
 
+## 视频教程
+下载地址：[迅雷云盘](https://pan.xunlei.com/s/VMtCAc1RLEbheV_M8GkIFKooA1)（提取码：3ycb）
+> 感谢qq网友(@浅喜深爱)提供建议 
+
 ## 下载代码
 
 ```
