@@ -1,5 +1,19 @@
 {
   "权限": "所有人可读",
-  "example": {},
+  "example": {
+    "content": "刘亦菲",
+    "group": "meinv",
+    "radioOptions": [
+      "好看（随意设置）",
+      "不好看（随意设置）"
+    ],
+    "image": "http://刘亦菲图片地址（封面）.jpg",
+    "images": [
+      "http://刘亦菲图片地址1.jpg",
+      "http://刘亦菲图片地址2.jpg",
+      "http://刘亦菲图片地址3.jpg",
+      "http://刘亦菲图片地址n.jpg"
+    ]
+  },
   "索引": "group+"
 }

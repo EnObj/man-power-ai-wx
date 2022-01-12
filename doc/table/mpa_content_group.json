@@ -1,4 +1,8 @@
 {
   "权限": "所有人可读",
-  "example": {}
+  "example": {
+    "_id": "meinv",
+    "count": 120,
+    "name": "美女"
+  }
 }
